@@ -1,12 +1,12 @@
-- unhashable elements in sets
-- + operator for sets (union) (- working properly) (solution: x | y)
-- * operator for sets (intersection) (solution: x & y)
+#- unhashable elements in sets
+#- + operator for sets (union) (- working properly) (solution: x | y)
+#- * operator for sets (intersection) (solution: x & y)
 - {1 .. 10} workaround would be range(1, 11)
 - {1, 3 .. 10} (=> {1, 3, 5, 7, 9})
 - >< cartesian product ugly workaround on stack overflow
-- **2 cartesian product with itself. Same story here
-- 2 ** x power set. Same here aswell
-- % symmetric difference (solution: x ^ y)
+#- **2 cartesian product with itself. Same story here
+#- 2 ** x power set. Same here aswell
+#- % symmetric difference (solution: x ^ y)
 
 
 - is_prime(n) missing in Python (Fix in legendre.py)

@@ -1,5 +1,5 @@
 
 
 __all__ = [
-	'Set'
+	'is_prime'
 ]
