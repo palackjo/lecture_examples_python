@@ -3,8 +3,15 @@ class Set(Object):
 	def __init__(self, data_list=None, *args):
 		self.data = []
 		
+		if data_list:
+			if not hasattr(data_list, '__iter__'):
+				raise Exception('data_list parameter needs to be iterable')
+
+			for x in data_list:
+				self.insert(self.data, x)
+
 		for arg in args:
-			self.insert(data, arg)
+			self.insert(self.data, arg)
 
 		self.data.sort()
 
