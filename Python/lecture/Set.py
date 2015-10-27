@@ -40,24 +40,20 @@ class Set(Object):
 		return Set(data_list=result)
 
 	def __str__(self):
-		result = ''
-
-		for x in self.data:
-			result += ', %s' % str(x)
-
-		return result
+		return str(self.data)
 
 	def __pow__(self, other):
-		assert other == 2
+		if other == 2:
+			return self.cartesian_product(self)
 
-		return self.cartesian()
+		return self.cartesian_product(other)
 		
 
 	def __rpow__(self, other):
+		if other == 2:
+			return self.cartesian_product(self)
 
-		assert other == 2
-
-		return self.cartesian()
+		return self.cartesian_product(other)
 
 	def __div__(self, other):
 		assert isinstance(other, Set)
@@ -75,6 +71,10 @@ class Set(Object):
 
 		return (self / other) + (other / self)
 
+	def __iter__(self):
+		for x in self.data:
+			yield x
+
 	# helper method to only insert elements into an array 'arr', that are
 	# not present in the array (set behavior)
 	def insert(self, arr, value):
@@ -85,10 +85,12 @@ class Set(Object):
 
 	# returns a new set representing the cartesian product of the current
 	# set
-	def cartesian(self):
+	def cartesian_product(self, other):
+		assert isinstance(other, Set)
+
 		result = []
 		for x in self.data:
-			for y in self.data:
+			for y in other.data:
 				self.insert(result, (x,y))
 
 		return Set(data_list=result)
