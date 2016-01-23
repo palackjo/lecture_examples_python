@@ -1,4 +1,5 @@
 from blist import sortedset
+import types
 
 if __name__ == '__main__':
 	from util import is_number, Sorter
@@ -7,7 +8,7 @@ else:
 
 class Set():
 
-	def __init__(self, *args, data_list=None):
+	def __init__(self, *args, data_list=None, keep_generators=False):
 		self.data = sortedset([], key=self.gen_key)
 		
 		if data_list:
@@ -18,7 +19,12 @@ class Set():
 				self.data.add(x)
 
 		for arg in args:
-			self.data.add(arg)
+			if isinstance(arg, types.GeneratorType)
+			and not keep_generators: 
+				for x in arg:
+					self.data.add(x)
+			else
+				self.data.add(arg)
 
 	def __add__(self, other):
 		s = Set()
