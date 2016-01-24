@@ -5,6 +5,9 @@ The intention of this project is to tranlate SetlX programs of Prof. Dr. Karl St
 Most problems could be solved way faster in Python but the main goal is to maintain the elegance of the algorithms.
 The following directories contain the actual translation of SetlX programs to Python scripts.
 
+## lecture
+Lecture represents the python package containing helper functions and classes, to manage and support special setlX features that are not given in python
+
 ## Aussagenlogik
 ### watson.py
 The script watson.py doesn't work yet. The used syntax for matches in Python is just an idea what they could look like. Matches are currently being implemented.
