@@ -145,9 +145,12 @@ class MatchParser():
 
 if __name__ == '__main__':
     parser = MatchParser()
-    result = parser.match("boschmannisawesome||seppistoo", "2**4==10000000||sepp==!jones")
-
-    print(parser.values["boschmannisawesome"])
-    print(parser.values["seppistoo"])
-
-    print(result)
+    result = parser.match("p||q", "2**4==10000000||123==!True")
+    print(parser.values["p"])
+    print(parser.values["q"])
+    assert result is True
+    result = parser.match("p==q", "2**4==10000000||123==!True")
+    assert result is False
+    result = parser.match("sin(a)", "sin(2**3||2**5)")
+    print(parser.values["a"])
+    assert result is True
