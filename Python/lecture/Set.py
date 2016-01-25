@@ -1,5 +1,6 @@
 from blist import sortedset
 import types
+import random
 
 if __name__ == '__main__':
 	from util import is_number, Sorter
@@ -8,9 +9,15 @@ else:
 
 class Set():
 
-	def __init__(self, *args, data_list=None, keep_generators=False):
-		self.data = sortedset([], key=self.gen_key)
-		
+	def __init__(self, *args, data_list=None, sorted_set=None, keep_generators=False, single_type_values=True):
+		key = None
+		if not single_type_values:
+			key = self.gen_key
+		if sorted_set:
+			self.data = sortedset(sorted_set, key=key)
+		else:
+			self.data = sortedset([], key=key)
+
 		if data_list:
 			if not hasattr(data_list, '__iter__'):
 				raise Exception('data_list parameter needs to be iterable')
@@ -19,52 +26,42 @@ class Set():
 				self.data.add(x)
 
 		for arg in args:
-			if isinstance(arg, types.GeneratorType)
+			if isinstance(arg, types.GeneratorType) \
 			and not keep_generators: 
 				for x in arg:
 					self.data.add(x)
-			else
+			else:
 				self.data.add(arg)
 
 	def __add__(self, other):
-		s = Set()
+		
 		if isinstance(other, Set):
-			for x in other.data:
-				s.data.add(x)
+			# union
+			return Set(sorted_set=self.data | other.data)
 		else:
+			s = Set(sorted_set=self.data.copy())
 			s.data.add(other)
-		for x in self.data:
-			s.data.add(x)
-		return s
+			return s
+
+	def __iadd__(self, other):
+		if isinstance(other, Set):
+			self.data |= other.data
+		else:
+			self.data.add(other)
+		return self
 
 	def __sub__(self, other):
-		s = Set()
 		if isinstance(other, Set):
-			for x in self.data:
-				if not x in other.data:
-					s.data.add(x)
+			return Set(sorted_set=self.data - other.data)
 		else:
-			for x in self.data:
-				if not x == other:
-					s.data.add(x)
-		return s
+			s = Set(sorted_set=self.data.copy())
+			s.discard(other)
+			return s
 
 	def __mul__(self, other):
 		assert isinstance(other, Set)
-		s = Set()
-		for x in self.data:
-			if x in other.data:
-				s.data.add(x)
-		return s
-
-	def __truediv__(self, other):
-		assert isinstance(other, Set)
-		s = Set()
-		for x in self.data:
-			if x not in other.data:
-				s.data.add(x)
-		return s
-
+		
+		return Set(sorted_set=self.data & other.data)
 
 	def __str__(self):
 		return str(self.data)
@@ -72,8 +69,7 @@ class Set():
 	def __pow__(self, other):
 		if other == 2:
 			return self.cartesian_product(self)
-		return self.cartesian_product(other)
-		
+		return self.cartesian_product(other)		
 
 	def __rpow__(self, other):
 		if other == 2:
@@ -82,23 +78,43 @@ class Set():
 
 	def __mod__(self, other):
 		assert isinstance(other, Set)
-		return (self / other) + (other / self)
+
+		return Set(sorted_set=self.data ^ other.data)
 
 	def __iter__(self):
 		return self.data.__iter__()
 
 	def __str__(self):
-		return "[%s]" % (', '.join([str(x) for x in self.data]))
+		return str(self.data)
 
 	def __len__(self):
 		return len(self.data)
 
+	def __lt__(self, other):
+		assert isinstance(other, Set)
+		
+		return self.data < other.data
+
+	def __gt__(self, other):
+		assert isinstance(other, Set)
+		
+		return self.data > other.data
+
+	def __ge__(self, other):
+		assert isinstance(other, Set)
+		
+		return self.data >= other.data
+
 	def __le__(self, other):
 		assert isinstance(other, Set)
-		for x in self.data:
-			if not x in other.data:
-				return False
-		return True
+		
+		return self.data <= other.data
+
+	def __eq__(self, other):
+		return self.data <= other.data and self.data >= other.data
+
+	def __ne__(self, other):
+		return not self.__eq__(other)
 
 	def __contains__(self, other):
 		return other in self.data
@@ -113,8 +129,10 @@ class Set():
 				s.data.add((x,y))
 		return s
 
+	def arb(self):
+		return self.data[random.randrange(len(self.data))]
+
 	def pop(self):
-		import random
 		return self.data.pop(random.randrange(len(self.data)))
 
 	def gen_key(self, value):
@@ -130,7 +148,7 @@ if __name__ == '__main__':
 	s2 = s + s1
 	s3 = s2 - s
 	s4 = s * s1
-	s5 = s / s1
+	#s5 = s / s1
 	s6 = s % s1
 
 	print("s: %s" % s)
@@ -140,7 +158,7 @@ if __name__ == '__main__':
 	print("2 ** s: %s" % 2 ** s)
 	print("s + s1 - s: %s" % s3)
 	print("s * s1: %s" % s4)
-	print("s / s1: %s" % s5)
+	#print("s / s1: %s" % s5)
 	print("s %% s1: %s" % s6)
 
 	print("-----------")
