@@ -1,0 +1,1 @@
+b'Traceback (most recent call last):\r\n  File "C:\\Users\\palac\\Documents\\DHBW\\Studienarbeit\\lecture_examples_python\\Python\\Testing\\..\\diff.py", line 3, in <module>\r\n    from lecture.util import Scanner, TokenType\r\nImportError: cannot import name \'TokenType\'\r\n'

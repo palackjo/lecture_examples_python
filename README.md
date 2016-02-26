@@ -102,3 +102,16 @@ The script watson.py doesn't work yet. The used syntax for matches in Python is 
 
 ### wolf_goat_cabbage.py
 this script is currently encountering issues at the computation of a power set. We are working on this issue.
+
+
+## Testing 
+This directory contains a script to test the existing Python scripts in the "Python" directory.
+
+The subdirectory "test_results" contains the results of the single scripts. 
+These are needed to be able to compare the actual results with desired results. 
+Currently the actual results of an execution of each script are in that subdirectory. 
+These files are just there to see what it looks like. 
+In future this subdirectory should always be emptied after a comparison.
+
+_Currently it is possible to generate the output of the scripts. 
+The comparison will be implemented as soon as set and match are implemented properly._

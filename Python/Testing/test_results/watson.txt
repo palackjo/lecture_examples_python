@@ -1,0 +1,1 @@
+b'  File "C:\\Users\\palac\\Documents\\DHBW\\Studienarbeit\\lecture_examples_python\\Python\\Testing\\..\\watson.py", line 8\r\n    ["!g", !evaluate(g, i)]],\r\n           ^\r\nSyntaxError: invalid syntax\r\n'
