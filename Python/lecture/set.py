@@ -1,123 +1,91 @@
-from blist import sortedset
 import types
 import random
 
 if __name__ == '__main__':
-	from util import is_number, Sorter
+	from util import is_number, Sorter, TreeMap
 else:
-	from .util import is_number, Sorter
+	from .util import is_number, Sorter, TreeMap
 
 class Set():
 
-	def __init__(self, *args, data_list=None, sorted_set=None, keep_generators=False, single_type_values=True):
-		key = None
-		if not single_type_values:
-			key = self.gen_key
-		if sorted_set:
-			self.data = sortedset(sorted_set, key=key)
-		else:
-			self.data = sortedset([], key=key)
-
-		if data_list:
-			if not hasattr(data_list, '__iter__'):
-				raise Exception('data_list parameter needs to be iterable')
-
-			for x in data_list:
-				self.data.add(x)
+	def __init__(self, *args, keep_generators=False):
+		self.map = TreeMap()
 
 		for arg in args:
 			if isinstance(arg, types.GeneratorType) \
 			and not keep_generators: 
 				for x in arg:
-					self.data.add(x)
+					self.map.put(x)
 			else:
-				self.data.add(arg)
+				self.map.put(arg)
 
 	def __add__(self, other):
-		
-		if isinstance(other, Set):
-			# union
-			return Set(sorted_set=self.data | other.data)
-		else:
-			s = Set(sorted_set=self.data.copy())
-			s.data.add(other)
-			return s
+		raise NotImplemented()
 
 	def __iadd__(self, other):
-		if isinstance(other, Set):
-			self.data |= other.data
-		else:
-			self.data.add(other)
+		assert isinstance(other, Set)
+
+		self.map += other.map
 		return self
 
 	def __sub__(self, other):
-		if isinstance(other, Set):
-			return Set(sorted_set=self.data - other.data)
-		else:
-			s = Set(sorted_set=self.data.copy())
-			s.discard(other)
-			return s
+		raise NotImplemented()
 
 	def __mul__(self, other):
 		assert isinstance(other, Set)
 		
-		return Set(sorted_set=self.data & other.data)
+		raise NotImplemented()
 
 	def __str__(self):
-		return str(self.data)
+		raise NotImplemented()
 
 	def __pow__(self, other):
-		if other == 2:
-			return self.cartesian_product(self)
-		return self.cartesian_product(other)		
+		raise NotImplemented()
 
 	def __rpow__(self, other):
-		if other == 2:
-			return self.cartesian_product(self)
-		return self.cartesian_product(other)
+		raise NotImplemented()
 
 	def __mod__(self, other):
-		assert isinstance(other, Set)
-
-		return Set(sorted_set=self.data ^ other.data)
+		raise NotImplemented()
 
 	def __iter__(self):
-		return self.data.__iter__()
-
-	def __str__(self):
-		return str(self.data)
+		return self.map.__iter__()
 
 	def __len__(self):
-		return len(self.data)
+		return self.map.size
 
 	def __lt__(self, other):
 		assert isinstance(other, Set)
 		
-		return self.data < other.data
+		return self.map < other.map
 
 	def __gt__(self, other):
 		assert isinstance(other, Set)
 		
-		return self.data > other.data
+		return self.map > other.map
 
 	def __ge__(self, other):
 		assert isinstance(other, Set)
 		
-		return self.data >= other.data
+		return self.map >= other.map
 
 	def __le__(self, other):
 		assert isinstance(other, Set)
 		
-		return self.data <= other.data
+		return self.map <= other.map
 
 	def __eq__(self, other):
-		return self.data <= other.data and self.data >= other.data
+		assert isinstance(other, Set)
+
+		return self.map == other.map
 
 	def __ne__(self, other):
-		return not self.__eq__(other)
+		return self.map != other.map
 
 	def __contains__(self, other):
-		return other in self.data
+		if isinstance(other, Set):
+			return other.map in self.map
+		return other in self.map
 
 	# returns a new set representing the cartesian product of the current
 	# set
@@ -130,14 +98,13 @@ class Set():
 		return s
 
 	def arb(self):
-		return self.data[random.randrange(len(self.data))]
+		return self.map.get_first_entry().key #[random.randrange(len(self.data))]
 
 	def pop(self):
 		return self.data.pop(random.randrange(len(self.data)))
 
 	def gen_key(self, value):
 			return Sorter(value)
-
 		
 
 if __name__ == '__main__':
