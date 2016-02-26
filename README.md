@@ -2,8 +2,8 @@
 Translating SetlX programs to Python
 
 The intention of this project is to tranlate SetlX programs of Prof. Dr. Karl Stroetmanns lecture notes into Python.
-Most problems could be solved way faster in Python but the main goal is to maintain the elegance of the algorithms.
-The following directories contain the actual translation of SetlX programs to Python scripts.
+The main goal is to maintain the elegance of the algorithms.
+The directory Python contains the actual translation of SetlX programs to Python scripts.
 
 *Please note that the structure of this project has been modified. All Python scripts are now in the Python directory.*
 This modification has been made to manage the version of the lecture directory more easily.
@@ -70,7 +70,7 @@ tested and working
 there is a new version to this script available. Will be commited soon.
 
 ### simple.py
-tested and working
+this script is currently encountering issues at the computation of a power set. We are working on this issue.
 
 ### simple_tupele.py
 tested and working
