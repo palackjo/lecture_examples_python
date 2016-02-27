@@ -1,14 +1,17 @@
 if __name__ == '__main__':
     from scanner import Scanner, TokenType
+    from helper import is_number
 else:
     from .scanner import Scanner, TokenType
+    from .helper import is_number
 
 
 class MatchParser():
 
-    def __init__(self):
+    def __init__(self, test=False):
+        self.test = test
         operator_list = ['+', '-', '*', '/', '%', '**', '&&', '||', '<', '<=', '>', '>=', '==', '!=', '!']
-        function_list = ['sin', 'log', 'exp', 'cos', 'tan', 'asin', 'acos', 'atan', 'sqrt']
+        function_list = ['sin', 'log', 'exp', 'cos', 'tan', 'asin', 'acos', 'atan', 'sqrt', 'ln']
         open_bracket = '('
         close_bracket = ')'
 
@@ -92,6 +95,7 @@ class MatchParser():
 
     def parse(self, input):
         self.token_stack = self.scanner.scan(input)
+        self.token_stack = [x for x in self.token_stack if not x[1] == TokenType.whitespace]
         self.token_stack.reverse()
 
         while self.token_stack:
@@ -121,15 +125,26 @@ class MatchParser():
         while len(self.operator_stack) - 1 > 0:
             self.pop_and_evaluate()
 
-        result = (self.operator_stack[0], self.argument_stack)
+        if len(self.operator_stack) > 0:
+            result = (self.operator_stack[0], self.argument_stack)
+        elif len(self.argument_stack) > 0:
+            result = self.argument_stack
+
         self.operator_stack = []
         self.argument_stack = []
         return result
 
     def match(self, scheme, value):
-        result_scheme = self.parse(scheme)
-        (scheme_operator, scheme_values) = result_scheme
+        result_scheme = self.parse(scheme)        
         result_value = self.parse(value)
+
+        if len(result_scheme) < 2 or len(result_value) < 2:
+            if len(result_scheme) == 1 and len(result_value) == 1:
+                if is_number(result_scheme[0]) == is_number(result_value[0]):
+                    return True
+            return False
+
+        (scheme_operator, scheme_values) = result_scheme
         (value_operator, value_values) = result_value
 
         (value_operator_value, value_operator_tokentype) = value_operator
@@ -139,8 +154,17 @@ class MatchParser():
             self.values = {}
             for idx, x in enumerate(scheme_values):
                 self.values[x] = value_values[idx]
+            if self.test:
+                print(self.values)
             return True
-        return False
+        return False    
+
+    def is_number(self, value):
+        return self.match('1', value)
+
+    def is_variable(self, value):
+        return self.match('a', value)
+
 
 
 if __name__ == '__main__':
@@ -154,3 +178,4 @@ if __name__ == '__main__':
     result = parser.match("sin(a)", "sin(2**3||2**5)")
     print(parser.values["a"])
     assert result is True
+    result = parser.match("a", "x")

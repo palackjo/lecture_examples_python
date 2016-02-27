@@ -1,33 +1,44 @@
-# diff.stlx translation
+from lecture.util import Match, is_number
 
-from lecture.util import Scanner, TokenType
 
-# differentiate expr_list by x
-def diff(expr, x):
-    value, tokentype = expr[0]
-    # operations on first element if exist
-    if len(expr) == 1:
-        if tokentype == TokenType.variable:
-            if value == x:
-                return 1
-            else:
-                return 0
+def diff(t,x):
+    match = Match(test=True)
+    if match.match('a+b', t):
+        return '{diff_a} + {diff_b}'.format(diff_a=diff(match.values['a'], x), diff_b=diff(match.values['b'], x))
+    elif match.match('a-b', t):
+        return '{diff_a} - {diff_b}'.format(diff_a=diff(match.values['a'], x), diff_b=diff(match.values['b'], x))
+    elif match.match('a*b', t):
+        return '{diff_a} * {b} + {a} * {diff_b}'.format(diff_a=diff(match.values['a'], x), b=match.values['b'], a=match.values['a'], diff_b=diff(match.values['b'], x))
+    elif match.match('a/b', t):
+        return '({diff_a} * {b} - {a} * {diff_b}) / {b} * {b}'.format(diff_a=diff(match.values['a'], x), diff_b=diff(match.values['b'], x), a=match.values['a'], b=match.values['b'])
+    elif match.match('a**b', t):
+        return diff('exp({b} * ln({a}))'.format(a=match.values['a'], b=match.values['b']), x)
+    elif match.match('ln(a)', t):
+        return '{diff_a} / {a}'.format(diff_a=diff(match.values['a'], x), a=match.values['a'])
+    elif match.match('exp(a)', t):
+        print(t)
+        print(match.values['a'])
+        return '{diff_a} * exp({a})'.format(diff_a=diff(match.values['a'], x), a=match.values['a'])
+    elif match.is_variable(t) and t == x:
+        return '1'
+    elif match.is_variable(t):
+        return '0'
+    elif match.is_number(t):
+        return '0'
 
-        if tokentype == TokenType.value:
-            return 0
+def test(s):
+    print('differentiating %s:' % s)
+    d = diff(s, 'x')
+    print(d)
 
-    if tokentype == TokenType.operator and value == '-':
-        return ['-', ]
-
-def test_diff(expr):
-    operator_list  = ['+', '-', '*', '/', '**']
-    function_list  = ['sin']
-    open_bracket   = '('
-    close_bracket  = ')'
-    scanner        = Scanner(operator_list, open_bracket, 
-                            close_bracket, function_list)
-    tokens         = scanner.scan(expr)
-
-    # remove whitespaces
-    cleaned_tokens = [token for token in tokens 
-                      if not token[1] == TokenType.whitespace]
+test("x")
+test("y")
+test("1")
+test("x + x")
+test("x+x+y")
+test("x*x")
+test("x/x")
+test("1/x")
+test("ln(x)")
+test("exp(x)")
+test("x ** x")

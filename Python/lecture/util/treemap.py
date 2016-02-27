@@ -1,4 +1,4 @@
-import time, random, blist
+import time, random, blist, copy
 
 BLACK = 0
 RED = 1
@@ -26,6 +26,19 @@ class TreeNode:
 				p = p.parent
 			return p
 
+	def successor(self):
+		if self.right is not None:
+			p = self.right
+			while p.left is not None:
+				p = p.left
+			return p
+		else:
+			p = self.parent
+			ch = self
+			while p is not None and ch == p.right:
+				ch = p
+				p = p.parent
+			return p
 
 class TreeMap:
 	def __init__(self):
@@ -87,6 +100,16 @@ class TreeMap:
 	def __add__(self, other):
 		assert isinstance(other, TreeMap)
 
+		tree = TreeMap()
+		# actually deepcoping the already 
+		for x in self:
+			tree.put(x)
+		for x in other:
+			tree.put(x)
+
+		return tree
+
+
 	def __iadd__(self, other):
 		assert isinstance(other, TreeMap)
 
@@ -106,6 +129,13 @@ class TreeMap:
 		if p is not None:
 			while p.left is not None:
 				p = p.left
+		return p
+
+	def get_last_entry(self):
+		p = self.root
+		if p is not None:
+			while p.right is not None:
+				p = p.right
 		return p
 
 	def contains(self, key):
@@ -139,6 +169,11 @@ class TreeMap:
 				return p
 		return None
 
+	def remove(self, key):
+		entry = self.get_entry(key)
+		if entry is not None:
+			self.delete_entry(entry)
+
 	def put(self, key):
 		if key is None:
 			raise TypeError
@@ -168,6 +203,35 @@ class TreeMap:
 		self.size += 1
 		self.mod_count += 1
 
+	def delete_entry(self, p):
+		self.mod_count += 1
+		self.size -= 1
+		if p.left is not None and p.right is not None:
+			s = p.successor()
+			p = s
+		replacement = p.left if p.left is not None else p.right
+		if replacement is not None:
+			replacement.parent = p.parent
+			if p.parent is None:
+				root = replacement
+			elif p == p.parent.left:
+				p.parent.left = replacement
+			else:
+				p.parent.right = replacement
+			p.left = p.right = p.parent = None
+			if p.color == 0:
+				self.fix_after_deletion(replacement)
+		elif p.parent == None:
+			self.root = None
+		else:
+			if p.color == 0:
+				self.fix_after_deletion(p)
+			if p.parent.left == p:
+				p.parent.left = None
+			elif p.parent.right == p:
+				p.parent.right = None
+			p.parent = None
+
 	def rotate_left(self, p):
 		# checked for none before
 		r = p.right
@@ -183,7 +247,6 @@ class TreeMap:
 			p.parent.right = r
 		r.left = p
 		p.parent = r
-
 
 	def rotate_right(self, p):
 		# checked for none before
@@ -201,10 +264,63 @@ class TreeMap:
 		l.right = p
 		p.parent = l
 
+	def fix_after_deletion(self, x):
+		while not x.parent is None and x.color == 0:
+			if x == x.parent.left:
+				sib = x.parent.right
+				if sib is not None and sib.color == 1:
+					sib.color = 0
+					x.parent.color = 1
+					self.rotate_left(x.parent)
+					sib = x.parent.right
+				right_black = sib is not None and sib.right is not None and sib.right.color == 0
+				if sib is not None and sib.left is not None and sib.left.color == 0 and right_black:
+					sib.color = 1
+					x = x.parent
+				else:
+					if right_black:
+						if sib.left is not None:
+							sib.left.color = 0
+						sib.color = 1
+						self.rotate_right(sib)
+						sib = x.parent.right
+					if sib is not None:
+						sib.color = x.parent.color
+						if sib.right is not None:
+							sib.color = 0
+					x.parent.color = 0
+					self.rotate_left(x.parent)
+					x = self.root
+			else:
+				sib = x.parent.left
+				if sib is not None and sib.color == 1:
+					sib.color = 0
+					x.parent.color = 1
+					self.rotate_right(x.parent)
+					sib = x.parent.left
+				left_black = sib is not None and sib.left is not None and sib.right.color == 0
+				if sib is not None and sib.right is not None and sib.right.color == 0 and left_black:
+					sib.color = 1
+					x = x.parent
+				else:
+					if left_black:
+						if sib.right is not None:
+							sib.right.color = 0
+						sib.color = 1
+						self.rotate_left(sib)
+						sib = x.parent.left
+					if sib is not None:
+						sib.color = x.parent.color
+						if sib.left is not None:
+							sib.color = 0
+					x.parent.color = 0
+					self.rotate_right(x.parent)
+					x = self.root
+		x.color = 0
+
 
 	def fix_after_insertion(self, x):
 		x.color = 1
-
 		while not x is None and not x.parent is None and x.parent.color == 1:
 			x_parent = x.parent
 			x_parent_parent = x.parent.parent
@@ -266,6 +382,11 @@ if __name__ == '__main__':
 		tree.put(x) #[random.randrange(1,10), random.randrange(1,10), random.randrange(1,10)]
 	e = time.time()
 	print('insert tree duration: %s' % (e - s))
+
+	s = time.time()
+	tree = copy.deepcopy(tree)
+	e = time.time()
+	print('deepcopy tree duration: %s' % (e - s))
 
 	s = time.time()
 	for x in tree:
