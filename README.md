@@ -109,9 +109,5 @@ This directory contains a script to test the existing Python scripts in the "Pyt
 
 The subdirectory "test_results" contains the results of the single scripts. 
 These are needed to be able to compare the actual results with desired results. 
-Currently the actual results of an execution of each script are in that subdirectory. 
-These files are just there to see what it looks like. 
-In future this subdirectory should always be emptied after a comparison.
-
-_Currently it is possible to generate the output of the scripts. 
-The comparison will be implemented as soon as set and match are implemented properly._
+The actual results of an execution of each script are in that subdirectory. 
+The testing script can be used by giving it the parameter "create" or "compare".

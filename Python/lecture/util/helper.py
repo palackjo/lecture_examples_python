@@ -19,7 +19,7 @@ def is_prime(n):
     if n <= 1 or type(n) is not int:
         return False
 
-    for i in range(len(some_primes) + 1):
+    for i in range(len(some_primes)):
         if n % some_primes[i] == 0:
             return n == some_primes[i]
         elif some_primes_squared[i] >= n:

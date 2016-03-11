@@ -115,6 +115,8 @@ class Set():
 
 	def pop(self):
 		x = self.peek()
+		if x is None:
+			return None
 		self.map.remove(x)
 		return x
 

@@ -1,6 +1,27 @@
 from lecture import Set
+from lecture.util import Match
 
 def evaluate(f, i):
+    match = Match(test=True)
+    if match.match('True', f):
+        return True
+    elif match.match('False', f):
+        return False
+    elif match.is_variable(f):
+        return  i[f]
+    elif match.match('!g', f):
+        return not evaluate(match.values['g'], i)
+    elif match.match('g && h'):
+        return evaluate(match.values['g'], i) and evaluate(match.values['h'], i)
+    elif match.match('g || h'):
+        return evaluate(match.values['g'], i) or evaluate(match.values['h'], i)
+    elif match.match('g => h'):
+        return not(evaluate(match.values['g'], i)) or evaluate(match.values['h'], i)
+    elif match.match('g <==> h'):
+        return evaluate(match.values['g'], i) == evaluate(match.values['h'], i)
+    elif match.match('default'):
+        raise SyntaxError('Syntax error in evaluate(%s,%s)' % (f, i))
+        """
     match(f, cases=[
         ["True", True],
         ["False", False],
@@ -11,12 +32,13 @@ def evaluate(f, i):
         ["g => h", not(evaluate(g, i)) or evaluate(h,i)],
         ["g <==> h", evaluate(g,i) == evaluate(h,i)],
         ["default", raise SyntaxError('Syntax error in evaluate(%s, %s)' % (f, i))])
+        """
 
 # This procedure turns a subset m of the list of all variables
 # into a propositional valuation that's result is True if
 # x is an element of m.
 def create_valuation(m, v):
-    {x: x in m for x in v}
+    return {x: x in m for x in v}
 
 # Austin, Brian or Colin is guilty (logical or).
 f1 = 'a || b || c'

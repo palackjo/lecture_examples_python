@@ -1,0 +1,2 @@
+The following scripts didn't work properly:
+primes_eratosthenes.py
