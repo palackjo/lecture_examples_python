@@ -7,6 +7,18 @@ def state_to_string(state):
 	indent = ' ' * 4
 	line = indent + '+-' * 3 + '+\n'
 	result = '\n' + line
+	for row in range(3):
+		result += indent + '|'
+		for col in range(3):
+			cell = state[row][col]
+			if cell > 0:
+				result += str(cell)
+			else:
+				result += ' '
+			result += '|'
+		result += '\n'
+		result += line
+	return result
 
 def find_path(start, goal, next_states):
 	count_iteration = 1
@@ -56,4 +68,5 @@ time_deepcopied = 0
 path = find_path(start, goal, next_states)
 
 for state in path:
-	state_to_string(state)
+	print(state_to_string(state))
+

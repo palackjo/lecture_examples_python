@@ -43,7 +43,7 @@ def problem(s):
 
 wgc_all = Set('farmer', 'wolf', 'goat', 'cabbage')
 p       = Set(s for s in 2 ** wgc_all if not problem(s)
-                        and not problem(wgc_all - s))
+                        and not problem(wgc_all - Set(s)))
 r1      = Set([s, s - b] for s in p for b in 2 ** s
                     if s - b in p and 'farmer' in b and len(b) <= 2)
 r2      = Set([y, x] for [x, y] in r1)

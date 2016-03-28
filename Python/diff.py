@@ -2,7 +2,7 @@ from lecture.util import Match, is_number
 
 
 def diff(t,x):
-    match = Match(test=True)
+    match = Match()
     if match.match('a+b', t):
         return '{diff_a} + {diff_b}'.format(diff_a=diff(match.values['a'], x), diff_b=diff(match.values['b'], x))
     elif match.match('a-b', t):
@@ -16,8 +16,6 @@ def diff(t,x):
     elif match.match('ln(a)', t):
         return '{diff_a} / {a}'.format(diff_a=diff(match.values['a'], x), a=match.values['a'])
     elif match.match('exp(a)', t):
-        print(t)
-        print(match.values['a'])
         return '{diff_a} * exp({a})'.format(diff_a=diff(match.values['a'], x), a=match.values['a'])
     elif match.is_variable(t) and t == x:
         return '1'
