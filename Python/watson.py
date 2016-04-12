@@ -63,4 +63,4 @@ print('Set of all valuations satisfying all facts: ', s)
 if len(s) == 1:
     i = s[0]
     offenders = [x for x in v if i[x]]
-    print('Set fo offenders: ', offenders)
+    print('Set of offenders: ', offenders)
