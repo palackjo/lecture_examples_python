@@ -38,7 +38,7 @@ def evaluate(f, i):
 # into a propositional valuation that's result is True if
 # x is an element of m.
 def create_valuation(m, v):
-    return {x: x in m for x in v}
+    return [(x, x in m) for x in v]
 
 # Austin, Brian or Colin is guilty (logical or).
 f1 = 'a || b || c'
@@ -58,9 +58,9 @@ p = 2 ** v
 print('p = ', p)
 # b is the set of all propositional valuations.
 b = Set(create_valuation(m, v) for m in p)
-s = [i for i in b for f in fs if evaluate(f, i)]
-print('Set of all valuations satisfying all facts: ', s)
+s = [dict(i) for i in b for f in fs if evaluate(f, dict(i))]
+print('List of all valuations satisfying all facts: ', s)
 if len(s) == 1:
     i = s[0]
     offenders = [x for x in v if i[x]]
-    print('Set of offenders: ', offenders)
+    print('List of offenders: ', offenders)
