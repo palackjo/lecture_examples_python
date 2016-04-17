@@ -1,4 +1,4 @@
-import time, random, blist, copy
+from sortedcontainers import SortedSet
 
 BLACK = 0
 RED = 1
@@ -60,9 +60,11 @@ class TreeMap:
             return self.contains(other)
 
     def __iter__(self):
-        temp = self.get_first_entry()
-        self.current = temp
-        return self
+        import copy
+        cp = copy.copy(self)
+        temp = cp.get_first_entry()
+        cp.current = temp
+        return cp
 
     def __eq__(self, other):
         assert isinstance(other, TreeMap)
@@ -199,7 +201,7 @@ class TreeMap:
 
     def put(self, key):
         if key is None:
-            raise TypeError
+            return
 
         t = self.root
         if t is None:
@@ -256,8 +258,6 @@ class TreeMap:
 
     def rotate_left(self, p):
         # checked for none before
-        if p.right is None:
-            return
         r = p.right
         p.right = r.left
         if not r.left is None:
@@ -272,9 +272,49 @@ class TreeMap:
         r.left = p
         p.parent = r
 
+    def _get_depth_nodes(self, depth):
+        if depth == 0:
+            return [self.root]
+
+        temp_depth = 0
+        nodes = [self.root]
+        while temp_depth < depth:
+            temp_nodes = []
+            for node in nodes:
+                if node.left is not None:
+                    temp_nodes.append(node.left)
+                if node.right is not None:
+                    temp_nodes.append(node.right)
+            temp_depth += 1
+            nodes = temp_nodes
+        return nodes
+
+    def print_tree(self):
+        total_depth = 0
+        temp = [self.root]
+        nodes = [self.root]
+        while nodes:
+            nodes = []
+            for x in temp:
+                if x.left is not None:
+                    nodes.append(x.left)
+                if x.right is not None:
+                    nodes.append(x.right)
+            temp = nodes
+            total_depth += 1
+        print('depth = %s' % total_depth)
+        lines = []
+        for depth in range(total_depth + 1):
+            nodes = self._get_depth_nodes(total_depth-depth)
+            lines.append((total_depth-depth, nodes))
+        for line in lines[::-1]:
+            sline = ''
+            space = ' ' * (sum([x for x in range(total_depth - line[0] + 1)]) + 1)
+            for node in line[1]:
+                sline += space + str(node.key) + '|' + str(node.color)
+            print(sline)
+
     def rotate_right(self, p):
-        if p.left is None:
-            return
         l = p.left
         p.left = l.right
         if not l.right is None:
@@ -323,7 +363,8 @@ class TreeMap:
                     x.parent.color = 1
                     self.rotate_right(x.parent)
                     sib = x.parent.left
-                left_black = sib is not None and sib.left is not None and sib.right.color == 0
+                left_black = sib is not None and sib.left is not None\
+                    and sib.right is not None and sib.right.color == 0
                 if left_black and sib.right is not None and sib.right.color == 0:
                     sib.color = 1
                     x = x.parent
@@ -401,66 +442,24 @@ class TreeMap:
 
 if __name__ == '__main__':
     tree = TreeMap()
-    for x in range(200):
-        tree.put(x)
+    tree.put(1)
+    tree.put(2)
+    tree.put(3)
+    tree.put(4)
+    tree.put(5)
+    tree.put(6)
+    tree.put(7)
 
-    assert len(tree) == 200
-
-    for x in range(200):
-        tree.remove(x)
-
-    assert len(tree) == 0
-
-    test_value = 100000
-    print('the following tests are run with %s elements' % test_value)
-
-    tree = TreeMap()
-    s = time.time()
-    for x in range(1, test_value):
-        tree.put(x)  # [random.randrange(1,10), random.randrange(1,10), random.randrange(1,10)]
-    e = time.time()
-    print('insert tree duration: %s' % (e - s))
-
-    s = time.time()
-    tree = copy.deepcopy(tree)
-    e = time.time()
-    print('deepcopy tree duration: %s' % (e - s))
-
-    s = time.time()
-    for x in tree:
-        pass
-    e = time.time()
-    print('iterate tree duration: %s' % (e - s))
-
-    tree2 = TreeMap()
-    s = time.time()
-    for x in range(1, test_value):
-        tree2.put(x)  # [random.randrange(1,10), random.randrange(1,10), random.randrange(1,10)]
-    e = time.time()
-    print('insert tree2 duration: %s' % (e - s))
-
-    s = time.time()
-    result = (tree2 in tree)
-    e = time.time()
-    print('tree2 in tree duration: %s. result: %s' % (e - s, result))
-
-    sset = blist.sortedset()
-    s = time.time()
-    for x in range(1, test_value):
-        sset.add(x)  # [random.randrange(1,10), random.randrange(1,10), random.randrange(1,10)]
-    e = time.time()
-    print('insert blist duration: %s' % (e - s))
-
-    s = time.time()
-    for x in sset:
-        pass
-    e = time.time()
-    print('iterate blist duration: %s' % (e - s))
-
-    nset = set()
-    s = time.time()
-    for x in range(1, test_value):
-        nset.add(x)
-    e = time.time()
-    print('insert set duration: %s' % (e - s))
+    tree.print_tree()
+    tree.remove(7)
+    tree.print_tree()
+    tree.remove(6)
+    tree.print_tree()
+    tree.remove(3)
+    tree.print_tree()
+    tree.remove(5)
+    tree.print_tree()
+    tree.remove(2)
+    tree.print_tree()
+    tree.remove(3)
 

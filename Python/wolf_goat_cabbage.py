@@ -1,5 +1,5 @@
 from lecture import Set
-
+import copy
 # There once was a farmer who wanted to cross a river with a wolf, a goat,
 # and a crate of cabbage. 
 
@@ -9,7 +9,7 @@ def find_path(x, y, r):
     while True:
         old_p = p
         p     = p + path_product(p, r)
-        found = [l for l in p if l[-1] == y]
+        found = Set(l for l in p if l[-1] == y)
         if found:
             return found[0]
         if p == old_p:
@@ -20,16 +20,13 @@ def path_product(p, q):
             if x[-1] == y[0] and no_cycle(x, y))
 
 def no_cycle(l1, l2):
-    return len([x for x in l1 if x in l2]) == 1
+    length = len(Set(x for x in l1) * Set(x for x in l2))
+    return length == 1
 
 # The product call add(p,q) computes the sum of the sets p and q.
 # The last point of p has to be the first point of q.
 def add(p, q):
-    return p + Set(q[1])
-
-# This method returns the difference between k and l
-def diff_list(k, l):
-    return [x for x in k if x not in l]
+    return p + [q[1]]
 
 #################################################
 #                                               #
@@ -38,22 +35,23 @@ def diff_list(k, l):
 #################################################
 
 def problem(s):
-    return not('farmer' in s) and (('goat' in s and 'cabbage' in s) 
-                                   or ('wolf' in s and 'goat' in s))
+    return not 'farmer' in s \
+            and (('goat' in s and 'cabbage' in s) or ('wolf' in s and 'goat' in s))
 
 wgc_all = Set('farmer', 'wolf', 'goat', 'cabbage')
 p       = Set(s for s in 2 ** wgc_all if not problem(s)
-                        and not problem(wgc_all - Set(s)))
+                        and not problem(wgc_all - s))
+
 r1      = Set([s, s - b] for s in p for b in 2 ** s
-                    if s - b in p and 'farmer' in b and len(b) <= 2)
+                    if (s - b) in p and 'farmer' in b and len(b) <= 2)
 r2      = Set([y, x] for [x, y] in r1)
+
 r       = r1 + r2
 start   = wgc_all
 goal    = Set()
-
 path    = find_path(start, goal, r)
-print(len(path))
 
+print(len(path))
 
 #################################################
 #                                               #
@@ -77,10 +75,10 @@ def print_path(p_path, total):
             break
         [t1, t2] = mk_pair(p_path[i + 1])
         if 'farmer' in s1:
-            b = diff_list(s1, t1)
+            b = s1 - t1
             print('                         >>>> ', b, ' >>>> ')
         else:
-            b = diff_list(s2, t2)
+            b = s2 - t2
             print('                         <<<< ', b, ' <<<< ')
 
 print('')

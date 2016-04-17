@@ -120,7 +120,7 @@ class Scanner():
 		return False
 
 	def is_variable_char(self, char):
-		p = re.compile('[a-zA-Z1-9_]')
+		p = re.compile('[a-zA-Z0-9_]')
 		if p.match(char):
 			return True
 		return False
@@ -147,7 +147,7 @@ if __name__ == '__main__':
 	open_bracket = '('
 	close_bracket = ')'
 	scanner = Scanner(operator_list, open_bracket, close_bracket, function_list)
-	tokens = scanner.scan('(1+2+3+4)+sin(5)+(6+767+4)*1*2/3434*a123')
+	tokens = scanner.scan('(1+2+3+4)+sin(5)+(6+767+4)*1*2/3434*varr0c0')
 
 	print(tokens)
 	assert tokens == ['(', '1', '+', '2', '+', '3', '+', '4', ')', '+', 'sin', '(', '5', ')', '+', '(', '6', '+', '767', '+', '4', ')', '*', '1', '*', '2', '/', '3434', '*', 'a123']

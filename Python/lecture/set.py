@@ -2,56 +2,80 @@ import types
 import random
 import copy
 
+from sortedcontainers import SortedListWithKey
+
 if __name__ == '__main__':
     from util import is_number, Sorter, TreeMap
 else:
     from .util import is_number, Sorter, TreeMap
 
 
+def gen_set_key(value):
+    return value.set
+
 class Set():
-    def __init__(self, *args, treemap=None, keep_generators=False):
-        if treemap is None:
-            self.map = TreeMap()
+    def __init__(self, *args, set=None, keep_generators=False):
+        if set is not None:
+            assert isinstance(set, SortedListWithKey)
+            self.set = set
+            self.has_key = True
         else:
-            assert isinstance(treemap, TreeMap)
-            self.map = treemap
+            self.set = SortedListWithKey()
+            self.has_key = False
 
         for arg in args:
             if isinstance(arg, types.GeneratorType) \
                     and not keep_generators:
                 for x in arg:
-                    self.map.put(x)
+                    self._put(x)
             else:
-                self.map.put(arg)
+                self._put(arg)
 
     def __add__(self, other):
         assert isinstance(other, Set)
-        treemap = self.map + other.map
-        return Set(treemap=treemap)
+        if len(self.set) == 0 and len(other.set) == 0:
+            return Set()
+        elif len(self.set) == 0:
+            return copy.copy(other)
+        else:
+            set = SortedListWithKey(key=self.set._key)
+            set.update(self.set)
+            for x in other.set:
+                if x not in set:
+                    set.add(x)
+            return Set(set=set)
+
 
     def __iadd__(self, other):
         assert isinstance(other, Set)
-        self.map += other.map
+        for x in other.set:
+            self._put(x)
         return self
 
     def __sub__(self, other):
         assert isinstance(other, Set)
-        s = Set()
-        for x in self.map:
-            if not x in other.map:
-                s.map.put(x)
+        if len(self.set) == 0:
+            return Set()
+        set = SortedListWithKey(key=self.set._key)
+        for x in self.set:
+            if x not in other.set:
+                set.add(x)
+        s = Set(set=set)
         return s
 
     def __mul__(self, other):
         assert isinstance(other, Set)
-        s = Set()
-        for x in self.map:
-            if x in other.map:
-                s.map.put(x)
+        if len(self.set) == 0:
+            return Set()
+        set = SortedListWithKey(key=self.set._key)
+        for x in self.set:
+            if x in other.set:
+                set.add(x)
+        s = Set(set=set)
         return s
 
     def __str__(self):
-        return '{ %s }' % ', '.join([str(x) for x in self.map])
+        return '{ %s }' % ', '.join([str(x) for x in self.set])
 
     def __pow__(self, other):
         return self.__rpow__(other)
@@ -71,50 +95,67 @@ class Set():
         return (self - other) + (other - self)
 
     def __iter__(self):
-        return self.map.__iter__()
+        return self.set.__iter__()
 
     def __len__(self):
-        return self.map.size
+        return len(self.set)
 
     def __lt__(self, other):
         assert isinstance(other, Set)
-        return self.map < other.map
+        if len(self.set) >= len(other.set):
+            return False
+        return all(x in other.set for x in self.set)
 
     def __gt__(self, other):
         assert isinstance(other, Set)
-        return self.map > other.map
+        if len(self.set) <= len(other.set):
+            return False
+        return all(x in self.set for x in other.set)
 
     def __ge__(self, other):
         assert isinstance(other, Set)
-        return self.map >= other.map
+        for x in other.set:
+            if x not in self.set:
+                return False
+        return True
 
     def __le__(self, other):
         assert isinstance(other, Set)
-        return self.map <= other.map
+        for x in self.set:
+            if x not in other.set:
+                return False
+        return True
 
     def __eq__(self, other):
         assert isinstance(other, Set)
-        return self.map == other.map
+        if len(self.set) != len(other.set):
+            return False
+        for x in self.set:
+            if x not in other.set:
+                return False
+        for x in other.set:
+            if x not in self.set:
+                return False
+        return True
 
     def __ne__(self, other):
-        return self.map != other.map
+        assert isinstance(other, Set)
+        return not self == other
 
     def __contains__(self, other):
-        if isinstance(other, Set):
-            return other.map in self.map
-        return other in self.map
+        return other in self.set
 
     def __getitem__(self, key):
-        return self.map.__getitem__(key)
+        return self.set.__getitem__(key)
 
     # returns a new set representing the cartesian product of the current
     # set
     def cartesian_product(self, other):
         assert isinstance(other, Set)
         s = Set()
-        for x in self.map:
-            for y in other.map:
-                s.map.put((x, y))
+        for x in self.set:
+            for y in other.set:
+                s.set.add((x, y))
         return s
 
     @staticmethod
@@ -127,20 +168,35 @@ class Set():
         return y + z
 
     def arb(self):
-        return self.map.get_first_entry().key  # [random.randrange(len(self.data))]
+        return self.set[0]
+
+    def put(self, other):
+        self._put(other)
+
+    def _put(self, other):
+        if self.has_key is False:
+            self.has_key = True
+            if isinstance(other, Set):
+                self.set._key = gen_set_key
+        if other not in self.set:
+            self.set.add(other)
 
     def peek(self):
-        return self.map.get_last_entry().key
+        return self.set[-1]
 
     def pop(self):
-        x = self.peek()
-        if x is None:
-            return None
-        self.map.remove(x)
+        x = self.set.pop()
         return x
 
-    def gen_key(self, value):
-        return Sorter(value)
+    def sum(self):
+        import copy
+        temp = None
+        for x in self.set:
+            if temp is None:
+                temp = copy.deepcopy(x)
+            else:
+                temp += x
+        return temp
 
 
 if __name__ == '__main__':
@@ -148,12 +204,12 @@ if __name__ == '__main__':
     dl.append([1, 2, 3, 4])
     s = Set(1, 1, 2, 2, 2, 2, 3, 4)
     s1 = Set(2, 4, 6, 7, 8)
+
     s2 = s + s1
     s3 = s2 - s
     s4 = s * s1
     # s5 = s / s1
     s6 = s % s1
-
     print("s: %s" % s)
     print("s1: %s" % s1)
     print("s + s1: %s" % s2)

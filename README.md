@@ -8,6 +8,9 @@ The directory Python contains the actual translation of SetlX programs to Python
 *Please note that the structure of this project has been modified. All Python scripts are now in the Python directory.*
 This modification has been made to manage the version of the lecture directory more easily.
 
+# New dependancy
+To run the lecture scripts the version 1.4.4 of the python package _sortedcontainers_ needs to be installed. It might be directly installed from pip.
+
 ## lecture
 Lecture represents the python package containing helper functions and classes, to manage and support special setlX features that are not given in python
 
@@ -92,6 +95,13 @@ tested and working
 
 ### switch.py
 tested and working
+
+### davis_putman.py
+tested and working
+
+### queens.py
+tested and working
+_attention! do not raise the number of queens to be calculated, the calculation might take too long_
 
 ### transitive_closure.py
 tested and working

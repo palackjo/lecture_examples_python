@@ -56,7 +56,6 @@ class MatchParser():
             return True
         return False
 
-
     def precedence(self, token):
         (value, tokentype) = token
         if self.is_unary_operator(token):
@@ -135,29 +134,34 @@ class MatchParser():
         return result
 
     def match(self, scheme, value):
-        result_scheme = self.parse(scheme)        
-        result_value = self.parse(value)
+        try:
+            result_scheme = self.parse(scheme)
+            result_value = self.parse(value)
 
-        if len(result_scheme) < 2 or len(result_value) < 2:
-            if len(result_scheme) == 1 and len(result_value) == 1:
-                if is_number(result_scheme[0]) == is_number(result_value[0]):
-                    return True
+            if len(result_scheme) < 2 or len(result_value) < 2:
+                if len(result_scheme) == 1 and len(result_value) == 1:
+                    if is_number(result_scheme[0]) == is_number(result_value[0]):
+                        self.values = {}
+                        self.values[result_scheme[0]] = result_value[0]
+                        return True
+                return False
+
+            (scheme_operator, scheme_values) = result_scheme
+            (value_operator, value_values) = result_value
+
+            (value_operator_value, value_operator_tokentype) = value_operator
+            (scheme_operator_value, scheme_operator_tokentype) = scheme_operator
+
+            if value_operator_value == scheme_operator_value:
+                self.values = {}
+                for idx, x in enumerate(scheme_values):
+                    self.values[x] = value_values[idx]
+                if self.test:
+                    print(self.values)
+                return True
             return False
-
-        (scheme_operator, scheme_values) = result_scheme
-        (value_operator, value_values) = result_value
-
-        (value_operator_value, value_operator_tokentype) = value_operator
-        (scheme_operator_value, scheme_operator_tokentype) = scheme_operator
-
-        if value_operator_value == scheme_operator_value:
-            self.values = {}
-            for idx, x in enumerate(scheme_values):
-                self.values[x] = value_values[idx]
-            if self.test:
-                print(self.values)
-            return True
-        return False    
+        except:
+            pass
 
     def is_number(self, value):
         return self.match('1', value)
@@ -178,4 +182,7 @@ if __name__ == '__main__':
     result = parser.match("sin(a)", "sin(2**3||2**5)")
     print(parser.values["a"])
     assert result is True
-    result = parser.match("a", "x")
+    result = parser.match("!l", "varr0c0")
+    assert result is False
+    result = parser.match("l", "varr0c0")
+    assert result is True
