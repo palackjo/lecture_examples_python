@@ -51,8 +51,6 @@ start   = wgc_all
 goal    = Set()
 path    = find_path(start, goal, r)
 
-print(len(path))
-
 #################################################
 #                                               #
 # Display the code                              #

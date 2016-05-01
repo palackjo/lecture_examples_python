@@ -10,9 +10,9 @@ script_path = os.path.dirname(os.path.abspath(__file__))
 output_path = os.path.join(script_path, 'test_results')
 # These scripts are skipped because they either do not terminate,
 # don't really have an output, or require user input.
-skip_scripts = ['legendre.py', 'path.py', 'primes_eratosthenes.py', 
+skip_scripts = ['davis_putnam.py', 'legendre.py', 'path.py', 'primes_eratosthenes.py', 
                 'stops.py', 'sum.py', 
-                'sum_recursive.py', 'switch.py']
+                'sum_recursive.py', 'switch.py', 'queens.py']
 
 
 # Get the available scripts.
@@ -63,7 +63,6 @@ def compare_results(scripts):
         # desired result
         des_result = read_file(script_name)
         if s_output != des_result:
-            print(s_output)
             print(script_name, ' is not working properly')
             faulty_scripts.append(script_name)
 

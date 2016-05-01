@@ -10,7 +10,7 @@ class MatchParser():
 
     def __init__(self, test=False):
         self.test = test
-        operator_list = ['+', '-', '*', '/', '%', '**', '&&', '||', '<', '<=', '>', '>=', '==', '!=', '!']
+        operator_list = ['+', '-', '*', '/', '%', '**', '&&', '||', '<', '<=', '=>', '<==>', '>', '>=', '==', '!=', '!']
         function_list = ['sin', 'log', 'exp', 'cos', 'tan', 'asin', 'acos', 'atan', 'sqrt', 'ln']
         open_bracket = '('
         close_bracket = ')'
@@ -67,7 +67,7 @@ class MatchParser():
                 return 4
             if value in ['+', '-']:
                 return 3
-            if value in ['>', '<', '<=', '>=', '==', '!=']:
+            if value in ['>', '<', '<=', '=>', '<==>', '>=', '==', '!=']:
                 return 2
             if value in ['&&']:
                 return 1
@@ -77,13 +77,13 @@ class MatchParser():
 
     def is_left_associative(self, token):
         (value, tokentype) = token
-        if value in ['+', '-', '*', '/', '%', '||', '&&', '<=', '==', '<', '>', '>=', '!=']:
+        if value in ['+', '-', '*', '/', '%', '||', '&&', '<=', '==', '<', '>', '>=', '=>', '<==>', '!=']:
             return True
         if value in ['**']:
             return False
         if self.is_unary_operator(token):
             return False
-        raise Exception('unknown operator at is left assciative %s' % value)
+        raise Exception('unknown operator at is left associative %s' % value)
 
     def is_unary_operator(self, token):
         (value, tokentype) = token

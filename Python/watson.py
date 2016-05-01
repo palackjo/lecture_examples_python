@@ -11,15 +11,15 @@ def evaluate(f, i):
         return  i[f]
     elif match.match('!g', f):
         return not evaluate(match.values['g'], i)
-    elif match.match('g && h'):
+    elif match.match('g && h', f):
         return evaluate(match.values['g'], i) and evaluate(match.values['h'], i)
-    elif match.match('g || h'):
+    elif match.match('g || h', f):
         return evaluate(match.values['g'], i) or evaluate(match.values['h'], i)
-    elif match.match('g => h'):
+    elif match.match('g => h', f):
         return not(evaluate(match.values['g'], i)) or evaluate(match.values['h'], i)
-    elif match.match('g <==> h'):
+    elif match.match('g <==> h', f):
         return evaluate(match.values['g'], i) == evaluate(match.values['h'], i)
-    elif match.match('default'):
+    else: # if match.match('default', f):
         raise SyntaxError('Syntax error in evaluate(%s,%s)' % (f, i))
         """
     match(f, cases=[
