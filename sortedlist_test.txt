@@ -1,0 +1,365 @@
+{ { !varr0c0, !varr0c1 }, { !varr0c0, !varr0c2 }, { !varr0c0, !varr0c3 }, { !varr0c0, !varr0c4 }, { !varr0c0, !varr0c5 }, { !varr0c0, !varr0c6 }, { !varr0c0, !varr0c7 }, { !varr0c0, !varr1c1 }, { !varr0c0, !varr2c2 }, { !varr0c0, !varr3c3 }, { !varr0c0, !varr4c4 }, { !varr0c0, !varr5c5 }, { !varr0c0, !varr6c6 }, { !varr0c0, !varr7c7 }, { !varr0c1, !varr0c2 }, { !varr0c1, !varr0c3 }, { !varr0c1, !varr0c4 }, { !varr0c1, !varr0c5 }, { !varr0c1, !varr0c6 }, { !varr0c1, !varr0c7 }, { !varr0c1, !varr1c2 }, { !varr0c1, !varr2c3 }, { !varr0c1, !varr3c4 }, { !varr0c1, !varr4c5 }, { !varr0c1, !varr5c6 }, { !varr0c1, !varr6c7 }, { !varr0c2, !varr0c3 }, { !varr0c2, !varr0c4 }, { !varr0c2, !varr0c5 }, { !varr0c2, !varr0c6 }, { !varr0c2, !varr0c7 }, { !varr0c2, !varr1c3 }, { !varr0c2, !varr2c4 }, { !varr0c2, !varr3c5 }, { !varr0c2, !varr4c6 }, { !varr0c2, !varr5c7 }, { !varr0c3, !varr0c4 }, { !varr0c3, !varr0c5 }, { !varr0c3, !varr0c6 }, { !varr0c3, !varr0c7 }, { !varr0c3, !varr1c2 }, { !varr0c3, !varr1c4 }, { !varr0c3, !varr2c1 }, { !varr0c3, !varr2c5 }, { !varr0c3, !varr3c0 }, { !varr0c3, !varr3c6 }, { !varr0c3, !varr4c7 }, { !varr0c4, !varr0c5 }, { !varr0c4, !varr0c6 }, { !varr0c4, !varr0c7 }, { !varr0c4, !varr1c3 }, { !varr0c4, !varr1c5 }, { !varr0c4, !varr2c2 }, { !varr0c4, !varr2c6 }, { !varr0c4, !varr3c1 }, { !varr0c4, !varr3c7 }, { !varr0c4, !varr4c0 }, { !varr0c5, !varr0c6 }, { !varr0c5, !varr0c7 }, { !varr0c5, !varr1c4 }, { !varr0c5, !varr1c6 }, { !varr0c5, !varr2c3 }, { !varr0c5, !varr2c7 }, { !varr0c5, !varr3c2 }, { !varr0c5, !varr4c1 }, { !varr0c5, !varr5c0 }, { !varr0c6, !varr0c7 }, { !varr0c6, !varr1c5 }, { !varr0c6, !varr1c7 }, { !varr0c6, !varr2c4 }, { !varr0c6, !varr3c3 }, { !varr0c6, !varr4c2 }, { !varr0c6, !varr5c1 }, { !varr0c6, !varr6c0 }, { !varr0c7, !varr1c6 }, { !varr0c7, !varr2c5 }, { !varr0c7, !varr3c4 }, { !varr0c7, !varr4c3 }, { !varr0c7, !varr5c2 }, { !varr0c7, !varr6c1 }, { !varr0c7, !varr7c0 }, { !varr1c0, !varr1c1 }, { !varr1c0, !varr1c2 }, { !varr1c0, !varr1c3 }, { !varr1c0, !varr1c4 }, { !varr1c0, !varr1c5 }, { !varr1c0, !varr1c6 }, { !varr1c0, !varr1c7 }, { !varr1c0, !varr2c1 }, { !varr1c0, !varr3c2 }, { !varr1c0, !varr4c3 }, { !varr1c0, !varr5c4 }, { !varr1c0, !varr6c5 }, { !varr1c0, !varr7c6 }, { !varr1c1, !varr1c2 }, { !varr1c1, !varr1c3 }, { !varr1c1, !varr1c4 }, { !varr1c1, !varr1c5 }, { !varr1c1, !varr1c6 }, { !varr1c1, !varr1c7 }, { !varr1c1, !varr2c2 }, { !varr1c1, !varr3c3 }, { !varr1c1, !varr4c4 }, { !varr1c1, !varr5c5 }, { !varr1c1, !varr6c6 }, { !varr1c1, !varr7c7 }, { !varr1c2, !varr1c3 }, { !varr1c2, !varr1c4 }, { !varr1c2, !varr1c5 }, { !varr1c2, !varr1c6 }, { !varr1c2, !varr1c7 }, { !varr1c2, !varr2c1 }, { !varr1c2, !varr2c3 }, { !varr1c2, !varr3c0 }, { !varr1c2, !varr3c4 }, { !varr1c2, !varr4c5 }, { !varr1c2, !varr5c6 }, { !varr1c2, !varr6c7 }, { !varr1c3, !varr1c4 }, { !varr1c3, !varr1c5 }, { !varr1c3, !varr1c6 }, { !varr1c3, !varr1c7 }, { !varr1c3, !varr2c2 }, { !varr1c3, !varr2c4 }, { !varr1c3, !varr3c1 }, { !varr1c3, !varr3c5 }, { !varr1c3, !varr4c0 }, { !varr1c3, !varr4c6 }, { !varr1c3, !varr5c7 }, { !varr1c4, !varr1c5 }, { !varr1c4, !varr1c6 }, { !varr1c4, !varr1c7 }, { !varr1c4, !varr2c3 }, { !varr1c4, !varr2c5 }, { !varr1c4, !varr3c2 }, { !varr1c4, !varr3c6 }, { !varr1c4, !varr4c1 }, { !varr1c4, !varr4c7 }, { !varr1c4, !varr5c0 }, { !varr1c5, !varr1c6 }, { !varr1c5, !varr1c7 }, { !varr1c5, !varr2c4 }, { !varr1c5, !varr2c6 }, { !varr1c5, !varr3c3 }, { !varr1c5, !varr3c7 }, { !varr1c5, !varr4c2 }, { !varr1c5, !varr5c1 }, { !varr1c5, !varr6c0 }, { !varr1c6, !varr1c7 }, { !varr1c6, !varr2c5 }, { !varr1c6, !varr2c7 }, { !varr1c6, !varr3c4 }, { !varr1c6, !varr4c3 }, { !varr1c6, !varr5c2 }, { !varr1c6, !varr6c1 }, { !varr1c6, !varr7c0 }, { !varr1c7, !varr2c6 }, { !varr1c7, !varr3c5 }, { !varr1c7, !varr4c4 }, { !varr1c7, !varr5c3 }, { !varr1c7, !varr6c2 }, { !varr1c7, !varr7c1 }, { !varr2c0, !varr2c1 }, { !varr2c0, !varr2c2 }, { !varr2c0, !varr2c3 }, { !varr2c0, !varr2c4 }, { !varr2c0, !varr2c5 }, { !varr2c0, !varr2c6 }, { !varr2c0, !varr2c7 }, { !varr2c0, !varr3c1 }, { !varr2c0, !varr4c2 }, { !varr2c0, !varr5c3 }, { !varr2c0, !varr6c4 }, { !varr2c0, !varr7c5 }, { !varr2c1, !varr2c2 }, { !varr2c1, !varr2c3 }, { !varr2c1, !varr2c4 }, { !varr2c1, !varr2c5 }, { !varr2c1, !varr2c6 }, { !varr2c1, !varr2c7 }, { !varr2c1, !varr3c0 }, { !varr2c1, !varr3c2 }, { !varr2c1, !varr4c3 }, { !varr2c1, !varr5c4 }, { !varr2c1, !varr6c5 }, { !varr2c1, !varr7c6 }, { !varr2c2, !varr2c3 }, { !varr2c2, !varr2c4 }, { !varr2c2, !varr2c5 }, { !varr2c2, !varr2c6 }, { !varr2c2, !varr2c7 }, { !varr2c2, !varr3c1 }, { !varr2c2, !varr3c3 }, { !varr2c2, !varr4c0 }, { !varr2c2, !varr4c4 }, { !varr2c2, !varr5c5 }, { !varr2c2, !varr6c6 }, { !varr2c2, !varr7c7 }, { !varr2c3, !varr2c4 }, { !varr2c3, !varr2c5 }, { !varr2c3, !varr2c6 }, { !varr2c3, !varr2c7 }, { !varr2c3, !varr3c2 }, { !varr2c3, !varr3c4 }, { !varr2c3, !varr4c1 }, { !varr2c3, !varr4c5 }, { !varr2c3, !varr5c0 }, { !varr2c3, !varr5c6 }, { !varr2c3, !varr6c7 }, { !varr2c4, !varr2c5 }, { !varr2c4, !varr2c6 }, { !varr2c4, !varr2c7 }, { !varr2c4, !varr3c3 }, { !varr2c4, !varr3c5 }, { !varr2c4, !varr4c2 }, { !varr2c4, !varr4c6 }, { !varr2c4, !varr5c1 }, { !varr2c4, !varr5c7 }, { !varr2c4, !varr6c0 }, { !varr2c5, !varr2c6 }, { !varr2c5, !varr2c7 }, { !varr2c5, !varr3c4 }, { !varr2c5, !varr3c6 }, { !varr2c5, !varr4c3 }, { !varr2c5, !varr4c7 }, { !varr2c5, !varr5c2 }, { !varr2c5, !varr6c1 }, { !varr2c5, !varr7c0 }, { !varr2c6, !varr2c7 }, { !varr2c6, !varr3c5 }, { !varr2c6, !varr3c7 }, { !varr2c6, !varr4c4 }, { !varr2c6, !varr5c3 }, { !varr2c6, !varr6c2 }, { !varr2c6, !varr7c1 }, { !varr2c7, !varr3c6 }, { !varr2c7, !varr4c5 }, { !varr2c7, !varr5c4 }, { !varr2c7, !varr6c3 }, { !varr2c7, !varr7c2 }, { !varr3c0, !varr3c1 }, { !varr3c0, !varr3c2 }, { !varr3c0, !varr3c3 }, { !varr3c0, !varr3c4 }, { !varr3c0, !varr3c5 }, { !varr3c0, !varr3c6 }, { !varr3c0, !varr3c7 }, { !varr3c0, !varr4c1 }, { !varr3c0, !varr5c2 }, { !varr3c0, !varr6c3 }, { !varr3c0, !varr7c4 }, { !varr3c1, !varr3c2 }, { !varr3c1, !varr3c3 }, { !varr3c1, !varr3c4 }, { !varr3c1, !varr3c5 }, { !varr3c1, !varr3c6 }, { !varr3c1, !varr3c7 }, { !varr3c1, !varr4c0 }, { !varr3c1, !varr4c2 }, { !varr3c1, !varr5c3 }, { !varr3c1, !varr6c4 }, { !varr3c1, !varr7c5 }, { !varr3c2, !varr3c3 }, { !varr3c2, !varr3c4 }, { !varr3c2, !varr3c5 }, { !varr3c2, !varr3c6 }, { !varr3c2, !varr3c7 }, { !varr3c2, !varr4c1 }, { !varr3c2, !varr4c3 }, { !varr3c2, !varr5c0 }, { !varr3c2, !varr5c4 }, { !varr3c2, !varr6c5 }, { !varr3c2, !varr7c6 }, { !varr3c3, !varr3c4 }, { !varr3c3, !varr3c5 }, { !varr3c3, !varr3c6 }, { !varr3c3, !varr3c7 }, { !varr3c3, !varr4c2 }, { !varr3c3, !varr4c4 }, { !varr3c3, !varr5c1 }, { !varr3c3, !varr5c5 }, { !varr3c3, !varr6c0 }, { !varr3c3, !varr6c6 }, { !varr3c3, !varr7c7 }, { !varr3c4, !varr3c5 }, { !varr3c4, !varr3c6 }, { !varr3c4, !varr3c7 }, { !varr3c4, !varr4c3 }, { !varr3c4, !varr4c5 }, { !varr3c4, !varr5c2 }, { !varr3c4, !varr5c6 }, { !varr3c4, !varr6c1 }, { !varr3c4, !varr6c7 }, { !varr3c4, !varr7c0 }, { !varr3c5, !varr3c6 }, { !varr3c5, !varr3c7 }, { !varr3c5, !varr4c4 }, { !varr3c5, !varr4c6 }, { !varr3c5, !varr5c3 }, { !varr3c5, !varr5c7 }, { !varr3c5, !varr6c2 }, { !varr3c5, !varr7c1 }, { !varr3c6, !varr3c7 }, { !varr3c6, !varr4c5 }, { !varr3c6, !varr4c7 }, { !varr3c6, !varr5c4 }, { !varr3c6, !varr6c3 }, { !varr3c6, !varr7c2 }, { !varr3c7, !varr4c6 }, { !varr3c7, !varr5c5 }, { !varr3c7, !varr6c4 }, { !varr3c7, !varr7c3 }, { !varr4c0, !varr4c1 }, { !varr4c0, !varr4c2 }, { !varr4c0, !varr4c3 }, { !varr4c0, !varr4c4 }, { !varr4c0, !varr4c5 }, { !varr4c0, !varr4c6 }, { !varr4c0, !varr4c7 }, { !varr4c0, !varr5c1 }, { !varr4c0, !varr6c2 }, { !varr4c0, !varr7c3 }, { !varr4c1, !varr4c2 }, { !varr4c1, !varr4c3 }, { !varr4c1, !varr4c4 }, { !varr4c1, !varr4c5 }, { !varr4c1, !varr4c6 }, { !varr4c1, !varr4c7 }, { !varr4c1, !varr5c0 }, { !varr4c1, !varr5c2 }, { !varr4c1, !varr6c3 }, { !varr4c1, !varr7c4 }, { !varr4c2, !varr4c3 }, { !varr4c2, !varr4c4 }, { !varr4c2, !varr4c5 }, { !varr4c2, !varr4c6 }, { !varr4c2, !varr4c7 }, { !varr4c2, !varr5c1 }, { !varr4c2, !varr5c3 }, { !varr4c2, !varr6c0 }, { !varr4c2, !varr6c4 }, { !varr4c2, !varr7c5 }, { !varr4c3, !varr4c4 }, { !varr4c3, !varr4c5 }, { !varr4c3, !varr4c6 }, { !varr4c3, !varr4c7 }, { !varr4c3, !varr5c2 }, { !varr4c3, !varr5c4 }, { !varr4c3, !varr6c1 }, { !varr4c3, !varr6c5 }, { !varr4c3, !varr7c0 }, { !varr4c3, !varr7c6 }, { !varr4c4, !varr4c5 }, { !varr4c4, !varr4c6 }, { !varr4c4, !varr4c7 }, { !varr4c4, !varr5c3 }, { !varr4c4, !varr5c5 }, { !varr4c4, !varr6c2 }, { !varr4c4, !varr6c6 }, { !varr4c4, !varr7c1 }, { !varr4c4, !varr7c7 }, { !varr4c5, !varr4c6 }, { !varr4c5, !varr4c7 }, { !varr4c5, !varr5c4 }, { !varr4c5, !varr5c6 }, { !varr4c5, !varr6c3 }, { !varr4c5, !varr6c7 }, { !varr4c5, !varr7c2 }, { !varr4c6, !varr4c7 }, { !varr4c6, !varr5c5 }, { !varr4c6, !varr5c7 }, { !varr4c6, !varr6c4 }, { !varr4c6, !varr7c3 }, { !varr4c7, !varr5c6 }, { !varr4c7, !varr6c5 }, { !varr4c7, !varr7c4 }, { !varr5c0, !varr5c1 }, { !varr5c0, !varr5c2 }, { !varr5c0, !varr5c3 }, { !varr5c0, !varr5c4 }, { !varr5c0, !varr5c5 }, { !varr5c0, !varr5c6 }, { !varr5c0, !varr5c7 }, { !varr5c0, !varr6c1 }, { !varr5c0, !varr7c2 }, { !varr5c1, !varr5c2 }, { !varr5c1, !varr5c3 }, { !varr5c1, !varr5c4 }, { !varr5c1, !varr5c5 }, { !varr5c1, !varr5c6 }, { !varr5c1, !varr5c7 }, { !varr5c1, !varr6c0 }, { !varr5c1, !varr6c2 }, { !varr5c1, !varr7c3 }, { !varr5c2, !varr5c3 }, { !varr5c2, !varr5c4 }, { !varr5c2, !varr5c5 }, { !varr5c2, !varr5c6 }, { !varr5c2, !varr5c7 }, { !varr5c2, !varr6c1 }, { !varr5c2, !varr6c3 }, { !varr5c2, !varr7c0 }, { !varr5c2, !varr7c4 }, { !varr5c3, !varr5c4 }, { !varr5c3, !varr5c5 }, { !varr5c3, !varr5c6 }, { !varr5c3, !varr5c7 }, { !varr5c3, !varr6c2 }, { !varr5c3, !varr6c4 }, { !varr5c3, !varr7c1 }, { !varr5c3, !varr7c5 }, { !varr5c4, !varr5c5 }, { !varr5c4, !varr5c6 }, { !varr5c4, !varr5c7 }, { !varr5c4, !varr6c3 }, { !varr5c4, !varr6c5 }, { !varr5c4, !varr7c2 }, { !varr5c4, !varr7c6 }, { !varr5c5, !varr5c6 }, { !varr5c5, !varr5c7 }, { !varr5c5, !varr6c4 }, { !varr5c5, !varr6c6 }, { !varr5c5, !varr7c3 }, { !varr5c5, !varr7c7 }, { !varr5c6, !varr5c7 }, { !varr5c6, !varr6c5 }, { !varr5c6, !varr6c7 }, { !varr5c6, !varr7c4 }, { !varr5c7, !varr6c6 }, { !varr5c7, !varr7c5 }, { !varr6c0, !varr6c1 }, { !varr6c0, !varr6c2 }, { !varr6c0, !varr6c3 }, { !varr6c0, !varr6c4 }, { !varr6c0, !varr6c5 }, { !varr6c0, !varr6c6 }, { !varr6c0, !varr6c7 }, { !varr6c1, !varr6c2 }, { !varr6c1, !varr6c3 }, { !varr6c1, !varr6c4 }, { !varr6c1, !varr6c5 }, { !varr6c1, !varr6c6 }, { !varr6c1, !varr6c7 }, { !varr6c1, !varr7c0 }, { !varr6c1, !varr7c2 }, { !varr6c2, !varr6c3 }, { !varr6c2, !varr6c4 }, { !varr6c2, !varr6c5 }, { !varr6c2, !varr6c6 }, { !varr6c2, !varr6c7 }, { !varr6c2, !varr7c1 }, { !varr6c2, !varr7c3 }, { !varr6c3, !varr6c4 }, { !varr6c3, !varr6c5 }, { !varr6c3, !varr6c6 }, { !varr6c3, !varr6c7 }, { !varr6c3, !varr7c2 }, { !varr6c3, !varr7c4 }, { !varr6c4, !varr6c5 }, { !varr6c4, !varr6c6 }, { !varr6c4, !varr6c7 }, { !varr6c4, !varr7c3 }, { !varr6c4, !varr7c5 }, { !varr6c5, !varr6c6 }, { !varr6c5, !varr6c7 }, { !varr6c5, !varr7c4 }, { !varr6c5, !varr7c6 }, { !varr6c6, !varr6c7 }, { !varr6c6, !varr7c5 }, { !varr6c6, !varr7c7 }, { !varr6c7, !varr7c6 }, { !varr7c0, !varr7c1 }, { !varr7c0, !varr7c2 }, { !varr7c0, !varr7c3 }, { !varr7c0, !varr7c4 }, { !varr7c0, !varr7c5 }, { !varr7c0, !varr7c6 }, { !varr7c0, !varr7c7 }, { !varr7c1, !varr7c2 }, { !varr7c1, !varr7c3 }, { !varr7c1, !varr7c4 }, { !varr7c1, !varr7c5 }, { !varr7c1, !varr7c6 }, { !varr7c1, !varr7c7 }, { !varr7c2, !varr7c3 }, { !varr7c2, !varr7c4 }, { !varr7c2, !varr7c5 }, { !varr7c2, !varr7c6 }, { !varr7c2, !varr7c7 }, { !varr7c3, !varr7c4 }, { !varr7c3, !varr7c5 }, { !varr7c3, !varr7c6 }, { !varr7c3, !varr7c7 }, { !varr7c4, !varr7c5 }, { !varr7c4, !varr7c6 }, { !varr7c4, !varr7c7 }, { !varr7c5, !varr7c6 }, { !varr7c5, !varr7c7 }, { !varr7c6, !varr7c7 }, { varr0c0, varr1c0, varr2c0, varr3c0, varr4c0, varr5c0, varr6c0, varr7c0 }, { varr0c1, varr1c1, varr2c1, varr3c1, varr4c1, varr5c1, varr6c1, varr7c1 }, { varr0c2, varr1c2, varr2c2, varr3c2, varr4c2, varr5c2, varr6c2, varr7c2 }, { varr0c3, varr1c3, varr2c3, varr3c3, varr4c3, varr5c3, varr6c3, varr7c3 }, { varr0c4, varr1c4, varr2c4, varr3c4, varr4c4, varr5c4, varr6c4, varr7c4 }, { varr0c5, varr1c5, varr2c5, varr3c5, varr4c5, varr5c5, varr6c5, varr7c5 }, { varr0c6, varr1c6, varr2c6, varr3c6, varr4c6, varr5c6, varr6c6, varr7c6 }, { varr0c7, varr1c7, varr2c7, varr3c7, varr4c7, varr5c7, varr6c7, varr7c7 } }
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |       |       |       |       |       |   Q   |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |       |   Q   |       |       |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |   Q   |       |       |       |       |       |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |   Q   |       |       |       |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |       |       |       |   Q   |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |   Q   |       |       |       |       |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |       |       |       |       |   Q   |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+        |       |       |       |       |       |       |       |       |
+        |       |       |       |       |   Q   |       |       |       |
+        |       |       |       |       |       |       |       |       |
+        -----------------------------------------------------------------
+Time used: 3201.231660276853 seconds.
+         8274641779 function calls (8179672426 primitive calls) in 3201.247 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:119(release)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:159(__init__)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:163(__enter__)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:170(__exit__)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:176(_get_module_lock)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:190(cb)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:195(_lock_unlock_module)
+     29/3    0.000    0.000    0.014    0.005 <frozen importlib._bootstrap>:214(_call_with_frames_removed)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:225(_verbose_message)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:235(_requires_builtin_wrapper)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:310(__init__)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:314(__enter__)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:321(__exit__)
+       96    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:324(<genexpr>)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:35(_new_module)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:372(__init__)
+       39    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:406(cached)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:419(parent)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:427(has_location)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:436(spec_from_loader)
+       24    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap>:510(_init_module_attrs)
+       24    0.000    0.000    0.005    0.000 <frozen importlib._bootstrap>:570(module_from_spec)
+     24/3    0.000    0.000    0.015    0.005 <frozen importlib._bootstrap>:659(_load_unlocked)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:716(find_spec)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:737(create_module)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:74(__init__)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:745(exec_module)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:762(is_package)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:789(find_spec)
+       84    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:852(__enter__)
+       84    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:856(__exit__)
+       24    0.000    0.000    0.005    0.000 <frozen importlib._bootstrap>:879(_find_spec)
+     24/3    0.000    0.000    0.016    0.005 <frozen importlib._bootstrap>:939(_find_and_load_unlocked)
+       25    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:94(acquire)
+     24/3    0.000    0.000    0.016    0.005 <frozen importlib._bootstrap>:966(_find_and_load)
+       50    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:996(_handle_fromlist)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1044(_path_hooks)
+       49    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1061(_path_importer_cache)
+       20    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:1098(_get_spec)
+       20    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:1130(find_spec)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1175(__init__)
+       24    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1181(<genexpr>)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1207(_get_spec)
+       42    0.000    0.000    0.004    0.000 <frozen importlib._bootstrap_external>:1212(find_spec)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1257(_fill_cache)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1286(<setcomp>)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1298(path_hook_for_FileFinder)
+       38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:243(cache_from_source)
+       42    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:30(_relax_case)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:339(_get_cached)
+      200    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:363(_verbose_message)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:379(_check_name_wrapper)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:416(_validate_bytecode_header)
+       38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:45(_r_long)
+       19    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:471(_compile_bytecode)
+      210    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:50(_path_join)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:510(spec_from_file_location)
+      210    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:52(<listcomp>)
+       38    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:56(_path_split)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:588(_open_registry)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:595(_search_registry)
+       20    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:610(find_spec)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:653(create_module)
+     19/3    0.000    0.000    0.015    0.005 <frozen importlib._bootstrap_external>:656(exec_module)
+       90    0.000    0.000    0.003    0.000 <frozen importlib._bootstrap_external>:68(_path_stat)
+       19    0.000    0.000    0.003    0.000 <frozen importlib._bootstrap_external>:726(get_code)
+       29    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:78(_path_is_mode_type)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:783(__init__)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:808(get_filename)
+       19    0.000    0.000    0.001    0.000 <frozen importlib._bootstrap_external>:813(get_data)
+       19    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:823(path_stats)
+       26    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap_external>:87(_path_isfile)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:889(__init__)
+        1    0.000    0.000    0.005    0.005 <frozen importlib._bootstrap_external>:900(create_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:908(exec_module)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:92(_path_isdir)
+        1    0.000    0.000    0.000    0.000 __future__.py:48(<module>)
+        1    0.000    0.000    0.000    0.000 __future__.py:78(_Feature)
+        9    0.000    0.000    0.000    0.000 __future__.py:79(__init__)
+        2    0.000    0.000    0.017    0.008 __init__.py:1(<module>)
+        1    0.000    0.000    0.003    0.003 __init__.py:41(<module>)
+        1    0.000    0.000    0.000    0.000 _collections_abc.py:308(__subclasshook__)
+       19    0.000    0.000    0.000    0.000 _weakrefset.py:36(__init__)
+410373370  132.470    0.000  132.470    0.000 _weakrefset.py:70(__contains__)
+        1    0.000    0.000    0.000    0.000 _weakrefset.py:81(add)
+        6    0.000    0.000    0.000    0.000 abc.py:132(__new__)
+        6    0.000    0.000    0.000    0.000 abc.py:135(<setcomp>)
+410373369  183.693    0.000  316.163    0.000 abc.py:178(__instancecheck__)
+        1    0.000    0.000    0.000    0.000 abc.py:194(__subclasscheck__)
+        1    0.000    0.000    0.000    0.000 bisect.py:1(<module>)
+192909/5326    0.247    0.000    0.617    0.000 copy.py:137(deepcopy)
+   128606    0.011    0.000    0.011    0.000 copy.py:192(_deepcopy_atomic)
+32134/21304    0.030    0.000    0.087    0.000 copy.py:215(_deepcopy_list)
+    10712    0.033    0.000    0.065    0.000 copy.py:223(_deepcopy_tuple)
+    10712    0.010    0.000    0.032    0.000 copy.py:224(<listcomp>)
+10712/5326    0.055    0.000    0.450    0.000 copy.py:240(_deepcopy_dict)
+    53558    0.031    0.000    0.040    0.000 copy.py:254(_keep_alive)
+467706/462320    2.592    0.000    4.460    0.000 copy.py:270(_reconstruct)
+   456994    1.824    0.000    8.200    0.000 copy.py:67(copy)
+   467706    0.264    0.000    0.401    0.000 copyreg.py:87(__newobj__)
+        2    0.000    0.000    0.000    0.000 copyreg.py:96(_slotnames)
+       70    0.000    0.000    0.000    0.000 cp1252.py:18(encode)
+        1    0.000    0.000    0.000    0.000 davis_putnam.py:1(<module>)
+    10612    5.625    0.001 3180.800    0.300 davis_putnam.py:19(saturate)
+   462254    0.305    0.000    1.769    0.000 davis_putnam.py:21(<genexpr>)
+ 22689259   13.652    0.000   78.297    0.000 davis_putnam.py:28(<genexpr>)
+   497769    6.156    0.000 2103.116    0.004 davis_putnam.py:33(_reduce)
+   572203   18.089    0.000  111.848    0.000 davis_putnam.py:35(<genexpr>)
+ 67347387   50.810    0.000  312.206    0.000 davis_putnam.py:36(<genexpr>)
+     5322    0.026    0.000    8.400    0.002 davis_putnam.py:40(select_literal)
+   503091    1.407    0.000  100.006    0.000 davis_putnam.py:44(negate_literal)
+  10612/1    0.470    0.000 3201.125 3201.125 davis_putnam.py:5(davis_putnam)
+   178117    0.047    0.000    0.202    0.000 davis_putnam.py:9(<genexpr>)
+       10    0.000    0.000    0.000    0.000 functools.py:43(update_wrapper)
+       10    0.000    0.000    0.000    0.000 functools.py:73(wraps)
+        1    0.000    0.000    0.005    0.005 hashlib.py:53(<module>)
+        6    0.000    0.000    0.000    0.000 hashlib.py:98(__get_openssl_constructor)
+        1    0.000    0.000    0.000    0.000 helper.py:16(<listcomp>)
+        1    0.000    0.000    0.000    0.000 helper.py:2(<module>)
+    65984    0.284    0.000    0.284    0.000 helper.py:2(is_number)
+        1    0.000    0.000    0.000    0.000 match.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 match.py:4(Match)
+        1    0.000    0.000    0.000    0.000 parser.py:1(<module>)
+   503091    1.332    0.000    1.711    0.000 parser.py:11(__init__)
+   973190    2.302    0.000   96.888    0.000 parser.py:136(match)
+        1    0.000    0.000    0.000    0.000 parser.py:9(MatchParser)
+  1946380    9.602    0.000   94.165    0.000 parser.py:95(parse)
+  1946380    1.161    0.000    1.161    0.000 parser.py:97(<listcomp>)
+        1    0.001    0.001 3201.247 3201.247 queens.py:1(<module>)
+       72    0.000    0.000    0.000    0.000 queens.py:10(<genexpr>)
+        8    0.000    0.000    0.000    0.000 queens.py:12(one_in_column)
+       72    0.000    0.000    0.000    0.000 queens.py:13(<genexpr>)
+       12    0.000    0.000    0.013    0.001 queens.py:15(at_most_one_in_lower_diagonal)
+       72    0.000    0.000    0.000    0.000 queens.py:18(<genexpr>)
+       12    0.000    0.000    0.012    0.001 queens.py:25(at_most_one_in_upper_diagonal)
+       70    0.000    0.000    0.000    0.000 queens.py:28(<genexpr>)
+        1    0.000    0.000    0.102    0.102 queens.py:35(all_clauses)
+        9    0.000    0.000    0.021    0.002 queens.py:36(<genexpr>)
+       13    0.000    0.000    0.013    0.001 queens.py:37(<genexpr>)
+       13    0.000    0.000    0.012    0.001 queens.py:38(<genexpr>)
+        9    0.000    0.000    0.000    0.000 queens.py:39(<genexpr>)
+        1    0.000    0.000    0.004    0.004 queens.py:41(print_board)
+       32    0.000    0.000    0.045    0.001 queens.py:6(at_most_one)
+        1    0.000    0.000 3201.231 3201.231 queens.py:64(solve)
+     1030    0.001    0.000    0.014    0.000 queens.py:7(<genexpr>)
+        8    0.000    0.000    0.021    0.003 queens.py:9(at_most_one_in_row)
+        1    0.000    0.000    0.006    0.006 random.py:37(<module>)
+        1    0.000    0.000    0.000    0.000 random.py:639(SystemRandom)
+        1    0.000    0.000    0.000    0.000 random.py:68(Random)
+        1    0.000    0.000    0.000    0.000 random.py:84(__init__)
+        1    0.000    0.000    0.000    0.000 random.py:93(seed)
+ 12115387    3.279    0.000    8.096    0.000 re.py:222(compile)
+ 12115387    4.817    0.000    4.817    0.000 re.py:278(_compile)
+        1    0.000    0.000    0.000    0.000 scanner.py:1(<module>)
+  1946380    1.310    0.000    1.310    0.000 scanner.py:103(is_function)
+  4766974   35.310    0.000   39.741    0.000 scanner.py:110(is_operator_char)
+  1946380    1.426    0.000    3.796    0.000 scanner.py:116(is_variable_start)
+  6812330    3.603    0.000    9.604    0.000 scanner.py:122(is_variable_char)
+  3356677    0.776    0.000    0.776    0.000 scanner.py:128(is_opening_bracket)
+        1    0.000    0.000    0.000    0.000 scanner.py:13(Scanner)
+  3356677    0.589    0.000    0.589    0.000 scanner.py:133(is_closing_bracket)
+  3356677    2.565    0.000    7.299    0.000 scanner.py:138(is_whitespace)
+   503091    0.379    0.000    0.379    0.000 scanner.py:15(__init__)
+  1946380   16.482    0.000   81.708    0.000 scanner.py:21(scan)
+        1    0.000    0.000    0.000    0.000 scanner.py:3(TokenType)
+  1410297    1.262    0.000    1.262    0.000 scanner.py:96(is_operator)
+        1    0.000    0.000    0.014    0.014 set.py:1(<module>)
+ 69634818   15.889    0.000   44.678    0.000 set.py:100(__len__)
+      166    0.000    0.000    0.000    0.000 set.py:103(__lt__)
+12501127/12490549   30.179    0.000  105.448    0.000 set.py:129(__eq__)
+358508736   38.085    0.000   38.085    0.000 set.py:13(gen_set_key)
+     5519    0.005    0.000    0.231    0.000 set.py:141(__ne__)
+202808884   84.952    0.000  353.866    0.000 set.py:145(__contains__)
+        1    0.000    0.000    0.000    0.000 set.py:16(Set)
+4284384/4134438   48.291    0.000 1820.311    0.000 set.py:17(__init__)
+  1000860    0.777    0.000    1.823    0.000 set.py:170(arb)
+ 93020597   83.229    0.000 1273.945    0.000 set.py:176(_put)
+     5326    0.303    0.000    6.727    0.001 set.py:191(sum)
+  1016763    8.362    0.000  596.628    0.001 set.py:34(__add__)
+  1260043    1.544    0.000   16.420    0.000 set.py:49(__iadd__)
+   577525   15.381    0.000  651.728    0.001 set.py:55(__sub__)
+    508/1    0.000    0.000    0.001    0.001 set.py:77(__str__)
+    508/1    0.000    0.000    0.001    0.001 set.py:78(<listcomp>)
+  1509456    0.900    0.000    1.849    0.000 set.py:97(__iter__)
+        1    0.000    0.000    0.000    0.000 sort.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 sort.py:3(Sorter)
+        3    0.000    0.000    0.000    0.000 sorteddict.py:17(not26)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:29(_IlocWrapper)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:410(KeysView)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:515(ValuesView)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:60(SortedDict)
+        1    0.000    0.000    0.000    0.000 sorteddict.py:620(ItemsView)
+        6    0.000    0.000    0.000    0.000 sortedlist.py:1276(_make_cmp)
+410373369  656.028    0.000 1644.827    0.000 sortedlist.py:1277(comparer)
+232286165   19.332    0.000   19.332    0.000 sortedlist.py:1410(identity)
+        1    0.000    0.000    0.000    0.000 sortedlist.py:1413(SortedListWithKey)
+  4284384    7.795    0.000    7.795    0.000 sortedlist.py:1419(__init__)
+  4289740    2.051    0.000    2.993    0.000 sortedlist.py:1445(__new__)
+106902137  205.368    0.000  867.583    0.000 sortedlist.py:1458(add)
+103675555   51.940    0.000   57.537    0.000 sortedlist.py:1485(_expand)
+   559769    3.642    0.000  320.404    0.001 sortedlist.py:1517(update)
+  1119538    0.893    0.000    0.893    0.000 sortedlist.py:1534(<genexpr>)
+  1119538   12.885    0.000   18.565    0.000 sortedlist.py:1536(<genexpr>)
+  1119538    0.264    0.000    0.264    0.000 sortedlist.py:1537(<genexpr>)
+348309278/323356463  341.921    0.000 1481.925    0.000 sortedlist.py:1543(__contains__)
+        7    0.000    0.000    0.000    0.000 sortedlist.py:30(recursive_repr)
+        1    0.000    0.000    0.001    0.001 sortedlist.py:5(<module>)
+        1    0.000    0.000    0.000    0.000 sortedlist.py:50(SortedList)
+  1000860    0.807    0.000    1.045    0.000 sortedlist.py:557(__getitem__)
+846707726  218.531    0.000  302.450    0.000 sortedlist.py:769(__iter__)
+508638587   59.298    0.000   59.298    0.000 sortedlist.py:930(__len__)
+        1    0.000    0.000    0.000    0.000 sortedset.py:10(SortedSet)
+        1    0.000    0.000    0.000    0.000 sortedset.py:5(<module>)
+        6    0.000    0.000    0.000    0.000 sortedset.py:98(_make_cmp)
+        6    0.000    0.000    0.000    0.000 sre_compile.py:221(_compile_charset)
+        6    0.000    0.000    0.000    0.000 sre_compile.py:248(_optimize_charset)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:374(_mk_bitmap)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:376(<listcomp>)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:412(_compile_info)
+        6    0.000    0.000    0.000    0.000 sre_compile.py:513(isstring)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:516(_code)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:531(compile)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:64(_compile)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:105(__init__)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:165(append)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:167(getwidth)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:217(__init__)
+       26    0.000    0.000    0.000    0.000 sre_parse.py:226(__next)
+       13    0.000    0.000    0.000    0.000 sre_parse.py:242(match)
+       18    0.000    0.000    0.000    0.000 sre_parse.py:247(get)
+        6    0.000    0.000    0.000    0.000 sre_parse.py:276(tell)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:312(_class_escape)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:429(_parse_sub)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:491(_parse)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:70(__init__)
+        6    0.000    0.000    0.000    0.000 sre_parse.py:75(groups)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:797(fix_flags)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:819(parse)
+        1    0.000    0.000    0.000    0.000 timeit.py:51(<module>)
+        1    0.000    0.000    0.000    0.000 timeit.py:84(Timer)
+        1    0.000    0.000    0.000    0.000 treemap.py:1(<module>)
+        1    0.000    0.000    0.000    0.000 treemap.py:44(TreeMap)
+        1    0.000    0.000    0.000    0.000 treemap.py:7(TreeNode)
+  4752096    1.076    0.000    1.076    0.000 {built-in method __new__ of type object at 0x000000001DB0CBA0}
+452249380/452249118  148.126    0.000  969.528    0.000 {built-in method _bisect.bisect_left}
+107621684   59.823    0.000  565.686    0.000 {built-in method _bisect.bisect_right}
+       70    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_md5}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha1}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha224}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha256}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha384}
+        1    0.000    0.000    0.000    0.000 {built-in method _hashlib.openssl_sha512}
+       19    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
+       84    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        4    0.000    0.000    0.000    0.000 {built-in method _imp.create_builtin}
+        1    0.005    0.005    0.005    0.005 {built-in method _imp.create_dynamic}
+        4    0.000    0.000    0.000    0.000 {built-in method _imp.exec_builtin}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.exec_dynamic}
+       13    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
+       20    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+      109    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+393943670   42.673    0.000   42.673    0.000 {built-in method _operator.lt}
+ 14673001    1.659    0.000    1.659    0.000 {built-in method _operator.ne}
+        3    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+       48    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       50    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       20    0.000    0.000    0.001    0.000 {built-in method builtins.__build_class__}
+     5323    0.021    0.000    0.220    0.000 {built-in method builtins.all}
+       24    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+     20/1    0.000    0.000 3201.247 3201.247 {built-in method builtins.exec}
+   935895    0.974    0.000    0.974    0.000 {built-in method builtins.getattr}
+        6    0.000    0.000    0.000    0.000 {built-in method builtins.globals}
+   467875    0.364    0.000    0.364    0.000 {built-in method builtins.hasattr}
+   773057    0.099    0.000    0.099    0.000 {built-in method builtins.id}
+435071603  161.758    0.000  477.921    0.000 {built-in method builtins.isinstance}
+   473062    0.086    0.000    0.086    0.000 {built-in method builtins.issubclass}
+1480782900/1411148082  225.471    0.000  300.586    0.000 {built-in method builtins.len}
+        9    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+       11    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+       35    0.000    0.000    0.001    0.000 {built-in method builtins.print}
+       61    0.000    0.000    0.000    0.000 {built-in method builtins.setattr}
+   559769   31.472    0.000  295.315    0.001 {built-in method builtins.sorted}
+       39    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+846707726   83.918    0.000   83.918    0.000 {built-in method from_iterable}
+       19    0.001    0.000    0.001    0.000 {built-in method marshal.loads}
+        1    0.000    0.000    0.000    0.000 {built-in method math.exp}
+        2    0.000    0.000    0.000    0.000 {built-in method math.log}
+        1    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+       16    0.000    0.000    0.000    0.000 {built-in method nt.getcwd}
+        3    0.000    0.000    0.000    0.000 {built-in method nt.listdir}
+       90    0.003    0.000    0.003    0.000 {built-in method nt.stat}
+        1    0.000    0.000    0.000    0.000 {built-in method nt.urandom}
+        2    0.000    0.000    0.000    0.000 {built-in method time.perf_counter}
+       40    0.000    0.000    0.000    0.000 {built-in method winreg.OpenKey}
+        1    0.000    0.000    0.000    0.000 {function Random.seed at 0x0000000001496730}
+   467706    1.172    0.000    1.172    0.000 {method '__reduce_ex__' of 'object' objects}
+       21    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+215927164   19.448    0.000   19.448    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       21    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+  1679318    1.626    0.000   21.348    0.000 {method 'extend' of 'list' objects}
+       22    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+      220    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+  1310487    0.319    0.000    0.319    0.000 {method 'get' of 'dict' objects}
+        2    0.000    0.000    0.000    0.000 {method 'get' of 'mappingproxy' objects}
+  7892258    1.809    0.000    1.809    0.000 {method 'insert' of 'list' objects}
+    10721    0.003    0.000    0.003    0.000 {method 'items' of 'dict' objects}
+      756    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+       36    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+ 12115387    5.009    0.000    5.009    0.000 {method 'match' of '_sre.SRE_Pattern' objects}
+       20    0.000    0.000    0.000    0.000 {method 'partition' of 'str' objects}
+  3356677    0.898    0.000    0.898    0.000 {method 'pop' of 'list' objects}
+       19    0.000    0.000    0.000    0.000 {method 'read' of '_io.FileIO' objects}
+  1946380    0.201    0.000    0.201    0.000 {method 'reverse' of 'list' objects}
+      136    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+       38    0.000    0.000    0.000    0.000 {method 'rsplit' of 'str' objects}
+      458    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        6    0.000    0.000    0.000    0.000 {method 'startswith' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 {method 'translate' of 'bytearray' objects}
+        1    0.000    0.000    0.000    0.000 {method 'union' of 'set' objects}
+   467716    0.248    0.000    0.248    0.000 {method 'update' of 'dict' objects}
+
+
