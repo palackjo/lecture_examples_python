@@ -1,5 +1,5 @@
 from lecture.util import Match
-from lecture import Set
+from lecture.set import Set
 
 
 def davis_putnam(clauses, literals):
@@ -37,8 +37,17 @@ def _reduce(s, l):
            Set(Set(l))
 
 
-def select_literal(s, forbidden):
-    return (s.sum() - forbidden).arb()
+def select_literal(s, forbidden): 
+    temp = s.sum() - forbidden
+    temp = Set(x for x in temp if is_positive(x))
+    return temp.arb()
+
+
+def is_positive(l):
+    match = Match()
+    if match.match("!l", l):
+        return False
+    return True
 
 
 def negate_literal(l):
