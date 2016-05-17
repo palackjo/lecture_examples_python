@@ -109,7 +109,7 @@ class Scanner():
 
 	def is_operator_char(self, char, temp=''):
 		for operator in self.operator_list:
-			if (temp == operator[len(temp):] or temp == '') and str(temp + char) == operator[:len(temp) + 1]:
+			if operator.startswith(temp + char):
 				return True
 		return False
 

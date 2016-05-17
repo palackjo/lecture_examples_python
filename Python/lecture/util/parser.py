@@ -184,5 +184,5 @@ if __name__ == '__main__':
     assert result is True
     result = parser.match("!l", "varr0c0")
     assert result is False
-    result = parser.match("l", "varr0c0")
+    result = parser.match("l=>g", "x=>y")
     assert result is True
