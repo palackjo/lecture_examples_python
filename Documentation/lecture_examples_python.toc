@@ -1,0 +1,15 @@
+\select@language {ngerman}
+\contentsline {chapter}{Abbildungsverzeichnis}{2}{chapter*.1}
+\contentsline {chapter}{Tabellenverzeichnis}{3}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Einleitung}{4}{chapter.1}
+\contentsline {chapter}{\numberline {2}Warum Python?}{5}{chapter.2}
+\contentsline {chapter}{\numberline {3}Skripte ohne spezielle Module}{6}{chapter.3}
+\contentsline {chapter}{\numberline {4}Python Modul lecture}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}Sets}{8}{section.4.1}
+\contentsline {section}{\numberline {4.2}Matches}{8}{section.4.2}
+\contentsline {section}{\numberline {4.3}\"Ubersetzung komplexerer Programme}{9}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Schiebepuzzle}{10}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Watson}{13}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Wolf Ziege Kohl}{14}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}8 Damen Problem}{14}{subsection.4.3.4}
+\vspace *{\baselineskip }

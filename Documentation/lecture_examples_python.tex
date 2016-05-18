@@ -1,27 +1,47 @@
 
 \documentclass{report}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[ansinew]{inputenc}
+\usepackage[hidelinks]{hyperref}
 \usepackage{fancyvrb}
 \usepackage{a4wide}
 \usepackage{hyperref}
 
-Einleitung
+\begin{document}
 
-SetlX für mathematische Ausdrücke gut
-Viel mit Sets gearbeitet
+\title{Implementierung von SetlX-Programmen in Python}
+\author{Boschamnn, Johann; Palackal, Joseph}
+
+\tableofcontents
+
+\clearpage
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+
+\clearpage
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
+
+\include{einleitung}
+\include{warum_python}
+\include{nur_python}
+\include{modul_lecture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% BIBLIOGRAPHY AND OTHER LISTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% A small distance to the other stuff in the table of contents (toc)
+\addtocontents{toc}{\protect\vspace*{\baselineskip}}
+
+%% The Bibliography
+%% ==> You need a file 'literature.bib' for this.
+%% ==> You need to run BibTeX for this (Project | Properties... | Uses BibTeX)
+%\addcontentsline{toc}{chapter}{Bibliography} %'Bibliography' into toc
+%\nocite{*} %Even non-cited BibTeX-Entries will be shown.
+\newpage
+\bibliographystyle{alpha} %Style of Bibliography: plain / apalike / amsalpha / ...
+\bibliography{literature} %You need a file 'literature.bib' for this.
 
 
-Warum Python?
-
-Eine \"schnelle\" Skriptsprache
-Leicht zu lernen
-Höhere Sprache als SetlX
-Sehr Verbreitet
-
-
-Skripte in reinem Python
-
-Trotz dessen, dass die Erstellung des Python Moduls als Hauptbestandteil dieser Arbeit gesehen wird, ist es durchaus möglich einige SetlX Programme ohne zusätzliche, nicht enthaltene Module anzufertigen.
-
-
-Python Modul lecture
-
+\end{document}

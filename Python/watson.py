@@ -2,14 +2,8 @@ from lecture import Set
 from lecture.util import Match
 
 def evaluate(f, i):
-    match = Match(test=True)
-    if match.match('True', f):
-        return True
-    elif match.match('False', f):
-        return False
-    elif match.is_variable(f):
-        return  i[f]
-    elif match.match('!g', f):
+    match = Match()
+    if match.match('!g', f):
         return not evaluate(match.values['g'], i)
     elif match.match('g && h', f):
         return evaluate(match.values['g'], i) and evaluate(match.values['h'], i)
@@ -19,20 +13,10 @@ def evaluate(f, i):
         return not(evaluate(match.values['g'], i)) or evaluate(match.values['h'], i)
     elif match.match('g <==> h', f):
         return evaluate(match.values['g'], i) == evaluate(match.values['h'], i)
-    else: # if match.match('default', f):
+    elif match.is_variable(f):
+        return  i[f]
+    else:
         raise SyntaxError('Syntax error in evaluate(%s,%s)' % (f, i))
-        """
-    match(f, cases=[
-        ["True", True],
-        ["False", False],
-        [match.is_var("p"), i[p]],
-        ["!g", !evaluate(g, i)]],
-        ["g && h", evaluate(g, i) && evaluate(h,i)],
-        ["g || h", evaluate(g, i) || evaluate(h, i)],
-        ["g => h", not(evaluate(g, i)) or evaluate(h,i)],
-        ["g <==> h", evaluate(g,i) == evaluate(h,i)],
-        ["default", raise SyntaxError('Syntax error in evaluate(%s, %s)' % (f, i))])
-        """
 
 # This procedure turns a subset m of the list of all variables
 # into a propositional valuation that's result is True if
@@ -58,7 +42,7 @@ p = 2 ** v
 print('p = ', p)
 # b is the set of all propositional valuations.
 b = Set(create_valuation(m, v) for m in p)
-s = [dict(i) for i in b for f in fs if evaluate(f, dict(i))]
+s = [dict(i) for i in b if all(evaluate(f, dict(i)) for f in fs)]
 print('List of all valuations satisfying all facts: ', s)
 if len(s) == 1:
     i = s[0]

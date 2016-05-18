@@ -1,0 +1,57 @@
+\chapter{Skripte ohne spezielle Module}
+
+Trotz dessen, dass die Erstellung des Python Moduls als Hauptbestandteil dieser Arbeit gesehen wird, ist 
+es durchaus möglich einige \textsc{SetlX} Programme ohne zusätzliche, nicht enthaltene Module 
+anzufertigen. Diese Skripte wurden als erstes angefertigt, um feststellen zu können, ob es möglich ist 
+Python Syntax zu verwenden, ohne die Eleganz des Codes zu verlieren. Einer der Ziele der Übersetzung ist 
+die Eleganz der Programme beizubehalten. 
+
+Das erste Codebeispiel aus dem Logik-Skript befasst sich mit der Berechnung einer Summe der Zahlen von 1 
+bis zur eingegebenen Zahl. Dieses Programm lässt sich auch nahezu eins-zu-eins so in Python abbilden. 
+Das originale \textsc{SetlX} Programm verwendet hierfür eine Menge, die die Zahlen von 1 bis zur 
+eingegebenen Zahl n enthält. Daraufhin wird die Summe aller in der Menge enthaltenen Zahlen mit dem „+/“-
+Operator ermittelt und ausgegeben. 
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    n := read("Type a natural number and press return: ");
+    s := +/ { 1 .. n };
+    print("The sum 1 + 2 + ... + ", n, " is equal to ", s, ".");
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Einfache Summenberechnung in \textsc{SetlX}}
+\label{fig:sum.setlx}
+\end{figure}
+In Python wurde fast dasselbe Verhalten nachgebildet. Jedoch wurde anstatt eine Menge anzufertigen eine 
+Range der Zahlen von 0 bis n angelegt. Die Summe wird über die in Python bereits integrierte Funktion 
+\texttt{sum()} berechnet und daraufhin ausgegeben.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    n = int(input('Type a natural number and press return: '))
+    s = sum(range(n + 1))
+    print('The sum 1 + 2 + ... + ', n, ' is equal to ', s, '.')
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Einfache Summenberechnung in Python}
+\label{fig:sum.python}
+\end{figure}
+Allgemein kann gesagt werden, dass ein \textsc{SetlX}-Programm, ohne spezielle Funktionen oder 
+Strukturen die nicht in Python wiedergefunden werden, meist eine große Ähnlichkeit mit der Python-
+Implementierung hat.

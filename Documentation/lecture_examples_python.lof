@@ -1,0 +1,20 @@
+\select@language {ngerman}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Einfache Summenberechnung in \textsc {SetlX}}}{6}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Einfache Summenberechnung in Python}}{6}{figure.3.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Fehler bei Mengen in Mengen}}{7}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ausschnitt aus \texttt {diff()} (\textsc {SetlX})}}{9}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ausschnitt aus \texttt {diff()} (Python)}}{9}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \texttt {findPath} im Schiebepuzzle (\textsc {SetlX})}}{10}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \texttt {find\_path} im Schiebepuzzle (Python)}}{11}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \texttt {nextStates} im Schiebepuzzle (\textsc {SetlX})}}{11}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \texttt {next\_states} im Schiebepuzzle (Python)}}{11}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \texttt {moveDir} im Schiebepuzzle (\textsc {SetlX})}}{12}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \texttt {move\_dir} im Schiebepuzzle (Python)}}{12}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \texttt {findBlank} im Schiebepuzzle (\textsc {SetlX})}}{12}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \texttt {find\_blank} im Schiebepuzzle (Python)}}{13}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \texttt {createValuation} in Watson (\textsc {SetlX})}}{14}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces \texttt {create\_valuation} in Watson (Python)}}{14}{figure.4.13}

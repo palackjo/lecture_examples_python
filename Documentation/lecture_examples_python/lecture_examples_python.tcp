@@ -6,7 +6,7 @@ Version=4
 MainFile=lecture_examples_python.tex
 UseBibTeX=1
 UseMakeIndex=0
-ActiveProfile=LaTeX ⇨ PDF
-ProjectLanguage=de
-ProjectDialect=DE
+ActiveProfile=LaTeX ⇨ DVI
+ProjectLanguage=en
+ProjectDialect=US
 
