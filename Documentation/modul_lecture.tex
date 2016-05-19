@@ -51,7 +51,7 @@ eigentlich die „Potenzliste“ ermittelt wurde).
 \end{figure}
 Allerdings sind die Mengen nicht der einzige Grund, warum das Modul benötigt wird. 
 Ein in \textsc{SetlX} sehr hilfreiches Konstrukt, namens \texttt{match}, wird in Python nicht 
-wiedergefunden. Dessen Syntax ist an das sehr bekannte switch-case-Syntax angelehnt, welches auch nicht 
+wiedergefunden. Dessen Syntax ist an die sehr bekannte switch-case-Syntax angelehnt, welches auch nicht 
 in Python enthalten ist. 
 Matches können vier verschiedene Datentypen verwendet werden: Strings, Listen, Mengen und Terme. 
 Das Matchen von Strings, Listen und Mengen kann für das Erkennen des ersten Zeichens und dem Rest 
@@ -74,6 +74,169 @@ eine Sortierung der Elemente durchgeführt, wodurch Vorteile in der Programmierun
 
 Um die Mengen, wie sie in den \textsc{SetlX}-Programmen verwendet werden, auch in Python verwenden zu 
 können wurden eigene Mengen implementiert, die alle notwendigen Aufgaben erfüllen können.
+
+Als Grundlage für die Mengen wird der Datentyp SortedListWithKey aus dem Modul sortedcontainers verwendet.
+Das Besondere an SortedListWithKey ist, dass es sich nicht nur um sortierte Listen handelt, 
+sondern die Möglichkeit besteht festzulegen nach welcher Eigenschaft das Objekt sortiert werden sollen. 
+Unter dem Schlüssel einer SortedListWithKey wird diese Eigenschaft hinterlegt und kann auch dort 
+eingesehen werden. In diesem Fall sind die sortierten Listen, die die Elemente der Sets enthalten, 
+als Key eingetragen. 
+
+In der Implementierung der Mengen werden für viele Operationen Operatoren verwendet, wobei versucht wurde 
+möglichst nahe der \textsc{SetlX}-Implementierung zu bleiben. Die Ähnlichkeit zu \textsc{SetlX} soll 
+vorhanden sein, da diese bereits sehr mathematisch ist und somit sinnvoller zu lernen ist für die Studenten. 
+Die unterstützten mathematischen Operatoren sind in Tabelle~\ref{tab:math.operators} zu sehen.
+\begin{table}
+\centering
+	\begin{tabular}{|| c | l ||}
+	\hline
+	\textbf{Operator} & \textbf{Bedeutung} \\
+	\hline
+	\textbf{\texttt{+}} & Bildet Vereinigung zweier Mengen \\
+	\hline
+	\textbf{\texttt{+=}} & Ergebnis der Vereinigung wird in die erste Menge geschrieben \\
+	\hline
+	\textbf{\texttt{-}} & Bildet Differenz zweier Mengen \\
+	\hline
+	\textbf{\texttt{*}} & Bildet Schnitt zweier Mengen \\
+	\hline
+	\textbf{\texttt{2**}} & Bildet Potenz einer Menge \\
+	\hline
+	\textbf{\texttt{\%}} & Bildet symmetrische Differenz zweier Mengen \\
+	\hline
+	\textbf{\texttt{<}} & Gibt True zurück wenn die linke Menge kleiner ist \\
+	\hline
+	\textbf{\texttt{>}} & Gibt True zurück wenn die linke Menge größer ist \\
+	\hline
+	\textbf{\texttt{>=}} & Gibt True zurück wenn die rechte Menge eine Teilmenge der linken ist \\
+	\hline
+	\textbf{\texttt{<=}} & Gibt True zurück wenn die linke Menge eine Teilmenge der rechten ist \\
+	\hline
+	\textbf{\texttt{==}} & Gibt True zurück wenn beide Mengen dieselben Elemente enthalten \\
+	\hline
+	\textbf{\texttt{!=}} & Gibt True zurück wenn die Mengen unterschiedlich sind (Gegenteil zu \texttt{==}) \\
+	\hline
+	\textbf{\texttt{in}} & Prüft ob das gegebene Element in der Menge ist \\
+	\hline
+	\end{tabular}
+\caption{Mathematische Operatoren für Sets}
+\label{tab:math.operators}
+\end{table}
+Zusätzlich gibt es noch weitere Methoden, die nicht in der mathematischen Darstellung verwendbar sind, 
+dennoch für typische mathematische Operationen verwendet werden. Diese werden anstatt in der 
+mathematischen Notation, wie Funktionen auf die Mengen ausgeführt. Außer diesen mathematischen 
+Funktionen können noch weitere, nicht-mathematische Operationen, wie beispielsweise die visuelle 
+Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \texttt{put}-, beziehungsweise die \texttt{\_put}-Funktion. Diese sorgt dafür, dass keine Duplikate in ein Set eingetragen werden können. Die \texttt{put}-Funktion ruft nur die \texttt{\_put}-Funktion auf und ist somit keine neue Methode. In Tabelle~\ref{tab:set.functions} sind die restlichen Mengen-Funktionen aufgelistet.
+\begin{table}
+\centering
+	\begin{tabular}{|| c | l ||}
+	\hline
+	\textbf{Funktion} & \textbf{Bedeutung} \\
+	\hline
+	\textbf{\texttt{str}} & Stellt die Menge als String dar \\
+	\hline
+	\textbf{\texttt{contains}} & Dasselbe wie in (siehe Tabelle~\ref{tab:math.operators}) \\
+	\hline
+	\textbf{\texttt{Set[i]}} & Gibt das Element an \texttt{i}-ter Stelle zurück \\
+	\hline
+	\textbf{\texttt{cartesian\_product}} & Bildet das kartesische Produkt zweier Mengen \\
+	\hline
+	\textbf{\texttt{arb}} & Gibt ein beliebiges (in diesem Fall das erste) Element der Menge zurück \\
+	\hline
+	\textbf{\texttt{put/\_put}} & Fügt ein Element in die Menge ein \\
+	\hline
+	\textbf{\texttt{peek}} & Gibt das letzte Element der Menge zurück \\
+	\hline
+	\textbf{\texttt{pop}} & Gibt das letzte Element der Menge zurück und entfernt es aus der Menge \\
+	\hline
+	\textbf{\texttt{sum}} & Gibt die Summe aller Elemente in der Menge zurück \\
+	\hline
+	\end{tabular}
+\caption{Funktionen für Sets}
+\label{tab:set.functions}
+\end{table}
+Mit diesen Operatoren und Funktionen können alle Aufgabestellungen, die in der Vorlesung zur theoretischen 
+Informatik vorkommen, bewältigt werden. Im Nachfolgenden wird eine Anwendung der Mengenoperatoren gezeigt. 
+Das \textsc{SetlX}-Programm, das die Grundlage bietet, wird den Studenten gezeigt, damit sie ein Gefühl 
+dafür bekommen, welche Operation welche Resultate liefert. 
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    a := { 1, 2, 3 };
+    b := { 2, 3, 4 };
+
+    c := a + b;
+    print(a, " + ", b, " = ", c);
+
+    c := a     * b;
+    print(a, " * ", b, " = ", c);
+
+    c := a - b;
+    print(a, " - ", b, " = ", c);
+
+    c := 2 ** a;
+    print("2 ** ", a, " = ", c);
+
+    print("(", a, " <= ", b, ") = ", (a <= b)); 
+
+    print("1 in ", a, " = ", 1 in a);
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Nutzung von Mengen in \textit{simple.stlx}}
+\label{fig:simple.stlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    a = Set(1,2,3)
+    b = Set(2,3,4)
+
+    c = a + b
+    print('%s + %s = %s' % (a, b, c))
+
+    c = a * b
+    print('%s * %s = %s' % (a, b, c))
+
+    c = a - b
+    print('%s - %s = %s' % (a, b, c))
+
+    c = 2 ** a
+    print('2 ** %s = %s' % (a, c))
+
+    print('%s <= %s = %s' % (a, b, a <= b))
+
+    print('1 in %s = %s' % (a, 1 in a))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Nutzung von Mengen in simple.py}
+\label{fig:simple.py}
+\end{figure}
+In den Beispielen, die in Abbildung~\ref{fig:simple.stlx} und in Abbildung~\ref{fig:simple.py} zu sehen sind, 
+werden einige Operatoren sowohl in \textsc{SetlX}, als auch in Python dargestellt. 
+Zuerst werden die Vereinigung, der Schnitt und die Differenz zweier Mengen gebildet. 
+Daraufhin die Bildung einer Potenzmenge, der Prüfung einer Teilmengen-Relation und die Prüfung, 
+ob ein Element sich in einer Menge befindet, gezeigt. 
+
+Die Syntax zur Erzeugung einer Menge unterscheidet sich bereits, allerdings sind alle Operatoren 
+komplett identisch. Ein weiterer Unterschied der beiden Implementierungen ist die unterschiedliche 
+Erstellung der Ausgabestrings. Dieser Unterschied ist jedoch irrelevant, da im Vordergrund steht, 
+wie die Operatoren eingesetzt werden können.
 
 \section{Matches}
 Die Implementierung der Match-Strukturen ist in dem lecture-Module unter dem Verzeichnis util in der 
@@ -529,16 +692,346 @@ Die Aufgabe Watson soll anhand von gegebenen Tatsachen einen Mordfall lösen.
 \end{figure}
 Die Methode \texttt{createValuation} gibt eine Menge mit Tupel, die für jedes Element in \texttt{v} angeben, 
 ob es sich auch in \texttt{m} befindet. In \texttt{create\_valuation} wird das gleiche Resultat geliefert, 
-allerdings befinden sich die Tupel in einer Liste. Die Struktur wurde so gewählt, da zu einem späteren Verlauf aus 
-einer solchen Menge/Liste der Wahrheitswert \texttt{(x in m)} durch das Aufrufen aus der Liste, 
-anhand der Bezeichnung des Elements abgefragt wird. In Python ist das mit einem Dictionary möglich, 
-jedoch unterstützen die im lecture-Modul implementierten Sets die Sortierung von Dictionaries nicht. 
-Das heißt dass keine Dictionaries in Sets möglich sind. Die Struktur, Paare (zweistellige Tupel) in Listen zu 
-hinterlegen, können allerdings über den \texttt{dict()}-Befehl in ein Dictionary konvertiert werden. 
+allerdings befinden sich die Tupel in einer Liste. Die Struktur wurde so gewählt, 
+da zu einem späteren Verlauf aus einer solchen Menge/Liste der Wahrheitswert \texttt{(x in m)} 
+durch das Aufrufen aus der Liste, anhand der Bezeichnung des Elements abgefragt wird. 
+In Python ist das mit einem Dictionary möglich, jedoch unterstützen die im lecture-Modul implementierten 
+Sets die Sortierung von Dictionaries nicht. Das heißt dass keine Dictionaries in Sets möglich sind. 
+Die Struktur, Paare (zweistellige Tupel) in Listen zu hinterlegen, können allerdings über den 
+\texttt{dict()}-Befehl in ein Dictionary konvertiert werden. 
 Somit wird die Liste zum Abspeichern in einem Set verwendet und sobald die Valuation wieder ausgelesen wird, 
 wird diese als Dictionary weiter verwendet.
 
 \subsection{Wolf Ziege Kohl}
+Bei der Wolf-Ziege-Kohl-Aufgabe besteht die Herausforderung darin, dass ein Bauer einen Wolf, 
+eine Ziege und einen Kohl von einer Seite eines Flusses auf die andere bringen möchte. 
+Das Problem dabei ist, dass er nur ein Element auf einmal transportieren kann. 
+Wenn er den Wolf mit der Ziege alleine lässt, so frisst der Wolf die Ziege und wenn er die 
+Ziege mit dem Kohl alleine lässt so frisst die Ziege den Kohl. Diese Problemstellung sollen 
+die Studenten anhand eines Programms lösen. Die Aufgabe wird auch als wolf-goat-cabbage (wgc) bezeichnet.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    findPath := procedure(x, y, r) {
+        p := { [x] };
+        while (true) {
+            oldP  := p;
+            p     := p + pathProduct(p, r);
+            found := { l : l in p | l[-1] == y };
+            if (found != {}) {
+                return arb(found);
+            }
+            if (p == oldP) {
+                return;
+            }
+        }
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{findPath} in wgc (\textsc{SetlX})}
+\label{fig:findpath.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def find_path(x, y, r):
+        p = Set([x])
+        while True:
+            old_p = p
+            p     = p + path_product(p, r)
+            found = Set(l for l in p if l[-1] == y)
+            if found:
+                return found[0]
+            if p == old_p:
+                return
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{find\_path} in wgc (Python)}
+\label{fig:findpath.wgc.python}
+\end{figure}
+Die Funktion \texttt{find\_path} ermittelt, ob es einen Pfad vom Knoten \texttt{x} zum Knoten 
+\texttt{y} innerhalb von \texttt{r} gibt und gibt diesen zurück, sofern er vorhanden ist. 
+In der Variable \texttt{p} befinden sich alle möglichen Pfade, die gefunden werden. 
+Pro Schleifendurchgang werden die nächst mögliche Pfadschritte berechnet und geprüft, 
+ob die Lösung sich danach bereits in \texttt{p} befindet. Die erste Abbruchbedingung tritt ein, 
+wenn die Lösung gefunden wurde. In dem Fall wird die Lösung zurückgegeben. Die zweite Abbruchbedingung ist, 
+wenn bei der Ermittlung des nächsten Schritts keine neuen Pfade entdeckt wurden. 
+In diesem Fall gibt die Methode keinen Wert zurück.
 
+Die Abläufe und sind in beiden Programmiersprachen nahezu identisch. 
+Die erste Abbruchbedingung wird syntaktisch anders formuliert. Während in \textsc{SetlX} geprüft wird, 
+ob die Menge \texttt{found} nicht leer ist (Abbildung~\ref{fig:findpath.wgc.setlx} Zeile 7), 
+wird in Python geprüft ob \texttt{found} Elemente enthält (Abbildung~\ref{fig:findpath.wgc.python} Zeile 7). 
+Diese beiden Aussagen sind logischerweise dieselben. In der nächsten Zeile wird daraufhin in 
+\textsc{SetlX} ein beliebiges Element, während die Python-Implementierung immer das erste Element 
+der Menge zurückgibt. Es wäre auch möglich die, in den Python Sets implementierte, 
+Funktion \texttt{arb()} aufzurufen, allerdings gibt diese auch nur das erste Element zurück. 
+Um das Skript einfach und übersichtlich zu halten, wurde das direkt Aufrufen des ersten Elements bevorzugt.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    pathProduct := procedure(p, q) {
+        return { add(x,y) : x in p, y in q | 
+                 x[-1] == y[1] && noCycle(x,y) };
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{pathProduct} in wgc (\textsc{SetlX})}
+\label{fig:pathproduct.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def path_product(p, q):
+        return Set(add(x, y) for x in p for y in q 
+                if x[-1] == y[0] and no_cycle(x, y))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{path\_product} in wgc (Python)}
+\label{fig:pathproduct.wgc.python}
+\end{figure}
+In \texttt{path\_product} werden die nächsten Schritte, die von \texttt{p} aus nach \texttt{q} 
+erreichbar sind zurückgegeben.
+
+Wie sich leicht erkennen lässt, sind diese beiden Implementierungen gleich. Das einzige, 
+das zu beachten ist, ist, dass das erste Element einer Liste in \textsc{SetlX} den Index 1 besitzt, 
+während es in Python unter dem Index 0 zu finden ist.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    noCycle := procedure(l1, l2) {
+        return #({ x : x in l1 } * { x : x in l2 }) == 1;
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{noCycle} in wgc (\textsc{SetlX})}
+\label{fig:nocycle.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def no_cycle(l1, l2):
+        length = len(Set(x for x in l1) * Set(x for x in l2))
+        return length == 1
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{no\_cycle} in wgc (Python)}
+\label{fig:nocycle.wgc.python}
+\end{figure}
+Die Funktion \texttt{no\_cycle} prüft, ob es zu Zyklen kommen kann, indem geprüft wie viele gleiche Elemente 
+in \texttt{l1} und \texttt{l2} enthalten sind. Nur wenn es nur ein Element, das in beiden Listen enthalten ist, 
+gibt, tritt kein Zyklus auf.
+
+Hier fällt auf, dass es nur syntaktische Unterschiede zwischen den beiden Implementierungen gibt.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    add := procedure(p, q) {
+        return p + [ q[2] ];
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{add} in wgc (\textsc{SetlX})}
+\label{fig:add.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def add(p, q):
+        return p + [q[1]]
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{add} in wgc (Python)}
+\label{fig:add.wgc.python}
+\end{figure}
+Die Rückgabe von \texttt{add} ist die Summe der Mengen \texttt{p} und \texttt{q}, wobei das erste Element von 
+\texttt{q} das letzte von \texttt{p} sein muss.
+
+An dieser Stelle muss wieder auf die unterschiedliche Indexierung der beiden Sprachen verwiesen werden. 
+Beide Methoden greifen auf das zweite Element von \texttt{q} zu, benötigen aber dafür unterschiedliche Indizes.
+
+Wgc ist in drei Bereiche aufgeteilt. Der erste Teil, der aus den eben beschriebenen Funktionen besteht, 
+beinhaltet die Methoden, die zur Problemlösung benötigt werden. Der zweite Teil, 
+der im Nachfolgenden beschrieben wird, beinhaltet den problemspezifischen Code. 
+Der letzte Teil behandelt die visuelle Darstellung der Lösung. 
+Auf diesen Teil wird nicht genauer eingegangen, da nur die Lösung von Problemen in der 
+theoretischen Informatik im Vordergrund steht. 
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    problem := procedure(s) {
+        return !("farmer" in s) &&
+               ("goat" in s && "cabbage" in s || 
+                "wolf" in s && "goat" in s);
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{problem} in wgc (\textsc{SetlX})}
+\label{fig:problem.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def problem(s):
+        return not 'farmer' in s and \
+               (('goat' in s and 'cabbage' in s) or 
+                ('wolf' in s and 'goat' in s))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{problem} in wgc (Python)}
+\label{fig:problem.wgc.python}
+\end{figure}
+Die Methode \texttt{problem} prüft, ob es bei dem Pfad \texttt{s} zu Problemen kommen kann. 
+Mit Problemen sind die Restriktionen in der Aufgabenstellung, wie beispielsweise der Wolf und die 
+Ziege dürfen nicht unbeaufsichtigt alleine sein, gemeint. 
+
+Hierzu ist nicht viel zu sagen, da beide Implementierungen bis auf die Syntax komplett gleich sind.
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    all := { "farmer", "wolf", "goat", "cabbage" };
+    p   := { s : s in 2 ** all | !problem(s) && !problem(all - s) };
+    r1  := { [s, s - b]: s in p, b in 2 ** s
+                       | s - b in p && "farmer" in b && #b <= 2
+           };
+    r2  := { [y, x] : [x, y] in r1 };
+    r   := r1 + r2;
+    
+    start := all;
+    goal  := {};
+    
+    path  := findPath(start, goal, r);
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Lösung des wgc-Problems (\textsc{SetlX})}
+\label{fig:solution.wgc.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    wgc_all = Set('farmer', 'wolf', 'goat', 'cabbage')
+    p       = Set(s for s in 2 ** wgc_all if not problem(s)
+                            and not problem(wgc_all - s))
+    r1      = Set([s, s - b] for s in p for b in 2 ** s
+                        if (s - b) in p and 'farmer' in b and 
+                           len(b) <= 2)
+    r2      = Set([y, x] for [x, y] in r1)
+    
+    r       = r1 + r2
+    start   = wgc_all
+    goal    = Set()
+    path    = find_path(start, goal, r)
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Lösung des wgc-Problems (Python)}
+\label{fig:solution.wgc.python}
+\end{figure}
+Da nun alle benötigten Funktionen definiert sind, kann das Problem in Angriff genommen werden. 
+Die Menge \texttt{wgc\_all} wurde anders benannt als in \textsc{SetlX}, da \texttt{all()} bereits eine 
+eingebaute Funktion in Python ist. In der Menge befinden sich die Bezeichnungen der Elemente, 
+die in der Problemstellung beschrieben wurden. In \texttt{p} werden daraufhin alle möglichen 
+Kombinationen der Elemente in \texttt{wgc\_all}, die zu keinen Problemen führen, festgehalten. 
+In \texttt{r1} findet man alle Möglichkeiten, in denen der Bauer eine Situation in \texttt{p} mit 
+einem weiteren Element oder alleine verlässt. Die Menge \texttt{r} wird aus einer Vereinigung von 
+\texttt{r1} und \texttt{r2} (dem Inversen von \texttt{r1}) gebildet. Nun kann ein möglicher Lösungspfad 
+mit \texttt{find\_path()} ermittelt werden, indem als Start \texttt{wgc\_all}, als Ziel eine leere Menge und als mögliche Pfade \texttt{r} übergeben werden.
+
+Im Allgemeinen kann gesagt werden, dass dieses Programm mit Hilfe der Set-Implementierung sehr gut in Python nachkonstruiert werden konnte. Im Python-Skript sind nur wenige Abweichungen auffindbar. 
 
 \subsection{8 Damen Problem}

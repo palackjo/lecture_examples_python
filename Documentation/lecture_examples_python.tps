@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=LaTeXView
 Document=lecture_examples_python.tex
 
 [Frame0_View0,0]
-TopLine=0
-Cursor=140
+TopLine=6
+Cursor=308
 
 [Frame1]
 Flags=0
@@ -29,7 +29,7 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=BibTeXView
 Document=literature.bib
@@ -47,7 +47,7 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=LaTeXView
 Document=einleitung.tex
@@ -65,7 +65,7 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=LaTeXView
 Document=warum_python.tex
@@ -83,7 +83,7 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=LaTeXView
 Document=nur_python.tex
@@ -101,14 +101,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1044
+NormalPos.right=1120
 NormalPos.bottom=228
 Class=LaTeXView
 Document=modul_lecture.tex
 
 [Frame5_View0,0]
-TopLine=0
-Cursor=27611
+TopLine=889
+Cursor=43659
 
 [SessionInfo]
 FrameCount=6

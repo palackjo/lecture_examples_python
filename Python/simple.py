@@ -17,6 +17,6 @@ print('%s - %s = %s' % (a, b, c))
 c = 2 ** a
 print('2 ** %s = %s' % (a, c))
 
-print('(%s in %s) = %s' % (a, b, a in b))
+print('%s <= %s = %s' % (a, b, a <= b))
 
 print('1 in %s = %s' % (a, 1 in a))

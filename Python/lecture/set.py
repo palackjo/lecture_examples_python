@@ -4,11 +4,6 @@ import copy
 
 from sortedcontainers import SortedListWithKey
 
-if __name__ == '__main__':
-    from util import is_number, Sorter, TreeMap
-else:
-    from .util import is_number, Sorter, TreeMap
-
 
 def gen_set_key(value):
     return value.set

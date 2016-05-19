@@ -6,15 +6,29 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Einfache Summenberechnung in Python}}{6}{figure.3.2}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Fehler bei Mengen in Mengen}}{7}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Ausschnitt aus \texttt {diff()} (\textsc {SetlX})}}{9}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Ausschnitt aus \texttt {diff()} (Python)}}{9}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces \texttt {findPath} im Schiebepuzzle (\textsc {SetlX})}}{10}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \texttt {find\_path} im Schiebepuzzle (Python)}}{11}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces \texttt {nextStates} im Schiebepuzzle (\textsc {SetlX})}}{11}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces \texttt {next\_states} im Schiebepuzzle (Python)}}{11}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces \texttt {moveDir} im Schiebepuzzle (\textsc {SetlX})}}{12}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces \texttt {move\_dir} im Schiebepuzzle (Python)}}{12}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces \texttt {findBlank} im Schiebepuzzle (\textsc {SetlX})}}{12}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces \texttt {find\_blank} im Schiebepuzzle (Python)}}{13}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces \texttt {createValuation} in Watson (\textsc {SetlX})}}{14}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces \texttt {create\_valuation} in Watson (Python)}}{14}{figure.4.13}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Nutzung von Mengen in \textit {simple.stlx}}}{10}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Nutzung von Mengen in simple.py}}{10}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Ausschnitt aus \texttt {diff()} (\textsc {SetlX})}}{11}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Ausschnitt aus \texttt {diff()} (Python)}}{11}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \texttt {findPath} im Schiebepuzzle (\textsc {SetlX})}}{13}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \texttt {find\_path} im Schiebepuzzle (Python)}}{13}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \texttt {nextStates} im Schiebepuzzle (\textsc {SetlX})}}{14}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \texttt {next\_states} im Schiebepuzzle (Python)}}{14}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \texttt {moveDir} im Schiebepuzzle (\textsc {SetlX})}}{14}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \texttt {move\_dir} im Schiebepuzzle (Python)}}{14}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \texttt {findBlank} im Schiebepuzzle (\textsc {SetlX})}}{15}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces \texttt {find\_blank} im Schiebepuzzle (Python)}}{15}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces \texttt {createValuation} in Watson (\textsc {SetlX})}}{16}{figure.4.14}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces \texttt {create\_valuation} in Watson (Python)}}{16}{figure.4.15}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces \texttt {findPath} in wgc (\textsc {SetlX})}}{17}{figure.4.16}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces \texttt {find\_path} in wgc (Python)}}{17}{figure.4.17}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces \texttt {pathProduct} in wgc (\textsc {SetlX})}}{18}{figure.4.18}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces \texttt {path\_product} in wgc (Python)}}{18}{figure.4.19}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \texttt {noCycle} in wgc (\textsc {SetlX})}}{18}{figure.4.20}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces \texttt {no\_cycle} in wgc (Python)}}{18}{figure.4.21}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces \texttt {add} in wgc (\textsc {SetlX})}}{19}{figure.4.22}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces \texttt {add} in wgc (Python)}}{19}{figure.4.23}
+\contentsline {figure}{\numberline {4.24}{\ignorespaces \texttt {problem} in wgc (\textsc {SetlX})}}{19}{figure.4.24}
+\contentsline {figure}{\numberline {4.25}{\ignorespaces \texttt {problem} in wgc (Python)}}{19}{figure.4.25}
+\contentsline {figure}{\numberline {4.26}{\ignorespaces L\"osung des wgc-Problems (\textsc {SetlX})}}{20}{figure.4.26}
+\contentsline {figure}{\numberline {4.27}{\ignorespaces L\"osung des wgc-Problems (Python)}}{20}{figure.4.27}

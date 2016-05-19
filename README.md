@@ -15,12 +15,11 @@ To run the lecture scripts the version 1.4.4 of the python package _sortedcontai
 Lecture represents the python package containing helper functions and classes, to manage and support special setlX features that are not given in python
 
 ## Python
-### dif.py
-currently encountering problems with the import. We are working on this issue.
+### diff.py
+tested and working
 
 ### find_path.py
 tested and working
-_This script will be edited to use sets instead of lists._
 
 ### fixpoint.py
 tested and working
@@ -39,11 +38,9 @@ tested and working
 
 ### path.py
 tested and working
-_This script will be edited to use sets instead of lists._
 
 ### path_cyclic.py
 tested and working
-_This script will be edited to use sets instead of lists._
 
 ### poker_triple_lists.py
 tested and working
@@ -70,10 +67,10 @@ tested and working
 tested and working
 
 ### puzzle.py
-there is a new version to this script available. Will be commited soon.
+tested and working
 
 ### simple.py
-this script is currently encountering issues at the computation of a power set. We are working on this issue.
+tested and working
 
 ### simple_tupele.py
 tested and working
@@ -105,13 +102,12 @@ _attention! do not raise the number of queens to be calculated, the calculation 
 
 ### transitive_closure.py
 tested and working
-_This script will be edited to use sets instead of lists._
 
 ### watson.py
-The script watson.py doesn't work yet. The used syntax for matches in Python is just an idea what they could look like. Matches are currently being implemented.
+tested and working
 
 ### wolf_goat_cabbage.py
-this script is currently encountering issues at the computation of a power set. We are working on this issue.
+tested and working
 
 
 ## Testing 
@@ -121,3 +117,7 @@ The subdirectory "test_results" contains the results of the single scripts.
 These are needed to be able to compare the actual results with desired results. 
 The actual results of an execution of each script are in that subdirectory. 
 The testing script can be used by giving it the parameter "create" or "compare".
+
+
+## Documentation
+There are two versions of the documentation. A tex-version can be found in this directory, whilst there also is a word-version which can be found beneath the directory in "Word_Files". Both versions also have a pdf-output, which is oftenly updated. It might be that the word-version is a bit newer than the tex-version, because the word file is also used as a draft.
