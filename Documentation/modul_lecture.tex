@@ -1,34 +1,32 @@
 \chapter{Python Modul lecture}
 
 Das Verhalten der Mengen in \textsc{SetlX} ist in einigen Bereichen anders als bei den Mengen in Python. 
-Die Mengen in Python dürfen nur gewisse Werte enthalten, wobei einige wichtige Datentypen nicht 
-unterstützt werden. Zusätzlich werden auch gewisse Funktionen von den Python-Mengen nicht unterstützt, 
+Die Mengen in Python dürfen nur gewisse Werte enthalten, diese müssen unveränderbar sein. Zusätzlich werden auch gewisse Funktionen von den Python-Mengen nicht unterstützt, 
 die in \textsc{SetlX} häufig verwendet werden. Aus diesen Gründen wurde das Python Modul lecture im 
 Rahmen dieser Studienarbeit angefertigt. 
 
-Ein großes Problem, das sehr früh erkannt wurde, ist, dass die Mengen in Python nur hashbare Werte in 
-einer normalen Menge hinterlegt werden dürfen. Somit ist es beispielsweise verboten normale Mengen in 
-Mengen zu hinterlegen. Diese Strukturen finden in den \textsc{SetlX} Programmen, die in diversen 
-Vorlesungen gezeigt werden, öfter Anwendung, jedoch gibt es in Python den Fehler, der in 
-Abbildung~\ref{fig:set.error} zu sehen ist. Zwar können anstelle der „normalen“ sets frozensets 
-verwendet werden, allerdings können die Elemente in der Menge nicht geändert werden, weil die Mengen, 
-wie der Name es bereits impliziert, eingefroren sind. Die Unveränderbarkeit der Mengenelemente ist von 
+Ein großes Problem, das sehr früh erkannt wurde, ist, dass die Mengen in Python auf den Hashwerten
+der enthaltenen Elemente operieren. Somit ist es beispielsweise verboten Mengen in 
+Mengen zu hinterlegen, da diese verändert werden könnten und somit der alte Hashwert ungültig werden würde. Diese Funktionalität wird jedoch in den \textsc{SetlX} Programmen, der 
+Vorlesungen mehrfach verwendet. Während analoge Python-Skripte den in 
+Abbildung~\ref{fig:set.error} gezeigten Fehler zurückgeben. Zwar könnten bereits vorhandene sets in frozensets 
+umgewandelt werden um Mengen in Mengen zu ermöglichen. Allerdings würden auch hier die umgewandelten Mengen nicht mehr geändert werden können, da die Mengen nur so ihren Hashwert beibehalten. 
+Die Unveränderbarkeit der Mengenelemente ist von 
 Python bewusst gewählt. Eine Änderung wird durch die Art der Abspeicherung bereits verhindert. 
 Den Elementen einer Menge werden Hashwerte zugewiesen und sobald diese feststehen dürfen sich die 
 Elemente nicht mehr ändern, da das unmittelbar eine neue Hashberechnung verlangen würde. 
 Eine weitere Möglichkeit wäre die Verwendung von Listen, anstelle von Mengen. Prinzipiell ist das in 
 einigen Python-Übersetzungen der \textsc{SetlX} Programme möglich und wurde so auch teilweise umgesetzt. 
 Es werden andere Datentypen verwendet um die Informationen zu hinterlegen, meist Listen statt Mengen, 
-da für die Ausführung der \textsc{SetlX}-Programme keine besonderen Eigenschaften der Mengen verwendet werden. 
+da für die Ausführung einiger der \textsc{SetlX}-Programme keine besonderen Eigenschaften der Mengen verwendet werden. 
 Ein großes Problem an dieser Lösung ist allerdings, dass Listen nun mal keine Mengen sind und sobald 
 Mengeneigenschaften oder Mengenoperatoren, die nicht für Listen gelten, verwendet werden, Listen eher 
 ungeeignet sind. Der Workaround, besondere Funktionen für die Listen zu schreiben, um das Verhalten von 
 Mengen zu imitieren, wurde auch als Ansatz bedacht, allerdings nach einigen kleinen 
-Beispielübersetzungen wieder verworfen. Eine wichtige Anforderung, die Erhaltung der Eleganz konnte 
-nicht immer erfüllt werden. Somit war dies keine Lösung, die so für alles verwendet werden kann. 
-Die Funktionen, die implementiert werden mussten waren das Entfernen von Duplikaten aus einer Liste, 
-so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzmenge (wobei jedoch 
-eigentlich die „Potenzliste“ ermittelt wurde).
+Beispielübersetzungen wieder verworfen. Da eine wichtige Anforderung, die Erhaltung der Eleganz 
+nicht erfüllt werden konnte. Somit war dies keine Lösung, die so für alles verwendet werden kann. 
+Beispiele für die benötigten Funktionen, die implementiert werden mussten waren das Entfernen von Duplikaten aus einer Liste, 
+so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzmenge.
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -51,15 +49,15 @@ eigentlich die „Potenzliste“ ermittelt wurde).
 \end{figure}
 Allerdings sind die Mengen nicht der einzige Grund, warum das Modul benötigt wird. 
 Ein in \textsc{SetlX} sehr hilfreiches Konstrukt, namens \texttt{match}, wird in Python nicht 
-wiedergefunden. Dessen Syntax ist an die sehr bekannte switch-case-Syntax angelehnt, welches auch nicht 
-in Python enthalten ist. 
-Matches können vier verschiedene Datentypen verwendet werden: Strings, Listen, Mengen und Terme. 
+wiedergefunden. Dessen Syntax ist an die sehr bekannte Switch-Case-Syntax angelehnt, welche 
+in Python nicht enthalten ist. 
+Bei Matches können vier verschiedene Datentypen verwendet werden: Strings, Listen, Mengen und Terme. 
 Das Matchen von Strings, Listen und Mengen kann für das Erkennen des ersten Zeichens und dem Rest 
-oder auch das Herauspicken von Paaren verwendet werden. In dem SetlX-Tutorial wird das Matching zur 
+oder auch das Herauspicken von Paaren verwendet werden. In dem SetlX-Tutorial beispielsweise wird das Matching zur 
 Generierung des Inversen oder das Erstellen einer sortierten Liste aus einer Menge 
 verwendet.~\cite{StroetmannHerrmann15}
 
-Die interessanteste Anwendung von Matches ist jedoch, wenn Terme verwendet werden. Die 
+Die interessanteste Anwendung von Matches findet sich jedoch, bei Termen. Die 
 \begin{quotation}
 	[\dots]Art von Matchen [in \textsc{SetlX}] ist ähnlich zum Matching das in den Programmiersprachen Prolog und ML gegeben ist.
 \end{quotation}~\cite{StroetmannHerrmann15}
@@ -69,7 +67,7 @@ Dieses Matching wird auch in einigen Programmen der Logik-Vorlesung, die als Gru
 In den Vorlesungs-Programmen, die im Fokus dieser Arbeit stehen, werden häufig Mengen, sowie Ausdrücke 
 aus der Mengenlehre sehr ähnlich zur mathematischen Darstellung verwendet. Neben den Mengenoperationen 
 werden zusätzlich diverse Eigenschaften von Mengen implementiert. Beispielsweise wird genutzt, dass 
-Mengen keine Duplikate enthalten und die beliebige Reihenfolge wird verwendet. In \textsc{SetlX} wird 
+Mengen keine Duplikate enthalten. In \textsc{SetlX} wird 
 eine Sortierung der Elemente durchgeführt, wodurch Vorteile in der Programmierung entstehen.
 
 Um die Mengen, wie sie in den \textsc{SetlX}-Programmen verwendet werden, auch in Python verwenden zu 
@@ -77,7 +75,7 @@ können wurden eigene Mengen implementiert, die alle notwendigen Aufgaben erfülle
 
 Als Grundlage für die Mengen wird der Datentyp SortedListWithKey aus dem Modul sortedcontainers verwendet.
 Das Besondere an SortedListWithKey ist, dass es sich nicht nur um sortierte Listen handelt, 
-sondern die Möglichkeit besteht festzulegen nach welcher Eigenschaft das Objekt sortiert werden sollen. 
+sondern die Möglichkeit besteht festzulegen nach welcher Eigenschaft die Listen-Objekte sortiert werden sollen. 
 Unter dem Schlüssel einer SortedListWithKey wird diese Eigenschaft hinterlegt und kann auch dort 
 eingesehen werden. In diesem Fall sind die sortierten Listen, die die Elemente der Sets enthalten, 
 als Key eingetragen. 
@@ -155,6 +153,7 @@ Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \te
 \caption{Funktionen für Sets}
 \label{tab:set.functions}
 \end{table}
+An dieser Stelle muss noch bemerkt werden, dass die Selektion des i-ten Elements einer Menge auch das Array Slicing (z.B. [1:2]), wie es von Python bekannt ist, unterstützt. 
 Mit diesen Operatoren und Funktionen können alle Aufgabestellungen, die in der Vorlesung zur theoretischen 
 Informatik vorkommen, bewältigt werden. Im Nachfolgenden wird eine Anwendung der Mengenoperatoren gezeigt. 
 Das \textsc{SetlX}-Programm, das die Grundlage bietet, wird den Studenten gezeigt, damit sie ein Gefühl 
@@ -230,7 +229,7 @@ dafür bekommen, welche Operation welche Resultate liefert.
 In den Beispielen, die in Abbildung~\ref{fig:simple.stlx} und in Abbildung~\ref{fig:simple.py} zu sehen sind, 
 werden einige Operatoren sowohl in \textsc{SetlX}, als auch in Python dargestellt. 
 Zuerst werden die Vereinigung, der Schnitt und die Differenz zweier Mengen gebildet. 
-Daraufhin die Bildung einer Potenzmenge, der Prüfung einer Teilmengen-Relation und die Prüfung, 
+Daraufhin die Bildung einer Potenzmenge, die Prüfung einer Teilmengen-Relation und die Prüfung, 
 ob ein Element sich in einer Menge befindet, gezeigt. 
 
 Die Syntax zur Erzeugung einer Menge unterscheidet sich bereits, allerdings sind alle Operatoren 
@@ -259,8 +258,8 @@ Da die Funktion auf einem erzeugten MatchParser ausgeführt wird, sind nur die Va
 und \texttt{value} für den Anwender interessant. 
 Unter \texttt{scheme} wird der zu parsende Ausdruck gegeben und \texttt{value} enthält den Wert nach dem 
 gematched werden soll. 
-Wichtig hierbei ist, dass nur nach Strings gematched wird, 
-während Matches in \textsc{SetlX} auch Operatoren und Variablen erkennen. 
+Wichtig hierbei ist, dass das Matching nur auf Strings basierend ausgeführt werden kann, 
+während Matches in \textsc{SetlX} auch die Verwendung von Literals und die direkte Operation auf den Ausgaben ermöglicht. 
 Dieser Unterschied ist bei einem direkten Vergleich im Code sofort erkennbar. 
 Im Nachfolgenden wird ein Match-Konstrukt, das mathematische Funktionen ableiten soll, 
 in \textsc{SetlX}, mit der neuen Struktur, wie sie in Python entwickelt wurde, verglichen.
@@ -652,7 +651,87 @@ Oftmals werden Rechner für einfachere Rechenoperationen verwendet, für die ein M
 Logik getätigt hat. Für die Entwickler wird es interessant, wenn der Rechner auch komplexe Zusammenhänge erkennen 
 soll. Dieses Umfeld ist als künstliche Intelligenz bekannt und stellt neue Herausforderungen dar.
 
-Die Aufgabe Watson soll anhand von gegebenen Tatsachen einen Mordfall lösen. 
+Die Aufgabe Watson soll anhand von gegebenen Tatsachen den oder die Täter aus drei Verdächtigen herausfinden. 
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    evaluate := procedure(f, i) {
+        match (f) {
+            case true:         return true;
+            case false:        return false;
+            case ^variable(p): return i[p];
+            case !g:           return !evaluate(g, i);
+            case g && h:     return  evaluate(g, i) && evaluate(h, i);
+            case g || h:     return  evaluate(g, i) || evaluate(h, i);
+            case g => h:     return  evaluate(g, i) => evaluate(h, i);
+            case g <==> h:   return  evaluate(g, i) == evaluate(h, i);
+            default:      abort("syntax error in evaluate($f$, $i$)");
+        }
+    };
+
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{evaluate} in Watson (\textsc{SetlX})}
+\label{fig:eval.watson.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def evaluate(f, i):
+        match = Match()
+        if match.is_variable(f):
+            return i[f]
+        elif match.match('!g', f):
+            return not evaluate(match.values['g'], i)
+        elif match.match('g && h', f):
+            return evaluate(match.values['g'], i) and
+               evaluate(match.values['h'], i)
+        elif match.match('g || h', f):
+            return evaluate(match.values['g'], i) or 
+                   evaluate(match.values['h'], i)
+        elif match.match('g => h', f):
+            return not(evaluate(match.values['g'], i)) or 
+                       evaluate(match.values['h'], i)
+        elif match.match('g <==> h', f):
+            return evaluate(match.values['g'], i) == 
+                   evaluate(match.values['h'], i)
+        else:
+            raise SyntaxError('Syntax error in evaluate(%s,%s)' % 
+                              (f, i))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{evaluate} in Watson (Python)}
+\label{fig:eval.watson.python}
+\end{figure}
+
+Die Methode \texttt{evaluate} wird bereits am Anfang des Programms definiert und gibt an, 
+wie verschiedene Ausdrücke ausgewertet werden sollen. Es sind ein paar kleine Unterschiede 
+in beiden Umsetzungen zu erkennen. In der Python-Implementierung werden \texttt{True} und 
+\texttt{False} nicht als Ausdrücke behandelt. Das liegt daran, dass die Schlüsselwörter „True“ 
+und „False“ in der Match-Implementierung nicht eingetragen sind und es somit zu Problemen kam, 
+dass alle Variablen in diese Fälle gelaufen sind. Außerdem hat das Herauslassen dieser beiden 
+Fälle keine negativen Auswirkungen auf die Ausführung des Skripts. Wenn der Ausdruck \texttt{g => h} 
+gelesen wird, wird in \textsc{SetlX} die eingebaute Implikation aufgerufen. Da Python keinen 
+Implikations-Operator besitzt, wird an dieser Stelle die Umschreibung für diesen Junktor verwendet. 
+Die Implikation von \texttt{g} und \texttt{h} kann auch als $\neg g \vee h$ geschrieben werden.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -695,12 +774,78 @@ ob es sich auch in \texttt{m} befindet. In \texttt{create\_valuation} wird das g
 allerdings befinden sich die Tupel in einer Liste. Die Struktur wurde so gewählt, 
 da zu einem späteren Verlauf aus einer solchen Menge/Liste der Wahrheitswert \texttt{(x in m)} 
 durch das Aufrufen aus der Liste, anhand der Bezeichnung des Elements abgefragt wird. 
-In Python ist das mit einem Dictionary möglich, jedoch unterstützen die im lecture-Modul implementierten 
-Sets die Sortierung von Dictionaries nicht. Das heißt dass keine Dictionaries in Sets möglich sind. 
+In Python ist das mit einem Dictionary möglich, jedoch unterstützt Python eine Sortierung von Dictionaries nicht, 
+weshalb diese nicht in die Sets eingefügt werden können. Das heißt dass keine Dictionaries in Sets möglich sind. 
 Die Struktur, Paare (zweistellige Tupel) in Listen zu hinterlegen, können allerdings über den 
 \texttt{dict()}-Befehl in ein Dictionary konvertiert werden. 
 Somit wird die Liste zum Abspeichern in einem Set verwendet und sobald die Valuation wieder ausgelesen wird, 
-wird diese als Dictionary weiter verwendet.
+wird diese als Dictionary weiterverwendet.
+
+Nun werden die Tatsachen, die zu dem Mordfall bekannt sind, als Strings von booleschen Ausdrücken eingelesen. In SetlX werden diese über den parse-Befehl in Variablen gelesen, während in Python die Strings direkt in die Variablen f1 bis f6 gespeichert werden.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    fs := { f1, f2, f3, f4, f5, f6 };
+    v  := { "a", "b", "c" };
+    p := 2 ** v;
+    print("p = ", p);
+    b  := { createValuation(m, v) : m in p };
+    s  := { i : i in b | forall (f in fs | evaluate(f, i)) };
+    print("Set of all valuations satisfying all facts: ", s);
+    if (#s == 1) {
+        i := arb(s);
+        offenders := { x : x in v | i[x] };
+        print("Set of offenders: ", offenders);
+    }
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Lösung von Watson (\textsc{SetlX})}
+\label{fig:solution.watson.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    fs = [f1, f2, f3, f4, f5, f6]
+    v = Set('a', 'b', 'c')
+    p = 2 ** v
+    print('p = ', p)
+    b = Set(create_valuation(m, v) for m in p)
+    s = [dict(i) for i in b if all(evaluate(f, dict(i)) for f in fs)]
+    print('List of all valuations satisfying all facts: ', s)
+    if len(s) == 1:
+        i = s[0]
+        offenders = [x for x in v if i[x]]
+        print('List of offenders: ', offenders)
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{Lösung von Watson (Python)}
+\label{fig:solution.watson.python}
+\end{figure}
+Die Tatsachen werden alle in einer Liste/Menge gespeichert und die Täter, als Buchstaben „a“, „b“ und „c“, 
+in einer Menge abgelegt. Daraufhin wird die Potenzmenge der Täter gebildet, in der alle möglichen 
+Täter-Kombinationen enthalten sind und Wahrheitswerte den Variablen zugewiesen. Bei der Ermittlung, 
+welche Täterkombinationen möglich sind, wird in \textsc{SetlX} die Funktion \texttt{forall} und in Python 
+\texttt{all} verwendet. Beide Funktionen geben nur dann \texttt{True} zurück, wenn alle Elemente der angegebenen 
+Liste/Menge ebenfalls den Wahrheitswert \texttt{True} besitzen. In Python werden die Variable-Boolean-Paare in 
+Dictionaries gespeichert, um den Aufruf für \texttt{evaluate} und die Ausgabe zu erleichtern. Zuletzt wird das 
+Ergebnis noch ausgegeben.
 
 \subsection{Wolf Ziege Kohl}
 Bei der Wolf-Ziege-Kohl-Aufgabe besteht die Herausforderung darin, dass ein Bauer einen Wolf, 

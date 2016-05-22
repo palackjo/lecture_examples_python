@@ -3,7 +3,9 @@ from lecture.util import Match
 
 def evaluate(f, i):
     match = Match()
-    if match.match('!g', f):
+    if match.is_variable(f):
+        return i[f]
+    elif match.match('!g', f):
         return not evaluate(match.values['g'], i)
     elif match.match('g && h', f):
         return evaluate(match.values['g'], i) and evaluate(match.values['h'], i)
@@ -13,8 +15,6 @@ def evaluate(f, i):
         return not(evaluate(match.values['g'], i)) or evaluate(match.values['h'], i)
     elif match.match('g <==> h', f):
         return evaluate(match.values['g'], i) == evaluate(match.values['h'], i)
-    elif match.is_variable(f):
-        return  i[f]
     else:
         raise SyntaxError('Syntax error in evaluate(%s,%s)' % (f, i))
 
