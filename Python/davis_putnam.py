@@ -16,17 +16,15 @@ def davis_putnam(clauses, literals):
     return davis_putnam(s + Set(Set(not_l)), literals + Set(l, not_l))
 
 
-def saturate(clauses):
-    s = clauses
+def saturate(s):
     units = Set(k for k in s if len(k) == 1)
-    used = Set()
+    used  = Set()
     while len(units) != 0:
-        unit = units.arb()
+        unit  = units.arb()
         used += Set(unit)
-        l = unit.arb()
-        s = _reduce(s, l)
-        temp = Set(k for k in s if len(k) == 1)
-        units = temp - used
+        l     = unit.arb()
+        s     = _reduce(s, l)
+        units = Set(k for k in s if len(k) == 1) - used
     return s
 
 

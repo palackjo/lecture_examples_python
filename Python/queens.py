@@ -74,7 +74,7 @@ def solve(n):
 
 
 start_time   = timeit.default_timer()
-solve(5)
+solve(8)
 stop_time    = timeit.default_timer()
 
 time_elapsed = stop_time - start_time

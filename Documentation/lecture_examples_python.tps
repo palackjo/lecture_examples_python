@@ -17,7 +17,7 @@ Class=LaTeXView
 Document=modul_lecture.tex
 
 [Frame0_View0,0]
-TopLine=826
+TopLine=828
 Cursor=44142
 
 [Frame1]
