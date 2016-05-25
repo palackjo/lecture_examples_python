@@ -1,32 +1,38 @@
 \chapter{Python Modul lecture}
 
 Das Verhalten der Mengen in \textsc{SetlX} ist in einigen Bereichen anders als bei den Mengen in Python. 
-Die Mengen in Python dürfen nur gewisse Werte enthalten, diese müssen unveränderbar sein. Zusätzlich werden auch gewisse Funktionen von den Python-Mengen nicht unterstützt, 
+Die Mengen in Python dürfen nur gewisse Werte enthalten, diese müssen unveränderbar sein. 
+Zusätzlich werden auch gewisse Funktionen von den Python-Mengen nicht unterstützt, 
 die in \textsc{SetlX} häufig verwendet werden. Aus diesen Gründen wurde das Python Modul lecture im 
 Rahmen dieser Studienarbeit angefertigt. 
 
 Ein großes Problem, das sehr früh erkannt wurde, ist, dass die Mengen in Python auf den Hashwerten
 der enthaltenen Elemente operieren. Somit ist es beispielsweise verboten Mengen in 
-Mengen zu hinterlegen, da diese verändert werden könnten und somit der alte Hashwert ungültig werden würde. Diese Funktionalität wird jedoch in den \textsc{SetlX} Programmen, der 
+Mengen zu hinterlegen, da diese verändert werden könnten und somit der alte Hashwert ungültig werden würde. 
+Diese Funktionalität wird jedoch in den \textsc{SetlX} Programmen, der 
 Vorlesungen mehrfach verwendet. Während analoge Python-Skripte den in 
 Abbildung~\ref{fig:set.error} gezeigten Fehler zurückgeben. Zwar könnten bereits vorhandene sets in frozensets 
-umgewandelt werden um Mengen in Mengen zu ermöglichen. Allerdings würden auch hier die umgewandelten Mengen nicht mehr geändert werden können, da die Mengen nur so ihren Hashwert beibehalten. 
-Die Unveränderbarkeit der Mengenelemente ist von 
-Python bewusst gewählt. Eine Änderung wird durch die Art der Abspeicherung bereits verhindert. 
+umgewandelt werden um Mengen in Mengen zu ermöglichen. Allerdings würden auch hier die umgewandelten Mengen 
+nicht mehr geändert werden können, da die Mengen nur so ihren Hashwert beibehalten. Die Unveränderbarkeit 
+der Mengenelemente ist von Python dadurch bedingt, dass eine immer wiederkehrende Hashberechnung 
+vermieden werden möchte. Eine Änderung wird durch die Art der Abspeicherung bereits verhindert. 
 Den Elementen einer Menge werden Hashwerte zugewiesen und sobald diese feststehen dürfen sich die 
-Elemente nicht mehr ändern, da das unmittelbar eine neue Hashberechnung verlangen würde. 
-Eine weitere Möglichkeit wäre die Verwendung von Listen, anstelle von Mengen. Prinzipiell ist das in 
-einigen Python-Übersetzungen der \textsc{SetlX} Programme möglich und wurde so auch teilweise umgesetzt. 
-Es werden andere Datentypen verwendet um die Informationen zu hinterlegen, meist Listen statt Mengen, 
-da für die Ausführung einiger der \textsc{SetlX}-Programme keine besonderen Eigenschaften der Mengen verwendet werden. 
-Ein großes Problem an dieser Lösung ist allerdings, dass Listen nun mal keine Mengen sind und sobald 
-Mengeneigenschaften oder Mengenoperatoren, die nicht für Listen gelten, verwendet werden, Listen eher 
-ungeeignet sind. Der Workaround, besondere Funktionen für die Listen zu schreiben, um das Verhalten von 
-Mengen zu imitieren, wurde auch als Ansatz bedacht, allerdings nach einigen kleinen 
-Beispielübersetzungen wieder verworfen. Da eine wichtige Anforderung, die Erhaltung der Eleganz 
-nicht erfüllt werden konnte. Somit war dies keine Lösung, die so für alles verwendet werden kann. 
-Beispiele für die benötigten Funktionen, die implementiert werden mussten waren das Entfernen von Duplikaten aus einer Liste, 
-so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzmenge.
+Elemente nicht mehr ändern, da das unmittelbar eine neue Hashberechnung verlangen würde.
+ 
+Eine weitere Möglichkeit, das Problem der Mengen zu lösen, wäre die Verwendung von Listen, 
+anstelle von Mengen. Prinzipiell ist das in einigen Python-Übersetzungen der 
+\textsc{SetlX}-Programme möglich und wurde so auch teilweise umgesetzt. 
+Es werden andere Datentypen verwendet, um die Informationen zu hinterlegen, meist Listen statt Mengen, 
+da für die Ausführung einiger \textsc{SetlX}-Programme keine besonderen Eigenschaften 
+der Mengen benötigt werden. Ein großes Problem an dieser Lösung ist allerdings, 
+dass Listen nun mal keine Mengen sind und sobald Mengeneigenschaften oder Mengenoperatoren, 
+die nicht für Listen gelten, verwendet werden, Listen eher ungeeignet sind. Der Workaround, 
+besondere Funktionen für die Listen zu schreiben, um das Verhalten von Mengen zu imitieren, 
+wurde auch als Ansatz bedacht, allerdings nach einigen kleinen Beispielübersetzungen wieder verworfen. 
+Da eine wichtige Anforderung, die Erhaltung der Eleganz nicht erfüllt werden konnte. 
+Somit war dies keine Lösung, die global für alle Programme verwendet werden konnte. 
+Beispiele für die benötigten Funktionen, die implementiert werden mussten, um Mengeneigenschaften zu imitieren, waren das Entfernen von Duplikaten aus einer Liste, so wie die Ermittlung 
+der Differenz zweier Listen und die Ermittlung der Potenzmenge.
 
 \begin{figure}[!ht]
 \centering
@@ -49,7 +55,7 @@ so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzm
 \label{fig:set.error}
 \end{figure}
 
-Allerdings sind die Mengen nicht der einzige Grund, warum das Modul benötigt wird. 
+Allerdings sind Mengen nicht der einzige Grund, warum das Modul lecture benötigt wird. 
 Ein in \textsc{SetlX} sehr hilfreiches Konstrukt, namens \texttt{match}, wird in Python nicht 
 wiedergefunden. Dessen Syntax ist an die sehr bekannte Switch-Case-Syntax angelehnt, welche 
 in Python nicht enthalten ist. 
@@ -73,17 +79,18 @@ Mengen keine Duplikate enthalten. In \textsc{SetlX} wird
 eine Sortierung der Elemente durchgeführt, wodurch Vorteile in der Programmierung entstehen.
 
 Um die Mengen, wie sie in den \textsc{SetlX}-Programmen verwendet werden, auch in Python verwenden zu 
-können wurden eigene Mengen implementiert, die alle notwendigen Aufgaben erfüllen können.
+können wurde eine eigene Mengen Klasse implementiert, die alle notwendigen Funktionalitäten erfüllt.
 
-Als Grundlage für die Mengen wird der Datentyp SortedListWithKey aus dem Modul sortedcontainers verwendet.
-Das Besondere an SortedListWithKey ist, dass es sich nicht nur um sortierte Listen handelt, 
-sondern die Möglichkeit besteht festzulegen nach welcher Eigenschaft die Listen-Objekte sortiert werden sollen. 
-Unter dem Schlüssel einer SortedListWithKey wird diese Eigenschaft hinterlegt und kann auch dort 
-eingesehen werden. In diesem Fall sind die sortierten Listen, die die Elemente der Sets enthalten, 
-als Key eingetragen. 
+Zur internen Sicherung von Elementen innerhalb der Mengen wird der Datentyp SortedListWithKey aus dem 
+Modul sortedcontainers verwendet.Das Besondere an SortedListWithKey ist, dass es sich nicht nur 
+um sortierte Listen handelt, sondern die Möglichkeit besteht festzulegen nach welcher 
+Eigenschaft die Listen-Objekte sortiert werden sollen. In dem Schlüssel einer SortedListWithKey 
+wird diese Eigenschaft hinterlegt und kann auch dort eingesehen werden. Sodass bei Mengen die interne 
+SortedListWithKey zurückgegeben wird, da mengen sich nicht sortieren lassen, aufgrund der 
+Operator-Überladungen zur Anpassung an die \textsc{SetlX} Syntax. 
 
 In der Implementierung der Mengen werden für viele Operationen Operatoren verwendet, wobei versucht wurde 
-möglichst nahe der \textsc{SetlX}-Implementierung zu bleiben. Die Ähnlichkeit zu \textsc{SetlX} soll 
+möglichst nahe der \textsc{SetlX} Syntax zu bleiben. Die Ähnlichkeit zu \textsc{SetlX} soll 
 vorhanden sein, da diese bereits sehr mathematisch ist und somit sinnvoller zu lernen ist für die Studenten. 
 Die unterstützten mathematischen Operatoren sind in Tabelle~\ref{tab:math.operators} zu sehen.
 
@@ -128,11 +135,9 @@ Zusätzlich gibt es noch weitere Methoden, die nicht in der mathematischen Darste
 dennoch für typische mathematische Operationen verwendet werden. Diese werden anstatt in der 
 mathematischen Notation, wie Funktionen auf die Mengen ausgeführt. Außer diesen mathematischen 
 Funktionen können noch weitere, nicht-mathematische Operationen, wie beispielsweise die visuelle 
-Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \texttt{put}-, 
-beziehungsweise die \texttt{\_put}-Funktion. Diese sorgt dafür, dass keine Duplikate in ein 
-Set eingetragen werden können. Die \texttt{put}-Funktion ruft nur die \texttt{\_put}-Funktion 
-auf und ist somit keine neue Methode. In Tabelle~\ref{tab:set.functions} sind die restlichen 
-Mengen-Funktionen aufgelistet.
+Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \texttt{put}-Funktion. 
+Diese sorgt dafür, dass keine Duplikate in ein Set eingetragen werden können. 
+In Tabelle~\ref{tab:set.functions} sind die restlichen Mengen-Funktionen aufgelistet.
 
 \begin{table}
 \centering
@@ -152,7 +157,7 @@ Mengen-Funktionen aufgelistet.
 	\hline
 	\textbf{\texttt{random}} & Gibt ein zufälliges Element der Menge zurück \\
 	\hline
-	\textbf{\texttt{put/\_put}} & Fügt ein Element in die Menge ein \\
+	\textbf{\texttt{put}} & Fügt ein Element in die Menge ein \\
 	\hline
 	\textbf{\texttt{peek}} & Gibt das letzte Element der Menge zurück \\
 	\hline
@@ -254,28 +259,28 @@ wie die Operatoren eingesetzt werden können.
 
 \section{Matches}
 Die Implementierung der Match-Strukturen ist in dem lecture-Module unter dem Verzeichnis util in der 
-Datei \textit{parser.py} als Klasse mit dem Titel MatchParser zu finden. Für diese Klasse ist 
-es wichtig, dass, die auch im Modul util befindlichen Klassen, TokenType und Scanner, so wie die 
-Hilfsfunktion \texttt{is\_number} benötigt werden. TokenType enthält die IDs für die verschiedenen 
-Token-Arten die auftreten können, Scanner erstellt aus einem String eine Liste von Tokens und 
-\texttt{is\_number} überprüft ob eine Zahl an die Funktion übergeben wurde.
+Datei \textit{match.py} als Klasse Match zu finden.
 
-Der Parser erkennt gewisse Operatoren, Funktionen und Klammerungen. Die unterstützen Operatoren sind 
+Der Parser erkennt gewisse Operatoren, Funktionen und Klammerungen. Die unterstützten Operatoren sind: 
+
 „\texttt{+}“, „\texttt{-}“, „\texttt{*}“, „\texttt{/}“, „\texttt{\%}“, „\texttt{**}“, „\texttt{\&\&}“, 
 „\texttt{||}“, „\texttt{<}“, „\texttt{>}“, „\texttt{<=}“, „\texttt{>=}“, „\texttt{=>}“, „\texttt{<==>}“, 
-„\texttt{==}“, „\texttt{!=}“ und „\texttt{!}“. Die unterstützten Funktionen sind „\texttt{sin}“, 
-„\texttt{log}“, „\texttt{exp}“, „\texttt{cos}“, „\texttt{tan}“, „\texttt{asin}“, „\texttt{acos}“, 
-„\texttt{atan}“, „\texttt{sqrt}“ und „\texttt{ln}“. Die erkannte Klammerung besteht nur aus der runden 
-öffnenden Klammer „\texttt{(}“ und der runden schließenden Klammer „\texttt{)}“.
+„\texttt{==}“, „\texttt{!=}“ und „\texttt{!}“.
+
+ Die unterstützten Funktionen sind: 
+
+„\texttt{sin}“, „\texttt{log}“, „\texttt{exp}“, „\texttt{cos}“, „\texttt{tan}“, „\texttt{asin}“, 
+„\texttt{acos}“, „\texttt{atan}“, „\texttt{sqrt}“ und „\texttt{ln}“. 
+
+Es werden runde öffnende Klammern „\texttt{(}“ und runde schließende Klammern „\texttt{)}“ erkannt.
 
 Die wichtigste Funktion für den Benutzer ist \texttt{match(self, scheme, value)}. 
-Da die Funktion auf einem erzeugten MatchParser ausgeführt wird, sind nur die Variablen \texttt{scheme} 
+Da die Funktion auf einem erzeugten Match ausgeführt wird, sind nur die Variablen \texttt{scheme} 
 und \texttt{value} für den Anwender interessant. 
 Unter \texttt{scheme} wird der zu parsende Ausdruck gegeben und \texttt{value} enthält den Wert nach dem 
-gematched werden soll. 
-Wichtig hierbei ist, dass das Matching nur auf Strings basierend ausgeführt werden kann, 
-während Matches in \textsc{SetlX} auch die Verwendung von Literals und die direkte Operation auf den Ausgaben ermöglicht. 
-Dieser Unterschied ist bei einem direkten Vergleich im Code sofort erkennbar. 
+gematched werden soll. Wichtig hierbei ist, dass das Matching nur auf Strings basierend ausgeführt werden kann, 
+während Matches in \textsc{SetlX} auch die Verwendung von Literals und direkte Operationen auf den 
+Ausgaben ermöglicht. Dieser Unterschied ist bei einem direkten Vergleich im Code sofort erkennbar. 
 Im Nachfolgenden wird ein Match-Konstrukt, das mathematische Funktionen ableiten soll, 
 in \textsc{SetlX}, mit der neuen Struktur, wie sie in Python entwickelt wurde, verglichen.
 
@@ -350,7 +355,7 @@ In den Parametern der \texttt{format}-Funktion werden die Platzhalter gefüllt.
 Die Platzhalter mit dem Präfix „diff\_“ werden rekursiv Abgeleitet, wobei dem erneuten 
 \texttt{diff}-Aufruf die Werte, die im Match für die jeweilige Variable hinterlegt sind und das 
 „x“ weil nach x abgeleitet wird, übergeben werden. Wenn ein Platzhalter kein Präfix besitzt, 
-so werden nur die Werte aus dem Match herausgelesen und eingesetzt.
+so werden nur die Werte aus dem Match herausgelesen und eingesetzt und nicht zusätzlich evaluiert.
 
 \section{Übersetzung komplexerer Programme}
 Es wurden zwar einige \textsc{SetlX}-Programme in Python-Skripte übersetzt, allerdings werden in dieser 
@@ -568,19 +573,21 @@ und \texttt{dy} aufgeteilt wurden.
 \label{fig:movedir.puzzle.python}
 \end{figure}
 
-Die Methode \texttt{move\_dir} erhält dieselben Parameter wie in der Vorlage und gibt den nächsten Zustand zurück, 
-nachdem vom derzeitigen Zustand aus eine Bewegung in entweder die x- oder die y-Achse erfolgt. 
-Einer der Unterschiede zur ursprünglichen Umsetzung ist hier, wie zuvor bereits erwähnt wurde, dass die Richtung als 
-Tupel und nicht als Liste gewertet wird. (Siehe Abbildung~\ref{fig:movedir.puzzle.python} Zeile 2)
+Die Methode \texttt{move\_dir} erhält dieselben Parameter wie in der Vorlage und gibt den nächsten 
+Zustand zurück, nachdem vom derzeitigen Zustand aus eine Bewegung in entweder die x- oder die 
+y-Achse erfolgt. Einer der Unterschiede zur ursprünglichen Umsetzung ist hier, wie zuvor bereits 
+erwähnt wurde, dass die Richtung als Tupel und nicht als Liste gewertet wird. 
+(Siehe Abbildung~\ref{fig:movedir.puzzle.python} Zeile 2)
 
 Ein erheblicher Unterschied zwischen den beiden Implementierungen ist das initiale Setzen der Variable 
-\texttt{next\_state}. Während in \textsc{SetlX} der Parameter \texttt{state} dafür verwendet wird und eine einfache 
-Zuweisung erfolgt, muss in Python die \texttt{list()} Funktion auf alle Listen in \texttt{state} verwendet werden 
-(Abbildung~\ref{fig:movedir.puzzle.python} Zeile 3). Grund dafür ist, dass ansonsten die Referenzen übergeben werden 
-und somit dann die Werte von \texttt{state} ebenfalls geändert werden, wenn sie in \texttt{next\_state} bearbeitet 
-werden. Durch die \texttt{list()}-Funktion wird eine Kopie erzeugt und somit sind \texttt{next\_state} und state zwei 
+\texttt{next\_state}. Während in \textsc{SetlX} der Parameter \texttt{state} dafür verwendet wird und 
+eine einfache Zuweisung erfolgt, muss in Python die \texttt{list()} Funktion auf alle Listen in 
+\texttt{state} verwendet werden (Abbildung~\ref{fig:movedir.puzzle.python} Zeile 3). Grund dafür ist, 
+dass ansonsten die Referenzen übergeben werden und somit dann die Werte von \texttt{state} ebenfalls 
+geändert werden, wenn sie in \texttt{next\_state} bearbeitet werden. Durch die \texttt{list()}-Funktion 
+wird eine Kopie erzeugt und somit sind \texttt{next\_state} und state zwei 
 unabhängige Listen. \textsc{SetlX} erkennt an dieser Stelle intern, ob ein Objekt geändert wurde und erstellt 
-gegebenenfalls eine Kopie. Deshalb wird dieser Aufruf nur in der Python-Version benötigt. 
+eine Kopie falls nötig. Deshalb wird dieser Aufruf nur in der Python-Version benötigt. 
 
 \begin{figure}[!ht]
 \centering
@@ -629,13 +636,14 @@ gegebenenfalls eine Kopie. Deshalb wird dieser Aufruf nur in der Python-Version 
 \label{fig:findblank.puzzle.python}
 \end{figure}
 
-Damit in \texttt{next\_states} eine Zahl „bewegt“ werden kann, muss über \texttt{find\_blank} das freie Feld gefunden 
-werden. In der Vorlage wird in \texttt{findBlank} eine Menge erzeugt, die alle Reihen-Zeilen-Kombinationen enthält 
-und aus dieser einer der Werte, an denen der übergebene Zustand die 0 enthält, zurückgegeben. In dieser Arbeit wird 
-nur ein Tupel mit einem Reihen- und einem Zeilenwert, an denen der Zustand die Null enthält zurückgegeben. 
-Zu Vergleichszwecken ist die Funktion, so wie sie in Python geschrieben wurde, auch in \textsc{SetlX} implementiert. 
+Damit in \texttt{next\_states} eine Zahl „bewegt“ werden kann, muss über \texttt{find\_blank} das 
+freie Feld gefunden werden. In der Vorlage wird in \texttt{findBlank} eine Menge erzeugt, 
+die alle Reihen-Zeilen-Kombinationen enthält und aus dieser einer der Werte, an denen der übergebene 
+Zustand die 0 enthält, zurückgegeben. In dieser Arbeit wird nur ein Tupel mit einem Reihen- 
+und einem Zeilenwert, an denen der Zustand die Null enthält zurückgegeben. Zu Vergleichszwecken ist 
+die Funktion, so wie sie in Python geschrieben wurde, auch in \textsc{SetlX} implementiert. 
 In \textsc{SetlX} merkt man keine Unterschiede in der Performance. Diese Methode zeigt wie ähnlich der Code in 
-\textsc{SetlX} und Python sein können.
+\textsc{SetlX} und Python sein kann.
 
 Nachdem die Funktionen alle definiert sind ist der Ablauf komplett identisch zur Vorlage. 
 Es wird die Zeitmessung begonnen, der Start- und End-Zustand definiert, daraufhin der Pfad ermittelt und die 
@@ -751,9 +759,8 @@ Die Methode \texttt{evaluate} wird bereits am Anfang des Programms definiert und
 wie verschiedene Ausdrücke ausgewertet werden sollen. Es sind ein paar kleine Unterschiede 
 in beiden Umsetzungen zu erkennen. In der Python-Implementierung werden \texttt{True} und 
 \texttt{False} nicht als Ausdrücke behandelt. Das liegt daran, dass die Schlüsselwörter „True“ 
-und „False“ in der Match-Implementierung nicht eingetragen sind und es somit zu Problemen kam, 
-dass alle Variablen in diese Fälle gelaufen sind. Außerdem hat das Herauslassen dieser beiden 
-Fälle keine negativen Auswirkungen auf die Ausführung des Skripts. Wenn der Ausdruck \texttt{g => h} 
+und „False“ in der Match-Implementierung nicht eingetragen sind. Außerdem hat das Herauslassen dieser beiden 
+Fälle keine Auswirkungen auf die Ausführung des Skripts. Wenn der Ausdruck \texttt{g => h} 
 gelesen wird, wird in \textsc{SetlX} die eingebaute Implikation aufgerufen. Da Python keinen 
 Implikations-Operator besitzt, wird an dieser Stelle die Umschreibung für diesen Junktor verwendet. 
 Die Implikation von \texttt{g} und \texttt{h} kann auch als $\neg g \vee h$ geschrieben werden.
@@ -796,19 +803,21 @@ Die Implikation von \texttt{g} und \texttt{h} kann auch als $\neg g \vee h$ gesc
 \label{fig:cv.watson.python}
 \end{figure}
 
-Die Methode \texttt{createValuation} gibt eine Menge mit Tupel, die für jedes Element in \texttt{v} angeben, 
-ob es sich auch in \texttt{m} befindet. In \texttt{create\_valuation} wird das gleiche Resultat geliefert, 
-allerdings befinden sich die Tupel in einer Liste. Die Struktur wurde so gewählt, 
-da zu einem späteren Verlauf aus einer solchen Menge/Liste der Wahrheitswert \texttt{(x in m)} 
-durch das Aufrufen aus der Liste, anhand der Bezeichnung des Elements abgefragt wird. 
-In Python ist das mit einem Dictionary möglich, jedoch unterstützt Python eine Sortierung von Dictionaries nicht, 
-weshalb diese nicht in die Sets eingefügt werden können. Das heißt dass keine Dictionaries in Sets möglich sind. 
-Die Struktur, Paare (zweistellige Tupel) in Listen zu hinterlegen, können allerdings über den 
-\texttt{dict()}-Befehl in ein Dictionary konvertiert werden. 
-Somit wird die Liste zum Abspeichern in einem Set verwendet und sobald die Valuation wieder ausgelesen wird, 
-wird diese als Dictionary weiterverwendet.
+Die Methode \texttt{createValuation} gibt eine Menge mit Tupeln, die für jedes Element in \texttt{v} 
+angeben, ob es sich auch in \texttt{m} befindet, zurück. In \texttt{create\_valuation} wird 
+das gleiche Resultat geliefert, allerdings befinden sich die Tupel in einer Liste. 
+Die Struktur wurde so gewählt, da zu einem späteren Verlauf aus einer solchen Menge/Liste der 
+Wahrheitswert \texttt{(x in m)} durch das Aufrufen aus der Liste, anhand der Bezeichnung des 
+Elements abgefragt wird. In Python ist das mit einem Dictionary möglich, jedoch unterstützt 
+Python eine Sortierung von Dictionaries nicht, weshalb diese nicht in die Sets eingefügt werden können. 
+Das heißt dass keine Dictionaries in Sets möglich sind. Die Struktur, Key-Value-Paare (zweistellige Tupel) 
+in einer Liste zu hinterlegen, kann allerdings über den \texttt{dict()}-Befehl in ein Dictionary 
+konvertiert werden. Somit wird die Liste zum Abspeichern in einem Set verwendet und 
+sobald die Valuation wieder ausgelesen wird, wird diese als Dictionary weiterverwendet.
 
-Nun werden die Tatsachen, die zu dem Mordfall bekannt sind, als Strings von booleschen Ausdrücken eingelesen. In SetlX werden diese über den parse-Befehl in Variablen gelesen, während in Python die Strings direkt in die Variablen f1 bis f6 gespeichert werden.
+Nun werden die Tatsachen, die zu dem Mordfall bekannt sind, als Strings von Bedingungen eingelesen. 
+In \textsc{SetlX} werden diese über den parse-Befehl in Variablen gelesen, während in Python die 
+Strings direkt in die Variablen \texttt{f1} bis \texttt{f6} gespeichert werden.
 
 \begin{figure}[!ht]
 \centering
@@ -870,10 +879,10 @@ Die Tatsachen werden alle in einer Liste/Menge gespeichert und die Täter, als Bu
 in einer Menge abgelegt. Daraufhin wird die Potenzmenge der Täter gebildet, in der alle möglichen 
 Täter-Kombinationen enthalten sind und Wahrheitswerte den Variablen zugewiesen. Bei der Ermittlung, 
 welche Täterkombinationen möglich sind, wird in \textsc{SetlX} die Funktion \texttt{forall} und in Python 
-\texttt{all} verwendet. Beide Funktionen geben nur dann \texttt{True} zurück, wenn alle Elemente der angegebenen 
-Liste/Menge ebenfalls den Wahrheitswert \texttt{True} besitzen. In Python werden die Variable-Boolean-Paare in 
-Dictionaries gespeichert, um den Aufruf für \texttt{evaluate} und die Ausgabe zu erleichtern. Zuletzt wird das 
-Ergebnis noch ausgegeben.
+\texttt{all} verwendet. Beide Funktionen geben nur dann \texttt{True} zurück, wenn alle Elemente 
+der angegebenen Liste/Menge ebenfalls den Wahrheitswert \texttt{True} besitzen. In Python werden die 
+erzeugten Tupel in Dictionaries gespeichert, um den Aufruf für \texttt{evaluate} und die Ausgabe zu 
+erleichtern. Zuletzt wird das Ergebnis noch ausgegeben.
 
 \subsection{Wolf Ziege Kohl}
 Bei der Wolf-Ziege-Kohl-Aufgabe besteht die Herausforderung darin, dass ein Bauer einen Wolf, 
@@ -943,7 +952,7 @@ die Studenten anhand eines Programms lösen. Die Aufgabe wird auch als wolf-goat-
 Die Funktion \texttt{find\_path} ermittelt, ob es einen Pfad vom Knoten \texttt{x} zum Knoten 
 \texttt{y} innerhalb von \texttt{r} gibt und gibt diesen zurück, sofern er vorhanden ist. 
 In der Variable \texttt{p} befinden sich alle möglichen Pfade, die gefunden werden. 
-Pro Schleifendurchgang werden die nächst mögliche Pfadschritte berechnet und geprüft, 
+Pro Schleifendurchgang werden die nächst möglichen Pfadschritte berechnet und geprüft, 
 ob die Lösung sich danach bereits in \texttt{p} befindet. Die erste Abbruchbedingung tritt ein, 
 wenn die Lösung gefunden wurde. In dem Fall wird die Lösung zurückgegeben. Die zweite Abbruchbedingung ist, 
 wenn bei der Ermittlung des nächsten Schritts keine neuen Pfade entdeckt wurden. 
@@ -954,10 +963,10 @@ Die erste Abbruchbedingung wird syntaktisch anders formuliert. Während in \texts
 ob die Menge \texttt{found} nicht leer ist (Abbildung~\ref{fig:findpath.wgc.setlx} Zeile 7), 
 wird in Python geprüft ob \texttt{found} Elemente enthält (Abbildung~\ref{fig:findpath.wgc.python} Zeile 7). 
 Diese beiden Aussagen sind logischerweise dieselben. In der nächsten Zeile wird daraufhin in 
-\textsc{SetlX} ein beliebiges Element, während die Python-Implementierung immer das erste Element 
+\textsc{SetlX} ein beliebiges Element zurückgegeben, während die Python-Implementierung immer das erste Element 
 der Menge zurückgibt. Es wäre auch möglich die, in den Python Sets implementierte, 
 Funktion \texttt{arb()} aufzurufen, allerdings gibt diese auch nur das erste Element zurück. 
-Um das Skript einfach und übersichtlich zu halten, wurde das direkt Aufrufen des ersten Elements bevorzugt.
+Um das Skript einfach und übersichtlich zu halten, wurde das direkte Aufrufen des ersten Elements bevorzugt.
 
 \begin{figure}[!ht]
 \centering
@@ -1045,9 +1054,9 @@ während es in Python unter dem Index 0 zu finden ist.
 \label{fig:nocycle.wgc.python}
 \end{figure}
 
-Die Funktion \texttt{no\_cycle} prüft, ob es zu Zyklen kommen kann, indem geprüft wie viele gleiche Elemente 
-in \texttt{l1} und \texttt{l2} enthalten sind. Nur wenn es nur ein Element, das in beiden Listen enthalten ist, 
-gibt, tritt kein Zyklus auf.
+Die Funktion \texttt{no\_cycle} prüft, ob es zu Zyklen kommen kann, indem geprüft wird wie viele 
+gleiche Elemente in \texttt{l1} und \texttt{l2} enthalten sind. Nur wenn es nur ein Element, 
+das in beiden Listen enthalten ist, gibt, tritt kein Zyklus auf.
 
 Hier fällt auf, dass es nur syntaktische Unterschiede zwischen den beiden Implementierungen gibt.
 
@@ -1364,14 +1373,16 @@ In \texttt{saturate} werden alle Klauseln, die mit Unit-Schnitten aus \texttt{s}
 Hierbei werden die Klauseln, auf denen ein Unit-Schnitt bereits durchgeführt wurde, aus \texttt{s} entfernt.
 
 Hier ist auch wieder zu erkennen wie groß die Ähnlichkeit der beiden Implementierungen ist. 
-Bis auf syntaktische Unterschiede, wie beispielsweise der Aufruf von \texttt{arb} in Zeile 5 beider Umsetzungen, 
-gibt es keine Unterschiede. Die Methoden \texttt{\_reduce}, \texttt{select\_literal}, \texttt{is\_positive} und 
-\texttt{negate\_literal} sind ebenfalls nahezu identisch. Die enthaltenen Unterschiede, wie die Match-Syntax, 
-wurden bereits bei vorherigen Code-Schnipseln gezeigt und somit an dieser Stelle nicht wiederholt durchleuchtet. 
-Die Methode \texttt{\_reduce} hat einen Unterstrich als erstes Zeichen, das in es in Python bereits eine 
-Funktion mit der Bezeichnung \texttt{reduce} gibt.
+Bis auf syntaktische Unterschiede, wie beispielsweise der Aufruf von \texttt{arb} in Zeile 5 
+beider Umsetzungen, gibt es keine Unterschiede. Die Methoden \texttt{\_reduce}, 
+\texttt{select\_literal}, \texttt{is\_positive} und \texttt{negate\_literal} sind ebenfalls nahezu identisch. 
+Die enthaltenen Unterschiede, wie die Match-Syntax, wurden bereits bei vorherigen Code-Schnipseln gezeigt 
+und somit an dieser Stelle nicht wiederholt durchleuchtet. Die Methode \texttt{\_reduce} hat einen 
+Unterstrich als erstes Zeichen, da es in Python bereits eine Funktion mit der Bezeichnung 
+\texttt{reduce} gibt.
 
-Da damit der Davis-Putnam-Algorithmus implementiert ist, kann dieser nun in Queens (8 Damen Problem) verwendet werden.
+Da damit der Davis-Putnam-Algorithmus implementiert ist, kann dieser nun in Queens (8 Damen Problem) 
+verwendet werden.
 
 \begin{figure}[!ht]
 \centering
@@ -1566,8 +1577,8 @@ In \texttt{at\_most\_one\_in\_upper\_diagonal} ist die Umsetzung analog zu der i
 \end{figure}
 
 Beide Ausführungen von \texttt{all\_clauses} weisen wieder große Ähnlichkeiten auf. 
-Allerdings wird zur Ermittlung der Summe einer Menge in \textsc{SetlX} der Operator \texttt{+/}, 
-während in Python die Methode \texttt{sum} verwendet.
+Allerdings wird zur Ermittlung der Summe einer Menge in \textsc{SetlX} der Operator "`\texttt{+/}"' verwendet, 
+während in Python die Methode \texttt{sum} eingesetzt wird.
 
 \begin{figure}[!ht]
 \centering
@@ -1631,5 +1642,8 @@ oder eine Fehlermeldung ausgegeben.
 Die Zeit für \textit{queens.py} wird, wie beim Schiebepuzzle, gemessen. Die nachfolgenden Messwerte wurden mit 
 demselben Rechner, wie er in ~\ref{puzzle} beschreiben wurde, ermittelt. Während das \textsc{SetlX}-Programm 
 in ca. 500-600 Millisekunden durchläuft, werden beim Python-Skript Zeiten von 34-36 Sekunden gemessen. 
-Prüfungen mit einem Profiler ergaben, dass die meiste Zeit an Aufrufen von \texttt{davis\_putnam} verloren geht. 
-Es wird vermutet, dass die Sortierung der Mengen zudem eine Rolle bei der Effizienz spielen .
+Prüfungen mit einem Profiler ergaben, dass die meiste Zeit an Aufrufen von \texttt{davis\_putnam} 
+verloren geht. Mit Hilfe des Python Standard Profilers konnte jedoch gezeigt werden, dass die 
+Zeit bei den Einfüge- und Sortieroperationen der internen Klasse SortedSetWithKey gebraucht wird. 
+Hier scheint erneut die Java Virtual Machine, welche in \textsc{SetlX} genutzt wird,  
+der Python Virtual Machine weit überlegen.

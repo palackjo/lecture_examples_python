@@ -1,16 +1,14 @@
 \chapter{Skripte ohne spezielle Module}
 
-Trotz dessen, dass die Erstellung des Python Moduls als Hauptbestandteil dieser Arbeit gesehen wird, ist 
-es durchaus möglich einige \textsc{SetlX} Programme ohne zusätzliche, nicht enthaltene Module 
-anzufertigen. Diese Skripte wurden als erstes angefertigt, um feststellen zu können, ob es möglich ist 
-Python Syntax zu verwenden, ohne die Eleganz des Codes zu verlieren. Einer der Ziele der Übersetzung ist 
-die Eleganz der Programme beizubehalten. 
+Es ist bereits möglich einige \textsc{SetlX}-Programme ohne zusätzliche Module in Python 
+anzufertigen. Diese Python-Skripte wurden als erstes angefertigt, um feststellen zu können, ob es möglich ist 
+Python Syntax zu verwenden, ohne die Eleganz des Codes zu verlieren.
 
 Das erste Codebeispiel aus dem Logik-Skript befasst sich mit der Berechnung einer Summe der Zahlen von 1 
-bis zur eingegebenen Zahl. Dieses Programm lässt sich auch nahezu eins-zu-eins so in Python abbilden. 
+bis zur eingegebenen Zahl. Dieses Programm lässt sich auch nahezu identisch in Python abbilden. 
 Das originale \textsc{SetlX} Programm verwendet hierfür eine Menge, die die Zahlen von 1 bis zur 
-eingegebenen Zahl n enthält. Daraufhin wird die Summe aller in der Menge enthaltenen Zahlen mit dem „+/“-
-Operator ermittelt und ausgegeben. 
+eingegebenen Zahl n enthält. Über den „+/“-Operator wird die Summe aller Zahlen in der Menge ermittelt 
+und ausgegeben. 
 
 \begin{figure}[!ht]
 \centering
@@ -31,9 +29,11 @@ Operator ermittelt und ausgegeben.
 \caption{Einfache Summenberechnung in \textsc{SetlX}}
 \label{fig:sum.setlx}
 \end{figure}
-In Python wurde fast dasselbe Verhalten nachgebildet. Jedoch wurde anstatt eine Menge anzufertigen eine 
-Range der Zahlen von 0 bis n angelegt. Die Summe wird über die in Python bereits integrierte Funktion 
+
+In Python wurde fast dasselbe Verhalten nachgebildet. Jedoch wurde, statt einer Menge, 
+eine Range der Zahlen von 0 bis n verwendet. Die Summe wird über die in Python bereits integrierte Funktion 
 \texttt{sum()} berechnet und daraufhin ausgegeben.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -55,5 +55,4 @@ Range der Zahlen von 0 bis n angelegt. Die Summe wird über die in Python bereits
 \end{figure}
 
 Allgemein kann gesagt werden, dass ein \textsc{SetlX}-Programm, ohne spezielle Funktionen oder 
-Strukturen die nicht in Python wiedergefunden werden, meist eine große Ähnlichkeit mit der Python-
-Implementierung hat.
+Strukturen die nicht in Python wiedergefunden werden, meist ähnlich in Python nachgebildet werden kann.
