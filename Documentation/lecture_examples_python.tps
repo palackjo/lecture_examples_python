@@ -11,14 +11,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
+NormalPos.right=1120
+NormalPos.bottom=228
 Class=LaTeXView
-Document=modul_lecture.tex
+Document=lecture_examples_python.tex
 
 [Frame0_View0,0]
-TopLine=828
-Cursor=44142
+TopLine=0
+Cursor=608
 
 [Frame1]
 Flags=0
@@ -29,14 +29,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
-Class=LaTeXView
-Document=lecture_examples_python.tex
+NormalPos.right=1120
+NormalPos.bottom=228
+Class=BibTeXView
+Document=literature.bib
 
 [Frame1_View0,0]
-TopLine=5
-Cursor=308
+TopLine=0
+Cursor=53
 
 [Frame2]
 Flags=0
@@ -47,14 +47,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
-Class=BibTeXView
-Document=literature.bib
+NormalPos.right=1120
+NormalPos.bottom=228
+Class=LaTeXView
+Document=einleitung.tex
 
 [Frame2_View0,0]
 TopLine=0
-Cursor=53
+Cursor=1694
 
 [Frame3]
 Flags=0
@@ -65,14 +65,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
+NormalPos.right=1120
+NormalPos.bottom=228
 Class=LaTeXView
-Document=einleitung.tex
+Document=warum_python.tex
 
 [Frame3_View0,0]
 TopLine=0
-Cursor=1582
+Cursor=1576
 
 [Frame4]
 Flags=0
@@ -83,14 +83,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
+NormalPos.right=1120
+NormalPos.bottom=228
 Class=LaTeXView
-Document=warum_python.tex
+Document=nur_python.tex
 
 [Frame4_View0,0]
 TopLine=0
-Cursor=1576
+Cursor=2568
 
 [Frame5]
 Flags=0
@@ -101,16 +101,34 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1715
-NormalPos.bottom=539
+NormalPos.right=1120
+NormalPos.bottom=228
 Class=LaTeXView
-Document=nur_python.tex
+Document=modul_lecture.tex
 
 [Frame5_View0,0]
+TopLine=1612
+Cursor=75607
+
+[Frame6]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=26
+NormalPos.right=1120
+NormalPos.bottom=228
+Class=LaTeXView
+Document=fazit.tex
+
+[Frame6_View0,0]
 TopLine=0
-Cursor=178
+Cursor=1678
 
 [SessionInfo]
-FrameCount=6
-ActiveFrame=0
+FrameCount=7
+ActiveFrame=6
 

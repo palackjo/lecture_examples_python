@@ -27,6 +27,7 @@ Beispielübersetzungen wieder verworfen. Da eine wichtige Anforderung, die Erhalt
 nicht erfüllt werden konnte. Somit war dies keine Lösung, die so für alles verwendet werden kann. 
 Beispiele für die benötigten Funktionen, die implementiert werden mussten waren das Entfernen von Duplikaten aus einer Liste, 
 so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzmenge.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -47,6 +48,7 @@ so wie die Ermittlung der Differenz zweier Listen und die Ermittlung der Potenzm
 \caption{Fehler bei Mengen in Mengen}
 \label{fig:set.error}
 \end{figure}
+
 Allerdings sind die Mengen nicht der einzige Grund, warum das Modul benötigt wird. 
 Ein in \textsc{SetlX} sehr hilfreiches Konstrukt, namens \texttt{match}, wird in Python nicht 
 wiedergefunden. Dessen Syntax ist an die sehr bekannte Switch-Case-Syntax angelehnt, welche 
@@ -84,6 +86,7 @@ In der Implementierung der Mengen werden für viele Operationen Operatoren verwen
 möglichst nahe der \textsc{SetlX}-Implementierung zu bleiben. Die Ähnlichkeit zu \textsc{SetlX} soll 
 vorhanden sein, da diese bereits sehr mathematisch ist und somit sinnvoller zu lernen ist für die Studenten. 
 Die unterstützten mathematischen Operatoren sind in Tabelle~\ref{tab:math.operators} zu sehen.
+
 \begin{table}
 \centering
 	\begin{tabular}{|| c | l ||}
@@ -120,11 +123,17 @@ Die unterstützten mathematischen Operatoren sind in Tabelle~\ref{tab:math.operat
 \caption{Mathematische Operatoren für Sets}
 \label{tab:math.operators}
 \end{table}
+
 Zusätzlich gibt es noch weitere Methoden, die nicht in der mathematischen Darstellung verwendbar sind, 
 dennoch für typische mathematische Operationen verwendet werden. Diese werden anstatt in der 
 mathematischen Notation, wie Funktionen auf die Mengen ausgeführt. Außer diesen mathematischen 
 Funktionen können noch weitere, nicht-mathematische Operationen, wie beispielsweise die visuelle 
-Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \texttt{put}-, beziehungsweise die \texttt{\_put}-Funktion. Diese sorgt dafür, dass keine Duplikate in ein Set eingetragen werden können. Die \texttt{put}-Funktion ruft nur die \texttt{\_put}-Funktion auf und ist somit keine neue Methode. In Tabelle~\ref{tab:set.functions} sind die restlichen Mengen-Funktionen aufgelistet.
+Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \texttt{put}-, 
+beziehungsweise die \texttt{\_put}-Funktion. Diese sorgt dafür, dass keine Duplikate in ein 
+Set eingetragen werden können. Die \texttt{put}-Funktion ruft nur die \texttt{\_put}-Funktion 
+auf und ist somit keine neue Methode. In Tabelle~\ref{tab:set.functions} sind die restlichen 
+Mengen-Funktionen aufgelistet.
+
 \begin{table}
 \centering
 	\begin{tabular}{|| c | l ||}
@@ -141,6 +150,8 @@ Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \te
 	\hline
 	\textbf{\texttt{arb}} & Gibt ein beliebiges (in diesem Fall das erste) Element der Menge zurück \\
 	\hline
+	\textbf{\texttt{random}} & Gibt ein zufälliges Element der Menge zurück \\
+	\hline
 	\textbf{\texttt{put/\_put}} & Fügt ein Element in die Menge ein \\
 	\hline
 	\textbf{\texttt{peek}} & Gibt das letzte Element der Menge zurück \\
@@ -153,11 +164,14 @@ Darstellung von Mengen, verwendet werden.Eine sehr wichtige Funktion ist die \te
 \caption{Funktionen für Sets}
 \label{tab:set.functions}
 \end{table}
-An dieser Stelle muss noch bemerkt werden, dass die Selektion des i-ten Elements einer Menge auch das Array Slicing (z.B. [1:2]), wie es von Python bekannt ist, unterstützt. 
+
+An dieser Stelle muss noch bemerkt werden, dass die Selektion des i-ten Elements einer Menge auch das 
+Array Slicing (z.B. [1:2]), wie es von Python bekannt ist, unterstützt. 
 Mit diesen Operatoren und Funktionen können alle Aufgabestellungen, die in der Vorlesung zur theoretischen 
 Informatik vorkommen, bewältigt werden. Im Nachfolgenden wird eine Anwendung der Mengenoperatoren gezeigt. 
 Das \textsc{SetlX}-Programm, das die Grundlage bietet, wird den Studenten gezeigt, damit sie ein Gefühl 
 dafür bekommen, welche Operation welche Resultate liefert. 
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -226,6 +240,7 @@ dafür bekommen, welche Operation welche Resultate liefert.
 \caption{Nutzung von Mengen in simple.py}
 \label{fig:simple.py}
 \end{figure}
+
 In den Beispielen, die in Abbildung~\ref{fig:simple.stlx} und in Abbildung~\ref{fig:simple.py} zu sehen sind, 
 werden einige Operatoren sowohl in \textsc{SetlX}, als auch in Python dargestellt. 
 Zuerst werden die Vereinigung, der Schnitt und die Differenz zweier Mengen gebildet. 
@@ -263,6 +278,7 @@ während Matches in \textsc{SetlX} auch die Verwendung von Literals und die direk
 Dieser Unterschied ist bei einem direkten Vergleich im Code sofort erkennbar. 
 Im Nachfolgenden wird ein Match-Konstrukt, das mathematische Funktionen ableiten soll, 
 in \textsc{SetlX}, mit der neuen Struktur, wie sie in Python entwickelt wurde, verglichen.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -320,6 +336,7 @@ in \textsc{SetlX}, mit der neuen Struktur, wie sie in Python entwickelt wurde, v
 \caption{Ausschnitt aus \texttt{diff()} (Python)}
 \label{fig:diff.python}
 \end{figure}
+
 Was direkt auf den ersten Blick auffällt ist, dass der Code, der in \textsc{SetlX} sehr kompakt 
 dargestellt wird, deutlich umfangreicher ist. Dementsprechend leidet auch die Leserlichkeit unter der 
 Python-Version. Es ist nicht direkt klar, wie der Code zu lesen ist, da die Ausdrücke als Strings 
@@ -346,6 +363,7 @@ Mathematik kommen, sowie Studenten, die mathematische Konstrukte verstehen und a
 beim Programmieren diese Erfahrungen sammeln. 
 
 \subsection{Schiebepuzzle}
+\label{puzzle}
 Das Schiebepuzzle ist eine Aufgabe die den Studenten mit Lücken als Aufgabe gegeben wird, 
 um Vorlesungsinhalte direkt anwenden zu können. Mit diesem Programm sollen die Studenten eine für 
 Menschen nicht triviale Lösung zu einem Schiebepuzzle berechnen lassen. 
@@ -360,6 +378,7 @@ dasselbe steht. Allerdings ist zu beachten, dass die for-Schleifen in \textsc{Se
 iterieren, während in Python dafür eine Range mit den Werten 0-2 verwendet wird. Es wird allerdings 
 die selbe Ausführung erreicht, da Listen-Indizes in \textsc{SetlX} bei 1 anfangen, während Python die 0 
 als Index verwendet, um das erste Element aufzurufen. 
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -428,6 +447,7 @@ als Index verwendet, um das erste Element aufzurufen.
 \caption{\texttt{find\_path} im Schiebepuzzle (Python)}
 \label{fig:findpath.puzzle.python}
 \end{figure}
+
 Die Funktion, mit der letztendlich auch der Pfad vom Start-Zustand zum Ziel-Zustand ermittelt wird, 
 ist in Python die \texttt{find\_path} Methode. Die Parameter, die übergeben werden, sind identisch zu 
 der \textsc{SetlX}-Implementierung. Die am Anfang der Funktion definierten Variablen weichen vom 
@@ -441,6 +461,7 @@ Es wird die derzeitige Iteration angegeben, daraufhin die neuen Pfade anhand von
 ermittelt und dann alle derzeitigen Zustände der Pfade ermittelt und die Anzahl ausgegeben. 
 Zuletzt wird noch im Falle, dass das Ziel bereits erreicht wurde, ein beliebiger Lösungspfad 
 zurückgegeben.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -489,6 +510,7 @@ zurückgegeben.
 \caption{\texttt{next\_states} im Schiebepuzzle (Python)}
 \label{fig:nextstates.puzzle.python}
 \end{figure}
+
 In \texttt{find\_path} muss, für die Ermittlung der möglichen Pfade, die Funktion \texttt{next\_states} 
 aufgerufen werden. Diese gibt eine Liste zurück, die alle erreichbaren Zustände vom Zustand 
 \texttt{state}, der als Parameter übergeben wird, enthält. In \textsc{SetlX} wird diese Liste als Menge 
@@ -499,6 +521,7 @@ definiert, da Tupel in Python, so wie Listen in \textsc{SetlX}, unzipped werden 
 Eine Änderung, die an der Vorlage unternommen wurde (Abbildung~\ref{fig:nextstates.puzzle.setlx} 
 Zeile 4) ist, dass die Bewegung von einer Variable \texttt{move} auf zwei Variablen \texttt{dx} 
 und \texttt{dy} aufgeteilt wurden.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -544,6 +567,7 @@ und \texttt{dy} aufgeteilt wurden.
 \caption{\texttt{move\_dir} im Schiebepuzzle (Python)}
 \label{fig:movedir.puzzle.python}
 \end{figure}
+
 Die Methode \texttt{move\_dir} erhält dieselben Parameter wie in der Vorlage und gibt den nächsten Zustand zurück, 
 nachdem vom derzeitigen Zustand aus eine Bewegung in entweder die x- oder die y-Achse erfolgt. 
 Einer der Unterschiede zur ursprünglichen Umsetzung ist hier, wie zuvor bereits erwähnt wurde, dass die Richtung als 
@@ -557,6 +581,7 @@ und somit dann die Werte von \texttt{state} ebenfalls geändert werden, wenn sie 
 werden. Durch die \texttt{list()}-Funktion wird eine Kopie erzeugt und somit sind \texttt{next\_state} und state zwei 
 unabhängige Listen. \textsc{SetlX} erkennt an dieser Stelle intern, ob ein Objekt geändert wurde und erstellt 
 gegebenenfalls eine Kopie. Deshalb wird dieser Aufruf nur in der Python-Version benötigt. 
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -603,6 +628,7 @@ gegebenenfalls eine Kopie. Deshalb wird dieser Aufruf nur in der Python-Version 
 \caption{\texttt{find\_blank} im Schiebepuzzle (Python)}
 \label{fig:findblank.puzzle.python}
 \end{figure}
+
 Damit in \texttt{next\_states} eine Zahl „bewegt“ werden kann, muss über \texttt{find\_blank} das freie Feld gefunden 
 werden. In der Vorlage wird in \texttt{findBlank} eine Menge erzeugt, die alle Reihen-Zeilen-Kombinationen enthält 
 und aus dieser einer der Werte, an denen der übergebene Zustand die 0 enthält, zurückgegeben. In dieser Arbeit wird 
@@ -769,6 +795,7 @@ Die Implikation von \texttt{g} und \texttt{h} kann auch als $\neg g \vee h$ gesc
 \caption{\texttt{create\_valuation} in Watson (Python)}
 \label{fig:cv.watson.python}
 \end{figure}
+
 Die Methode \texttt{createValuation} gibt eine Menge mit Tupel, die für jedes Element in \texttt{v} angeben, 
 ob es sich auch in \texttt{m} befindet. In \texttt{create\_valuation} wird das gleiche Resultat geliefert, 
 allerdings befinden sich die Tupel in einer Liste. Die Struktur wurde so gewählt, 
@@ -838,6 +865,7 @@ Nun werden die Tatsachen, die zu dem Mordfall bekannt sind, als Strings von bool
 \caption{Lösung von Watson (Python)}
 \label{fig:solution.watson.python}
 \end{figure}
+
 Die Tatsachen werden alle in einer Liste/Menge gespeichert und die Täter, als Buchstaben „a“, „b“ und „c“, 
 in einer Menge abgelegt. Daraufhin wird die Potenzmenge der Täter gebildet, in der alle möglichen 
 Täter-Kombinationen enthalten sind und Wahrheitswerte den Variablen zugewiesen. Bei der Ermittlung, 
@@ -854,6 +882,7 @@ Das Problem dabei ist, dass er nur ein Element auf einmal transportieren kann.
 Wenn er den Wolf mit der Ziege alleine lässt, so frisst der Wolf die Ziege und wenn er die 
 Ziege mit dem Kohl alleine lässt so frisst die Ziege den Kohl. Diese Problemstellung sollen 
 die Studenten anhand eines Programms lösen. Die Aufgabe wird auch als wolf-goat-cabbage (wgc) bezeichnet.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -910,6 +939,7 @@ die Studenten anhand eines Programms lösen. Die Aufgabe wird auch als wolf-goat-
 \caption{\texttt{find\_path} in wgc (Python)}
 \label{fig:findpath.wgc.python}
 \end{figure}
+
 Die Funktion \texttt{find\_path} ermittelt, ob es einen Pfad vom Knoten \texttt{x} zum Knoten 
 \texttt{y} innerhalb von \texttt{r} gibt und gibt diesen zurück, sofern er vorhanden ist. 
 In der Variable \texttt{p} befinden sich alle möglichen Pfade, die gefunden werden. 
@@ -928,6 +958,7 @@ Diese beiden Aussagen sind logischerweise dieselben. In der nächsten Zeile wird 
 der Menge zurückgibt. Es wäre auch möglich die, in den Python Sets implementierte, 
 Funktion \texttt{arb()} aufzurufen, allerdings gibt diese auch nur das erste Element zurück. 
 Um das Skript einfach und übersichtlich zu halten, wurde das direkt Aufrufen des ersten Elements bevorzugt.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -967,12 +998,14 @@ Um das Skript einfach und übersichtlich zu halten, wurde das direkt Aufrufen des
 \caption{\texttt{path\_product} in wgc (Python)}
 \label{fig:pathproduct.wgc.python}
 \end{figure}
+
 In \texttt{path\_product} werden die nächsten Schritte, die von \texttt{p} aus nach \texttt{q} 
 erreichbar sind zurückgegeben.
 
 Wie sich leicht erkennen lässt, sind diese beiden Implementierungen gleich. Das einzige, 
 das zu beachten ist, ist, dass das erste Element einer Liste in \textsc{SetlX} den Index 1 besitzt, 
 während es in Python unter dem Index 0 zu finden ist.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1011,11 +1044,13 @@ während es in Python unter dem Index 0 zu finden ist.
 \caption{\texttt{no\_cycle} in wgc (Python)}
 \label{fig:nocycle.wgc.python}
 \end{figure}
+
 Die Funktion \texttt{no\_cycle} prüft, ob es zu Zyklen kommen kann, indem geprüft wie viele gleiche Elemente 
 in \texttt{l1} und \texttt{l2} enthalten sind. Nur wenn es nur ein Element, das in beiden Listen enthalten ist, 
 gibt, tritt kein Zyklus auf.
 
 Hier fällt auf, dass es nur syntaktische Unterschiede zwischen den beiden Implementierungen gibt.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1053,6 +1088,7 @@ Hier fällt auf, dass es nur syntaktische Unterschiede zwischen den beiden Implem
 \caption{\texttt{add} in wgc (Python)}
 \label{fig:add.wgc.python}
 \end{figure}
+
 Die Rückgabe von \texttt{add} ist die Summe der Mengen \texttt{p} und \texttt{q}, wobei das erste Element von 
 \texttt{q} das letzte von \texttt{p} sein muss.
 
@@ -1065,6 +1101,7 @@ der im Nachfolgenden beschrieben wird, beinhaltet den problemspezifischen Code.
 Der letzte Teil behandelt die visuelle Darstellung der Lösung. 
 Auf diesen Teil wird nicht genauer eingegangen, da nur die Lösung von Problemen in der 
 theoretischen Informatik im Vordergrund steht. 
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1106,11 +1143,13 @@ theoretischen Informatik im Vordergrund steht.
 \caption{\texttt{problem} in wgc (Python)}
 \label{fig:problem.wgc.python}
 \end{figure}
+
 Die Methode \texttt{problem} prüft, ob es bei dem Pfad \texttt{s} zu Problemen kommen kann. 
 Mit Problemen sind die Restriktionen in der Aufgabenstellung, wie beispielsweise der Wolf und die 
 Ziege dürfen nicht unbeaufsichtigt alleine sein, gemeint. 
 
 Hierzu ist nicht viel zu sagen, da beide Implementierungen bis auf die Syntax komplett gleich sind.
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1167,6 +1206,7 @@ Hierzu ist nicht viel zu sagen, da beide Implementierungen bis auf die Syntax ko
 \caption{Lösung des wgc-Problems (Python)}
 \label{fig:solution.wgc.python}
 \end{figure}
+
 Da nun alle benötigten Funktionen definiert sind, kann das Problem in Angriff genommen werden. 
 Die Menge \texttt{wgc\_all} wurde anders benannt als in \textsc{SetlX}, da \texttt{all()} bereits eine 
 eingebaute Funktion in Python ist. In der Menge befinden sich die Bezeichnungen der Elemente, 
@@ -1175,8 +1215,421 @@ Kombinationen der Elemente in \texttt{wgc\_all}, die zu keinen Problemen führen,
 In \texttt{r1} findet man alle Möglichkeiten, in denen der Bauer eine Situation in \texttt{p} mit 
 einem weiteren Element oder alleine verlässt. Die Menge \texttt{r} wird aus einer Vereinigung von 
 \texttt{r1} und \texttt{r2} (dem Inversen von \texttt{r1}) gebildet. Nun kann ein möglicher Lösungspfad 
-mit \texttt{find\_path()} ermittelt werden, indem als Start \texttt{wgc\_all}, als Ziel eine leere Menge und als mögliche Pfade \texttt{r} übergeben werden.
+mit \texttt{find\_path()} ermittelt werden, indem als Start \texttt{wgc\_all}, als Ziel eine leere Menge 
+und als mögliche Pfade \texttt{r} übergeben werden.
 
-Im Allgemeinen kann gesagt werden, dass dieses Programm mit Hilfe der Set-Implementierung sehr gut in Python nachkonstruiert werden konnte. Im Python-Skript sind nur wenige Abweichungen auffindbar. 
+Im Allgemeinen kann gesagt werden, dass dieses Programm mit Hilfe der Set-Implementierung sehr gut in 
+Python nachkonstruiert werden konnte. Im Python-Skript sind nur wenige Abweichungen auffindbar. 
 
 \subsection{8 Damen Problem}
+Das 8 Damen Problem beschäftigt sich mit der Frage, wie acht Damen auf ein Schachbrett 
+gestellt werden können, ohne sich gegenseitig schlagen zu können. Als Hinführung zu diesem 
+Problem wird den Studenten zuvor das Davis-Putnam-Verfahren vorgestellt. Nachdem das 
+Davis-Putnam-Verfahren implementiert wurde, soll anhand dessen das 8 Damen Problem gelöst werden.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    davisPutnam := procedure(clauses, literals) {
+        clauses := saturate(clauses);
+        if ({} in clauses) {
+            return { {} };
+        }
+        if (forall (c in clauses | #c == 1)) {
+            return clauses;
+        }
+        l := selectLiteral(clauses, literals);
+        notL := negateLiteral(l);    
+        r := davisPutnam(clauses + {{l}}, literals + {l, notL});
+        if (r != { {} }) {
+            return r;
+        }     
+        return davisPutnam(clauses + {{notL}}, literals + {l, notL});
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{davisPutnam} in Davis Putnam (\textsc{SetlX})}
+\label{fig:davisputnam.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def davis_putnam(clauses, literals):
+        s = saturate(clauses)
+        if Set() in s:
+            return Set(Set())
+        if all(len(c) == 1 for c in s):
+            return s
+        l = select_literal(s, literals)
+        not_l = negate_literal(l)
+        r = davis_putnam(s + Set(Set(l)), literals + Set(l, not_l))
+        if r != Set(Set()):
+            return r
+        return davis_putnam(s + Set(Set(not_l)), literals + 
+               Set(l, not_l))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{davis\_putnam} in Davis Putnam (Python)}
+\label{fig:davisputnam.dp.python}
+\end{figure}
+
+Zu Beginn der \texttt{davis\_putnam}-Funktion wird die \texttt{saturate}-Methode auf die Menge \texttt{clauses} ausgeführt. 
+Das Ergebnis wird in die Variable \texttt{s} gespeichert, während in \textsc{SetlX} dafür die Variable 
+\texttt{clauses} überschrieben wird. Daraufhin wird geprüft, ob die ermittelte Menge eine leere Menge enthält, 
+da in diesem Fall das Ergebnis ein Falsum wäre. Dadurch würde eine leere Menge in einer leeren Menge zurückgegeben werden. 
+Wenn in \texttt{s} nur Unit-Klauseln enthalten sind, so ist das Ergebnis auch bereits ermittelt und es wird \texttt{s} 
+zurückgegeben. Auch wenn beide if-Abfragen leicht unterschiedlich aussehen führen sie jedoch die gleiche Abfrage aus. 
+Danach wird ein beliebiges Literal aus \texttt{s}, das sich nicht in \texttt{literals} befindet gewählt 
+und in einer weiteren Variable negiert. Nun folgt ein rekursiver Aufruf, bei dem \texttt{s} mit \texttt{l} addiert 
+und \texttt{literals} mit sowohl \texttt{l} als auch \texttt{not\_l} addiert, als Parameter übergeben werden. 
+Wenn das Ergebnis keine Menge einer leeren Menge ist, wird es zurückgegeben. Anderen Falls wird das Ergebnis des 
+rekursiven Aufrufs mit \texttt{not\_l} anstelle von \texttt{l} zurückgegeben.
+
+Zwischen den beiden Implementierungen ist kein bedeutender Unterschied zu bemerken. Das Einzige, 
+das bei der Übersetzung bedacht werden muss ist, dass Funktionen wie \texttt{len} oder \texttt{all} 
+bzw. einzeilige for-Schleifen in beiden Sprachen unterschiedlich dargestellt werden.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    saturate := procedure(s) {
+        units := { k : k in s | #k == 1 };
+        used  := {};
+        while (units != {}) {
+            unit  := arb(units);
+            used  += { unit };
+            l     := arb(unit);
+            s     := reduce(s, l);
+            units := { k : k in s | #k == 1 } - used;        
+        }
+        return s;
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{saturate} in Davis Putnam (\textsc{SetlX})}
+\label{fig:saturate.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def saturate(s):
+        units = Set(k for k in s if len(k) == 1)
+        used  = Set()
+        while len(units) != 0:
+            unit  = units.arb()
+            used += Set(unit)
+            l     = unit.arb()
+            s     = _reduce(s, l)
+            units = Set(k for k in s if len(k) == 1) - used
+        return s
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{saturate} in Davis Putnam (Python)}
+\label{fig:saturate.dp.python}
+\end{figure}
+
+In \texttt{saturate} werden alle Klauseln, die mit Unit-Schnitten aus \texttt{s} ableitbar sind zurückgegeben. 
+Hierbei werden die Klauseln, auf denen ein Unit-Schnitt bereits durchgeführt wurde, aus \texttt{s} entfernt.
+
+Hier ist auch wieder zu erkennen wie groß die Ähnlichkeit der beiden Implementierungen ist. 
+Bis auf syntaktische Unterschiede, wie beispielsweise der Aufruf von \texttt{arb} in Zeile 5 beider Umsetzungen, 
+gibt es keine Unterschiede. Die Methoden \texttt{\_reduce}, \texttt{select\_literal}, \texttt{is\_positive} und 
+\texttt{negate\_literal} sind ebenfalls nahezu identisch. Die enthaltenen Unterschiede, wie die Match-Syntax, 
+wurden bereits bei vorherigen Code-Schnipseln gezeigt und somit an dieser Stelle nicht wiederholt durchleuchtet. 
+Die Methode \texttt{\_reduce} hat einen Unterstrich als erstes Zeichen, das in es in Python bereits eine 
+Funktion mit der Bezeichnung \texttt{reduce} gibt.
+
+Da damit der Davis-Putnam-Algorithmus implementiert ist, kann dieser nun in Queens (8 Damen Problem) verwendet werden.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    atMostOne := procedure(s) {
+        return { { !p, !q } : p in s, q in s | p != q };
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{atMostOne} in Davis Putnam (\textsc{SetlX})}
+\label{fig:atmostone.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def at_most_one(s):
+        return Set(Set("!" + p, "!" + q) for p in s for q in s 
+                                         if p != q)
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{at\_most\_one} in Davis Putnam (Python)}
+\label{fig:atmostone.dp.python}
+\end{figure}
+
+Bei der Betrachtung der Methode \texttt{at\_most\_one} fällt auf, dass in Python Strings verwendet werden, während in 
+\textsc{SetlX} eine einfache Negierung stattfindet. Dies liegt daran, dass in \textsc{SetlX} für die Feldpositionen 
+Variablen erzeugt werden, was jedoch in Python nicht möglich ist. Die Lösung mit den Strings erschwert zwar 
+teilweise die Schreibweise, erfüllt jedoch denselben Zweck wie die Lösung in \textsc{SetlX}. 
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    atMostOneInRow := procedure(row, n) {
+        return atMostOne({ Var(row, column) : column in [1 .. n] });
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{atMostOneInRow} in Davis Putnam (\textsc{SetlX})}
+\label{fig:amoir.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def at_most_one_in_row(row, n):
+        return at_most_one(Set("varr%sc%s" % (str(row), str(column))
+                           for column in range(n)))
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{at\_most\_one\_in\_row} in Davis Putnam (Python)}
+\label{fig:amoir.dp.python}
+\end{figure}
+
+In der Funktion \texttt{at\_most\_one\_in\_row} kann gesehen werden, wie die „Variablen“ in Python dargestellt werden. 
+Das Präfix „var“ steht für Variable, nach dem „r“ kommt die Reihennummer (\texttt{row}) und nach dem „c“ die 
+Zeilennummer (\texttt{column}). An dieser Stelle wird wieder, wie bereits zuvor, die automatische Generierung einer 
+Liste in \textsc{SetlX} über den \texttt{range}-Befehl in Python gelöst.
+
+Die Funktion \texttt{one\_in\_column} ist sehr ähnlich zu \texttt{at\_most\_one\_in\_row} und gleich aufgebaut. 
+Deshalb wird die Methode an dieser Stelle nicht dargestellt. Anstatt die Rückgabe von \texttt{at\_most\_one} zurückzugeben, 
+wird hier eine Menge zurückgegeben. 
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    atMostOneInLowerDiagonal := procedure(k, n) {
+        s := { Var(r, c) : c in [1..n], r in [1..n] | r - c == k };
+        return atMostOne(s);
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{atMostOneInLowerDiagonal} in Davis Putnam (\textsc{SetlX})}
+\label{fig:amoild.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def at_most_one_in_lower_diagonal(k, n):
+        return at_most_one(
+            Set(
+                "varr%sc%s" % (str(row), str(column))
+                for row in range(n)
+                for column in range(n)
+                if row - column == k
+            )
+        )
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{at\_most\_one\_in\_lower\_diagonal} in Davis Putnam (Python)}
+\label{fig:amoild.dp.python}
+\end{figure}
+
+In \texttt{at\_most\_one\_in\_lower\_diagonal} lässt sich wieder erkennen, dass, bis auf die Eigenart des 
+Strings als Variable, beide Implementierungen derselben Struktur folgen. 
+Die Implementierungen sind sehr gut gegenüberstellbar.
+
+In \texttt{at\_most\_one\_in\_upper\_diagonal} ist die Umsetzung analog zu der in \texttt{at\_most\_one\_in\_lower\_diagonal}.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    allClauses := procedure(n) {
+        return +/ {atMostOneInRow(row, n)     : row in {1..n}}
+         + +/ {atMostOneInLowerDiagonal(k, n) : k in {-(n-2) .. n-2}}
+         + +/ {atMostOneInUpperDiagonal(k, n) : k in {3 .. 2*n - 1}}
+         + +/ {oneInColumn(column, n)         : column in {1 .. n}};
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{allClauses} in Davis Putnam (\textsc{SetlX})}
+\label{fig:allclauses.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def all_clauses(n):
+        return Set(at_most_one_in_row(row, n)           
+                   for row in range(n)).sum() + \
+               Set(at_most_one_in_lower_diagonal(k, n)  
+                   for k in range(-(n-2), n-2)).sum() + \
+               Set(at_most_one_in_upper_diagonal(k, n)  
+                   for k in range(3, 2*n - 1)).sum() + \
+               Set(one_in_column(column, n)             
+                   for column in range(n)).sum()
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{all\_clauses} in Davis Putnam (Python)}
+\label{fig:allclauses.dp.python}
+\end{figure}
+
+Beide Ausführungen von \texttt{all\_clauses} weisen wieder große Ähnlichkeiten auf. 
+Allerdings wird zur Ermittlung der Summe einer Menge in \textsc{SetlX} der Operator \texttt{+/}, 
+während in Python die Methode \texttt{sum} verwendet.
+
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    solve := procedure(n) {
+        clauses  := allClauses(n);
+        print(clauses);
+        solution := davisPutnam(clauses, {});
+        if (solution != { {} }) {
+            printBoard(solution, n);
+        } else {
+            print("The problem is not solvable for $n$ queens!");
+            print("Try to increase the number of queens.");
+        }
+    };
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{solve} in Davis Putnam (\textsc{SetlX})}
+\label{fig:solve.dp.setlx}
+\end{figure}
+\begin{figure}[!ht]
+\centering
+\begin{Verbatim}[ frame         = lines, 
+                  framesep      = 0.3cm, 
+                  firstnumber   = 1,
+                  labelposition = bottomline,
+                  numbers       = left,
+                  numbersep     = -0.2cm,
+                  xleftmargin   = 0.0cm,
+                  xrightmargin  = 0.0cm,
+                ]
+    def solve(n):
+        clauses = all_clauses(n)
+        print(clauses)
+        solution = davis_putnam(clauses, Set())
+        if solution != Set(Set()):
+            print_board(solution, n)
+        else:
+            print("The problem is not solvable for %s queens!" 
+                  % str(n))
+            print("Try to increase the number of queens.")
+\end{Verbatim}
+\vspace*{-0.3cm}
+\caption{\texttt{solve} in Davis Putnam (Python)}
+\label{fig:solve.dp.python}
+\end{figure}
+
+Da nun alle benötigten Methoden definiert wurden, kann die Lösung ermittelt werden. Zuerst werden alle Klauseln 
+mit dem \texttt{all\_clauses}-Befehl erstellt. Diese werden daraufhin ausgegeben und dann das Problem anhand von 
+\texttt{davis\_putnam} gelöst. Zuletzt wird, sofern ein Ergebnis vorhanden ist, dieses Ausgegeben, 
+oder eine Fehlermeldung ausgegeben.
+
+Die Zeit für \textit{queens.py} wird, wie beim Schiebepuzzle, gemessen. Die nachfolgenden Messwerte wurden mit 
+demselben Rechner, wie er in ~\ref{puzzle} beschreiben wurde, ermittelt. Während das \textsc{SetlX}-Programm 
+in ca. 500-600 Millisekunden durchläuft, werden beim Python-Skript Zeiten von 34-36 Sekunden gemessen. 
+Prüfungen mit einem Profiler ergaben, dass die meiste Zeit an Aufrufen von \texttt{davis\_putnam} verloren geht. 
+Es wird vermutet, dass die Sortierung der Mengen zudem eine Rolle bei der Effizienz spielen .
