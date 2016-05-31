@@ -12,7 +12,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=lecture_examples_python.tex
 
@@ -30,7 +30,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=BibTeXView
 Document=literature.bib
 
@@ -48,7 +48,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=einleitung.tex
 
@@ -66,7 +66,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=warum_python.tex
 
@@ -84,13 +84,13 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=nur_python.tex
 
 [Frame4_View0,0]
-TopLine=30
-Cursor=1885
+TopLine=3
+Cursor=208
 
 [Frame5]
 Flags=0
@@ -102,7 +102,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=modul_lecture.tex
 
@@ -120,7 +120,7 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1120
-NormalPos.bottom=582
+NormalPos.bottom=228
 Class=LaTeXView
 Document=fazit.tex
 
@@ -130,5 +130,5 @@ Cursor=157
 
 [SessionInfo]
 FrameCount=7
-ActiveFrame=6
+ActiveFrame=4
 
