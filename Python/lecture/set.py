@@ -163,7 +163,10 @@ class Set():
         return y + z
 
     def arb(self):
-        return self.set[0]
+        return self.set[-1] if len(self.set) % 2 == 0 else self.set[0]
+
+    def rnd(self):
+        return self.set[random.randrange(0, len(self.set))]
 
     def put(self, other):
         self._put(other)

@@ -1,7 +1,6 @@
 from lecture.util import Match
 from lecture.set import Set
 
-
 def davis_putnam(clauses, literals):
     s = saturate(clauses)
     if Set() in s:
@@ -23,7 +22,7 @@ def saturate(s):
         unit  = units.arb()
         used += Set(unit)
         l     = unit.arb()
-        s     = _reduce(s, l)
+        s     = _reduce(s, l)        
         units = Set(k for k in s if len(k) == 1) - used
     return s
 
@@ -36,24 +35,21 @@ def _reduce(s, l):
 
 
 def select_literal(s, forbidden): 
-    temp = s.sum() - forbidden
-    temp = Set(x for x in temp if is_positive(x))
-    return temp.arb()
+    all_literals = s.sum() - forbidden
+    positive_literals = Set(x for x in all_literals if is_positive(x))
+    if len(positive_literals) == 0:
+        return all_literals.rnd()
+    return positive_literals.rnd()
 
 
 def is_positive(l):
-    match = Match()
-    if match.match("!l", l):
-        return False
-    return True
-
+    return not l.startswith("!")
 
 def negate_literal(l):
-    match = Match()
-    if match.match("l", l):
-        return '!' + match.values['l']
-    if match.match("!l", l):
-        return match.values['l']
+    if l.startswith("!"):
+        return l[1:]
+    else:
+    	return "!" + l
     raise Exception('Cannot negate literal "%s"' % l)
 
 
