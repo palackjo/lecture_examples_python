@@ -1,11 +1,1 @@
-The following scripts didn't work properly:
-diff.py
-find_path.py
-from.py
-path_cyclic.py
-prime_sieve.py
-puzzle.py
-simple.py
-transitive_closure.py
-watson.py
-wolf_goat_cabbage.py
+Last test execution was succesful.

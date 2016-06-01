@@ -9,10 +9,10 @@ import sys
 script_path = os.path.dirname(os.path.abspath(__file__))
 output_path = os.path.join(script_path, 'test_results')
 # These scripts are skipped because they either do not terminate,
-# don't really have an output, or require user input.
-skip_scripts = ['davis_putnam.py', 'legendre.py', 'path.py', 'primes_eratosthenes.py', 
-                'stops.py', 'sum.py', 
-                'sum_recursive.py', 'switch.py', 'queens.py']
+# don't really have an output, have a time output, or require user input.
+skip_scripts = ['davis_putnam.py', 'legendre.py', 'path.py', 
+                'primes_eratosthenes.py', 'puzzle.py', 'stops.py', 'sum.py', 
+                'sum_recursive.py', 'switch.py', 'queens.py', 'watson.py']
 
 
 # Get the available scripts.
@@ -66,15 +66,14 @@ def compare_results(scripts):
             print(script_name, ' is not working properly')
             faulty_scripts.append(script_name)
 
-    if faulty_scripts:
-        print('The faulty scripts can be seen in results.txt')
-
     with open(os.path.join(script_path, 'results.txt'), 'w') as result_file:
         if faulty_scripts:
+            print('\nThe faulty scripts can be seen in results.txt')
             result_file.write('The following scripts didn\'t work properly:\n')
             for f_script in faulty_scripts:
                 result_file.write(f_script + '\n')
         else:
+            print('\nTest run was successful. No faulty scripts found')
             result_file.write('Last test execution was succesful.')
 
 
