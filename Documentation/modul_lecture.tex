@@ -940,7 +940,7 @@ die Studenten anhand eines Programms lösen. Die Aufgabe wird auch als wolf-goat-
             p     = p + path_product(p, r)
             found = Set(l for l in p if l[-1] == y)
             if found:
-                return found[0]
+                return found.arb()
             if p == old_p:
                 return
 \end{Verbatim}
@@ -962,11 +962,7 @@ Die Abläufe und sind in beiden Programmiersprachen nahezu identisch.
 Die erste Abbruchbedingung wird syntaktisch anders formuliert. Während in \textsc{SetlX} geprüft wird, 
 ob die Menge \texttt{found} nicht leer ist (Abbildung~\ref{fig:findpath.wgc.setlx} Zeile 7), 
 wird in Python geprüft ob \texttt{found} Elemente enthält (Abbildung~\ref{fig:findpath.wgc.python} Zeile 7). 
-Diese beiden Aussagen sind logischerweise dieselben. In der nächsten Zeile wird daraufhin in 
-\textsc{SetlX} ein beliebiges Element zurückgegeben, während die Python-Implementierung immer das erste Element 
-der Menge zurückgibt. Es wäre auch möglich die, in den Python Sets implementierte, 
-Funktion \texttt{arb()} aufzurufen, allerdings gibt diese auch nur das erste Element zurück. 
-Um das Skript einfach und übersichtlich zu halten, wurde das direkte Aufrufen des ersten Elements bevorzugt.
+Diese beiden Aussagen sind logischerweise dieselben. 
 
 \begin{figure}[!ht]
 \centering
@@ -1513,7 +1509,7 @@ wird hier eine Menge zurückgegeben.
                 "varr%sc%s" % (str(row), str(column))
                 for row in range(n)
                 for column in range(n)
-                if row - column == k
+                if (row+1) - (column+1) == k
             )
         )
 \end{Verbatim}
@@ -1641,9 +1637,7 @@ oder eine Fehlermeldung ausgegeben.
 
 Die Zeit für \textit{queens.py} wird, wie beim Schiebepuzzle, gemessen. Die nachfolgenden Messwerte wurden mit 
 demselben Rechner, wie er in ~\ref{puzzle} beschreiben wurde, ermittelt. Während das \textsc{SetlX}-Programm 
-in ca. 500-600 Millisekunden durchläuft, werden beim Python-Skript Zeiten von 34-36 Sekunden gemessen. 
-Prüfungen mit einem Profiler ergaben, dass die meiste Zeit an Aufrufen von \texttt{davis\_putnam} 
-verloren geht. Mit Hilfe des Python Standard Profilers konnte jedoch gezeigt werden, dass die 
-Zeit bei den Einfüge- und Sortieroperationen der internen Klasse SortedSetWithKey gebraucht wird. 
+in ca. 500-600 Millisekunden durchläuft, werden beim Python-Skript Zeiten von 1,7-6 Sekunden gemessen. 
+Prüfungen mit einem Profiler ergaben, dass vergleichbar viele Aufrufe von Methoden in beiden Sprachen getätigt werden.
 Hier scheint erneut die Java Virtual Machine, welche in \textsc{SetlX} genutzt wird,  
 der Python Virtual Machine weit überlegen.
