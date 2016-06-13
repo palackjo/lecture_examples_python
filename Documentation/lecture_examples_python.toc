@@ -1,16 +1,16 @@
 \select@language {ngerman}
-\contentsline {chapter}{Abbildungsverzeichnis}{2}{chapter*.1}
-\contentsline {chapter}{Tabellenverzeichnis}{4}{chapter*.2}
-\contentsline {chapter}{\numberline {1}Einleitung}{5}{chapter.1}
-\contentsline {chapter}{\numberline {2}Warum Python?}{6}{chapter.2}
-\contentsline {chapter}{\numberline {3}Skripte ohne spezielle Module}{7}{chapter.3}
-\contentsline {chapter}{\numberline {4}Python Modul lecture}{8}{chapter.4}
-\contentsline {section}{\numberline {4.1}Sets}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Matches}{12}{section.4.2}
-\contentsline {section}{\numberline {4.3}\"Ubersetzung komplexerer Programme}{13}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Schiebepuzzle}{13}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Watson}{17}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Wolf Ziege Kohl}{20}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}8 Damen Problem}{23}{subsection.4.3.4}
-\contentsline {chapter}{\numberline {5}Fazit}{29}{chapter.5}
+\contentsline {chapter}{Abbildungsverzeichnis}{3}{chapter*.2}
+\contentsline {chapter}{Tabellenverzeichnis}{5}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Einleitung}{6}{chapter.1}
+\contentsline {chapter}{\numberline {2}Warum Python?}{7}{chapter.2}
+\contentsline {chapter}{\numberline {3}Skripte ohne spezielle Module}{8}{chapter.3}
+\contentsline {chapter}{\numberline {4}Python Modul lecture}{10}{chapter.4}
+\contentsline {section}{\numberline {4.1}Sets}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Matches}{14}{section.4.2}
+\contentsline {section}{\numberline {4.3}\"Ubersetzung komplexerer Programme}{15}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Schiebepuzzle}{15}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Watson}{19}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Wolf Ziege Kohl}{22}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}8 Damen Problem}{25}{subsection.4.3.4}
+\contentsline {chapter}{\numberline {5}Fazit}{31}{chapter.5}
 \vspace *{\baselineskip }

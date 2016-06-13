@@ -21,17 +21,22 @@ Elemente nicht mehr ändern, da das unmittelbar eine neue Hashberechnung verlange
  
 Eine weitere Möglichkeit, das Problem der Mengen zu lösen, wäre die Verwendung von Listen, 
 anstelle von Mengen. Prinzipiell ist das in einigen Python-Übersetzungen der 
-\textsc{SetlX}-Programme möglich und wurde so auch teilweise umgesetzt. 
-Es werden andere Datentypen verwendet, um die Informationen zu hinterlegen, meist Listen statt Mengen, 
-da für die Ausführung einiger \textsc{SetlX}-Programme keine besonderen Eigenschaften 
-der Mengen benötigt werden. Ein großes Problem an dieser Lösung ist allerdings, 
+\textsc{SetlX}-Programme möglich und wurde so auch teilweise umgesetzt (siehe beispielsweise 
+\textit{prime\_slim.py}). Es werden andere Datentypen verwendet, um die Informationen zu hinterlegen, 
+meist Listen statt Mengen, da für die Ausführung einiger \textsc{SetlX}-Programme keine besonderen 
+Eigenschaften der Mengen benötigt werden. Ein großes Problem an dieser Lösung ist allerdings, 
 dass Listen nun mal keine Mengen sind und sobald Mengeneigenschaften oder Mengenoperatoren, 
 die nicht für Listen gelten, verwendet werden, Listen eher ungeeignet sind. Der Workaround, 
 besondere Funktionen für die Listen zu schreiben, um das Verhalten von Mengen zu imitieren, 
 wurde auch als Ansatz bedacht, allerdings nach einigen kleinen Beispielübersetzungen wieder verworfen. 
-Da eine wichtige Anforderung, die Erhaltung der Eleganz nicht erfüllt werden konnte. 
+Das liegt daran, dass eine wichtige Anforderung, die Erhaltung der Eleganz nicht erfüllt werden konnte. 
 Somit war dies keine Lösung, die global für alle Programme verwendet werden konnte. 
-Beispiele für die benötigten Funktionen, die implementiert werden mussten, um Mengeneigenschaften zu imitieren, waren das Entfernen von Duplikaten aus einer Liste, so wie die Ermittlung 
+Ein weiteres Problem, das bei der Verwendung auftreten würde, ist die schlechte Skalierbarkeit 
+dieser Umsetzung. Wenn größere Datenmengen auftreten, steigt die Laufzeit der Lösung mit den 
+Hilfsfunktionen drastisch. Dies liegt daran, dass standardmäßig Listen in Python nicht sortiert sind 
+und somit keine effizienten Algorithmen für Such- und Einfüge-Operationen gegeben sind.
+Beispiele für die benötigten Funktionen, die implementiert werden mussten, um Mengeneigenschaften 
+zu imitieren, waren das Entfernen von Duplikaten aus einer Liste, so wie die Ermittlung 
 der Differenz zweier Listen und die Ermittlung der Potenzmenge.
 
 \begin{figure}[!ht]
@@ -79,7 +84,7 @@ Mengen keine Duplikate enthalten. In \textsc{SetlX} wird
 eine Sortierung der Elemente durchgeführt, wodurch Vorteile in der Programmierung entstehen.
 
 Um die Mengen, wie sie in den \textsc{SetlX}-Programmen verwendet werden, auch in Python verwenden zu 
-können wurde eine eigene Mengen Klasse implementiert, die alle notwendigen Funktionalitäten erfüllt.
+können, wurde eine eigene Mengen Klasse implementiert, die alle notwendigen Funktionalitäten erfüllt.
 
 Zur internen Sicherung von Elementen innerhalb der Mengen wird der Datentyp SortedListWithKey aus dem 
 Modul sortedcontainers verwendet.Das Besondere an SortedListWithKey ist, dass es sich nicht nur 
@@ -88,6 +93,17 @@ Eigenschaft die Listen-Objekte sortiert werden sollen. In dem Schlüssel einer So
 wird diese Eigenschaft hinterlegt und kann auch dort eingesehen werden. Sodass bei Mengen die interne 
 SortedListWithKey zurückgegeben wird, da mengen sich nicht sortieren lassen, aufgrund der 
 Operator-Überladungen zur Anpassung an die \textsc{SetlX} Syntax. 
+
+Vor der Umsetzung mit den sortierten Listen wurde das Python-package blist verwendet. 
+In der alten Version der Mengen waren alle notwendigen Operationen auch möglich und es konnten 
+alle Problemstellungen gelöst werden.  Jedoch war die Performance des blist Packages nicht ausreichend. 
+Trotz vielversprechender Angaben zur Komplexität für Such- und Einfüge-Operationen war das Package 
+deutlich langsamer als das sortedlist Package. Da bisher lediglich auf Mengen mit weniger als einer 
+halben Million Elemente operiert wurde, besteht bei dem sortedlist Package für größere Datenmengen die 
+Möglichkeit das diese instabil werden. Denn das sortedlist Package unterteilt die Elemente in mehrere 
+Sublisten. Es wird dabei eine Liste erstellt die 100 weitere Listen enthält. Werden die Sublisten zu lang, 
+verliert die Implementierung ggf. Ihren Vorteil gegenüber dem blist Package. Jedoch ist kein derartiger 
+Anwendungsfall in den Vorlesungsskripten enthalten gewesen.
 
 In der Implementierung der Mengen werden für viele Operationen Operatoren verwendet, wobei versucht wurde 
 möglichst nahe der \textsc{SetlX} Syntax zu bleiben. Die Ähnlichkeit zu \textsc{SetlX} soll 
@@ -153,7 +169,7 @@ In Tabelle~\ref{tab:set.functions} sind die restlichen Mengen-Funktionen aufgeli
 	\hline
 	\textbf{\texttt{cartesian\_product}} & Bildet das kartesische Produkt zweier Mengen \\
 	\hline
-	\textbf{\texttt{arb}} & Gibt ein beliebiges (in diesem Fall das erste) Element der Menge zurück \\
+	\textbf{\texttt{arb}} & Gibt ein beliebiges Element der Menge zurück \\
 	\hline
 	\textbf{\texttt{random}} & Gibt ein zufälliges Element der Menge zurück \\
 	\hline
@@ -171,7 +187,12 @@ In Tabelle~\ref{tab:set.functions} sind die restlichen Mengen-Funktionen aufgeli
 \end{table}
 
 An dieser Stelle muss noch bemerkt werden, dass die Selektion des i-ten Elements einer Menge auch das 
-Array Slicing (z.B. [1:2]), wie es von Python bekannt ist, unterstützt. 
+Array Slicing (z.B. [1:2]), wie es von Python bekannt ist, unterstützt. Die Auswahl eines beliebigen 
+Elements über den Befehl \texttt{arb()} gibt bei einer geraden Länge der Menge das letzte Element und 
+bei einer ungeraden Menge das erste Element zurück. In einer früheren Implementierung wurde 
+an dieser Stelle nur das erste Element zurückgegeben, jedoch traten dabei Performance Probleme in einem 
+Python-Skript auf. Die Problematik wird im späteren Verlauf (Kapitel ~\ref{queens}) aufgezeigt.
+
 Mit diesen Operatoren und Funktionen können alle Aufgabestellungen, die in der Vorlesung zur theoretischen 
 Informatik vorkommen, bewältigt werden. Im Nachfolgenden wird eine Anwendung der Mengenoperatoren gezeigt. 
 Das \textsc{SetlX}-Programm, das die Grundlage bietet, wird den Studenten gezeigt, damit sie ein Gefühl 
@@ -211,6 +232,7 @@ dafür bekommen, welche Operation welche Resultate liefert.
 \caption{Nutzung von Mengen in \textit{simple.stlx}}
 \label{fig:simple.stlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -309,6 +331,7 @@ in \textsc{SetlX}, mit der neuen Struktur, wie sie in Python entwickelt wurde, v
 \caption{Ausschnitt aus \texttt{diff()} (\textsc{SetlX})}
 \label{fig:diff.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -491,6 +514,7 @@ zurückgegeben.
 \caption{\texttt{nextStates} im Schiebepuzzle (\textsc{SetlX})}
 \label{fig:nextstates.puzzle.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -614,6 +638,7 @@ eine Kopie falls nötig. Deshalb wird dieser Aufruf nur in der Python-Version ben
 \caption{\texttt{findBlank} im Schiebepuzzle (\textsc{SetlX})}
 \label{fig:findblank.puzzle.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1075,6 +1100,7 @@ Hier fällt auf, dass es nur syntaktische Unterschiede zwischen den beiden Implem
 \caption{\texttt{add} in wgc (\textsc{SetlX})}
 \label{fig:add.wgc.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1128,6 +1154,7 @@ theoretischen Informatik im Vordergrund steht.
 \caption{\texttt{problem} in wgc (\textsc{SetlX})}
 \label{fig:problem.wgc.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1183,6 +1210,7 @@ Hierzu ist nicht viel zu sagen, da beide Implementierungen bis auf die Syntax ko
 \caption{Lösung des wgc-Problems (\textsc{SetlX})}
 \label{fig:solution.wgc.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1227,6 +1255,7 @@ Im Allgemeinen kann gesagt werden, dass dieses Programm mit Hilfe der Set-Implem
 Python nachkonstruiert werden konnte. Im Python-Skript sind nur wenige Abweichungen auffindbar. 
 
 \subsection{8 Damen Problem}
+\label{queens}
 Das 8 Damen Problem beschäftigt sich mit der Frage, wie acht Damen auf ein Schachbrett 
 gestellt werden können, ohne sich gegenseitig schlagen zu können. Als Hinführung zu diesem 
 Problem wird den Studenten zuvor das Davis-Putnam-Verfahren vorgestellt. Nachdem das 
@@ -1264,6 +1293,7 @@ Davis-Putnam-Verfahren implementiert wurde, soll anhand dessen das 8 Damen Probl
 \caption{\texttt{davisPutnam} in Davis Putnam (\textsc{SetlX})}
 \label{fig:davisputnam.dp.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1338,6 +1368,7 @@ bzw. einzeilige for-Schleifen in beiden Sprachen unterschiedlich dargestellt wer
 \caption{\texttt{saturate} in Davis Putnam (\textsc{SetlX})}
 \label{fig:saturate.dp.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1376,6 +1407,22 @@ Die enthaltenen Unterschiede, wie die Match-Syntax, wurden bereits bei vorherige
 und somit an dieser Stelle nicht wiederholt durchleuchtet. Die Methode \texttt{\_reduce} hat einen 
 Unterstrich als erstes Zeichen, da es in Python bereits eine Funktion mit der Bezeichnung 
 \texttt{reduce} gibt.
+Bei der Implementierung des Skriptes ist aufgefallen, dass der Algorithmus stark von der 
+Sortierung der Mengen abhängt. Bei den \textsc{SetlX} Mengen liegt eine andere Sortierung vor als 
+bei den Python Mengen, zufälligerweise war die Sortierung der \textsc{SetlX} besser auf den 
+Algorithmus ausgelegt. Das führte dazu, dass die Berechnung der \textit{queens.stlx} einige 
+Sekunden in Anspruch nahm, während hingegen in Python eine halbe Stunde gewartet werden musste. 
+Um die Sortierung der Python Mengen anzupassen wurden bei der Auswahl der Literale lediglich positive 
+Literale zugelassen und der \texttt{arb()}-Befehl an den von \textsc{SetlX} angepasst, sodass in der 
+\texttt{saturate()} Funktion nun nicht mehr ausschließlich das erste Element gewählt wurde. 
+Dies führte, auch mit Python Mengen, innerhalb einiger Sekunden zu einem Ergebnis. 
+Es wurde ebenfalls in \textsc{SetlX} der Einsatz von \texttt{first()} getestet, 
+dieser ergab jedoch keine Nennenswerten Unterschiede in der Dauer der Berechnung, 
+weshalb die Sortierung der Mengen selbst ausschlaggebend zu sein scheint. Eine grundsätzliche 
+Verwendung von Random in der \texttt{saturate()} Funktion wurden ebenfalls in Erwägung gezogen, 
+jedoch führte diese bereits in einigen Testfällen zu mehreren ausschlagenden Werten mit einer 
+Verschlechterung um einen Faktor von Zehn. Somit ist für den weiteren Einsatz der Sets immer die 
+Stabilität von Algorithmen zu beachten sowie eine Betrachtung der Sortierung nötig.
 
 Da damit der Davis-Putnam-Algorithmus implementiert ist, kann dieser nun in Queens (8 Damen Problem) 
 verwendet werden.
@@ -1399,6 +1446,7 @@ verwendet werden.
 \caption{\texttt{atMostOne} in Davis Putnam (\textsc{SetlX})}
 \label{fig:atmostone.dp.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1469,8 +1517,8 @@ Zeilennummer (\texttt{column}). An dieser Stelle wird wieder, wie bereits zuvor,
 Liste in \textsc{SetlX} über den \texttt{range}-Befehl in Python gelöst.
 
 Die Funktion \texttt{one\_in\_column} ist sehr ähnlich zu \texttt{at\_most\_one\_in\_row} und gleich aufgebaut. 
-Deshalb wird die Methode an dieser Stelle nicht dargestellt. Anstatt die Rückgabe von \texttt{at\_most\_one} zurückzugeben, 
-wird hier eine Menge zurückgegeben. 
+Deshalb wird die Methode an dieser Stelle nicht dargestellt. 
+Anstatt die Rückgabe von \texttt{at\_most\_one} zurückzugeben, wird hier eine Menge zurückgegeben. 
 
 \begin{figure}[!ht]
 \centering
@@ -1492,6 +1540,7 @@ wird hier eine Menge zurückgegeben.
 \caption{\texttt{atMostOneInLowerDiagonal} in Davis Putnam (\textsc{SetlX})}
 \label{fig:amoild.dp.setlx}
 \end{figure}
+
 \begin{figure}[!ht]
 \centering
 \begin{Verbatim}[ frame         = lines, 
@@ -1638,6 +1687,6 @@ oder eine Fehlermeldung ausgegeben.
 Die Zeit für \textit{queens.py} wird, wie beim Schiebepuzzle, gemessen. Die nachfolgenden Messwerte wurden mit 
 demselben Rechner, wie er in ~\ref{puzzle} beschreiben wurde, ermittelt. Während das \textsc{SetlX}-Programm 
 in ca. 500-600 Millisekunden durchläuft, werden beim Python-Skript Zeiten von 1,7-6 Sekunden gemessen. 
-Prüfungen mit einem Profiler ergaben, dass vergleichbar viele Aufrufe von Methoden in beiden Sprachen getätigt werden.
-Hier scheint erneut die Java Virtual Machine, welche in \textsc{SetlX} genutzt wird,  
+Prüfungen mit einem Profiler ergaben, dass vergleichbar viele Aufrufe von Methoden in beiden 
+Sprachen getätigt werden.Hier scheint erneut die Java Virtual Machine, welche in \textsc{SetlX} genutzt wird,  
 der Python Virtual Machine weit überlegen.

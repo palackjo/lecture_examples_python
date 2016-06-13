@@ -40,7 +40,11 @@ und ausgegeben.
 
 In Python wurde fast dasselbe Verhalten nachgebildet. Jedoch wurde, statt einer Menge, 
 eine Range der Zahlen von 0 bis n verwendet. Die Summe wird über die in Python bereits integrierte Funktion 
-\texttt{sum()} berechnet und daraufhin ausgegeben.
+\texttt{sum()} berechnet und daraufhin ausgegeben. Prinzipiell findet derselbe Ablauf statt, 
+allerdings werden unterschiedliche Datenstrukturen verwendet. Um alle Zahlen von Null bis n zu durchlaufen wird 
+das Range Objekt in Python verwendet, hierbei ist zu beachten, dass das letzte Element (n+1) exklusiv ist. 
+In \textsc{SetlX} hingegen wird direkt von Eins bis n iteriert. Bei der Ermittlung der Summe sind beide 
+Ansätze zulässig, da eine Addition mit Nullen keine Änderung bewirkt.
 
 \begin{figure}[!ht]
 \centering
