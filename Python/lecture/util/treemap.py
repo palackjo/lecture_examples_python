@@ -1,5 +1,9 @@
 from sortedcontainers import SortedSet
 
+"""
+Deprecated. Instable TreeMap implementation, taken from java sources.
+"""
+
 BLACK = 0
 RED = 1
 

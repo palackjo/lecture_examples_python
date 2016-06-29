@@ -4,18 +4,31 @@ import copy
 
 from sortedcontainers import SortedListWithKey
 
-
+"""
+The method to get the key to compare sets.
+For comparison the SortedListWithKey member named list is used, as the member can be sorted.
+This method is instroduced due to the overriding of operators like lower than, greater than and equal.
+"""
 def gen_set_key(value):
-    return value.set
+    return value.list
 
+
+"""
+The Set class that enables multiple operations supporting setlx notations
+"""
 class Set():
-    def __init__(self, *args, set=None, keep_generators=False):
+
+    """
+    Constructor, to either pass generators or a already existing list containing the data (mostly used internally).
+    Attention: If a set is passed, the reference to the internal member list.
+    """
+    def __init__(self, *args, list=None, keep_generators=False):
         if set is not None:
-            assert isinstance(set, SortedListWithKey)
-            self.set = set
+            assert isinstance(list, SortedListWithKey)
+            self.list = list
             self.has_key = True
         else:
-            self.set = SortedListWithKey()
+            self.list = SortedListWithKey()
             self.has_key = False
 
         for arg in args:
@@ -26,55 +39,76 @@ class Set():
             else:
                 self._put(arg)
 
+    """
+    Overrides the add operator. Creates a new set not referencing the added sets.
+    """
     def __add__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) == 0 and len(other.set) == 0:
+        if len(self.list) == 0 and len(other.list) == 0:
             return Set()
-        elif len(self.set) == 0:
+        elif len(self.list) == 0:
             return copy.copy(other)
         else:
-            set = SortedListWithKey(key=self.set._key)
-            set.update(self.set)
-            for x in other.set:
+            set = SortedListWithKey(key=self.list._key)
+            set.update(copy.deepcopy(self.list))
+            other_list_copy = copy.deepcopy(other.list)
+            for x in other_list_copy:
                 if x not in set:
                     set.add(x)
             return Set(set=set)
 
-
+    """
+    Overrides the += operator. Adds all elements of an other set to the current set.
+    """
     def __iadd__(self, other):
         assert isinstance(other, Set)
-        for x in other.set:
+        for x in other.list:
             self._put(x)
         return self
 
+    """
+    Overrides the substraction operator. Removes every element from the current set, that is in the other set.
+    """
     def __sub__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) == 0:
+        if len(self.list) == 0:
             return Set()
-        set = SortedListWithKey(key=self.set._key)
-        for x in self.set:
-            if x not in other.set:
+        set = SortedListWithKey(key=self.list._key)
+        for x in self.list:
+            if x not in other.list:
                 set.add(x)
         s = Set(set=set)
         return s
 
+    """
+    Overrides the multiplication operator. Creates a new set only containing elements existing in both sets.
+    """
     def __mul__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) == 0:
+        if len(self.list) == 0:
             return Set()
-        set = SortedListWithKey(key=self.set._key)
-        for x in self.set:
-            if x in other.set:
+        set = SortedListWithKey(key=self.list._key)
+        for x in self.list:
+            if x in other.list:
                 set.add(x)
         s = Set(set=set)
         return s
 
+    """
+    Method to represent the current set as string.
+    """
     def __str__(self):
-        return '{ %s }' % ', '.join([str(x) for x in self.set])
+        return '{ %s }' % ', '.join([str(x) for x in self.list])
 
+    """
+    Overrides the pow operator (set ** 2). Returns the powerset.
+    """
     def __pow__(self, other):
         return self.__rpow__(other)
 
+    """
+    Overrides the pow operator (2 ** set). Returns the powerset.
+    """
     def __rpow__(self, other):
         assert isinstance(other, int)
         if other != 2:
@@ -85,74 +119,111 @@ class Set():
 
         return Set.power(copied_set)
 
+    """
+    Overrides the modulo operator.
+    """
     def __mod__(self, other):
         assert isinstance(other, Set)
         return (self - other) + (other - self)
 
+    """
+    Returns the iterator of the internal list.
+    """
     def __iter__(self):
-        return self.set.__iter__()
+        return self.list.__iter__()
 
+    """
+    Returns the number of elements contained in the set.
+    """
     def __len__(self):
-        return len(self.set)
+        return len(self.list)
 
+    """
+    Overrides the lower than equal operator, indicating if a set is contained in an other set or both sets are equal.
+    """
     def __lt__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) >= len(other.set):
+        if len(self.list) >= len(other.list):
             return False
-        return all(x in other.set for x in self.set)
+        return all(x in other.list for x in self.list)
 
+    """
+    Overrides the greater than equal operator, indicating if a set contains an other set or both sets are equal.
+    """
     def __gt__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) <= len(other.set):
+        if len(self.list) <= len(other.list):
             return False
-        return all(x in self.set for x in other.set)
+        return all(x in self.list for x in other.list)
 
+    """
+    Overrides the greater than operator indicating if a set contains an other set but is not the same.
+    """
     def __ge__(self, other):
         assert isinstance(other, Set)
-        for x in other.set:
-            if x not in self.set:
+        for x in other.list:
+            if x not in self.list:
                 return False
         return True
 
+    """
+    Overrides the lower than operator indicating if this set is contained in an other set but is not the smae.
+    """
     def __le__(self, other):
         assert isinstance(other, Set)
-        for x in self.set:
-            if x not in other.set:
+        for x in self.list:
+            if x not in other.list:
                 return False
         return True
 
+    """
+    Overrides the equals operator. Indicates if two sets contain the same elements.
+    """
     def __eq__(self, other):
         assert isinstance(other, Set)
-        if len(self.set) != len(other.set):
+        if len(self.list) != len(other.list):
             return False
-        for x in self.set:
-            if x not in other.set:
+        for x in self.list:
+            if x not in other.list:
                 return False
-        for x in other.set:
-            if x not in self.set:
+        for x in other.list:
+            if x not in self.list:
                 return False
         return True
 
+    """
+    Overrides the not equals operator. Indicates if two sets are not equal.
+    """
     def __ne__(self, other):
         assert isinstance(other, Set)
         return not self == other
 
+    """
+    Overrides the in operator, indicates if the set contains the element.
+    """
     def __contains__(self, other):
-        return other in self.set
+        return other in self.list
 
+    """
+    Returns the __getitem__ method of the internal list, to support array slicing.
+    """
     def __getitem__(self, key):
-        return self.set.__getitem__(key)
+        return self.list.__getitem__(key)
 
-    # returns a new set representing the cartesian product of the current
-    # set
+    """
+    Returns the cartesian product of the current set.
+    """
     def cartesian_product(self, other):
         assert isinstance(other, Set)
         s = Set()
-        for x in self.set:
-            for y in other.set:
+        for x in self.list:
+            for y in other.list:
                 s.set.add((x, y))
         return s
 
+    """
+    Creates a power set from a set.
+    """
     @staticmethod
     def power(s):
         if len(s) == 0:
@@ -162,34 +233,55 @@ class Set():
         z = Set(m + Set(x) for m in y)
         return y + z
 
+    """
+    Returns a arbitary element from set.
+    """
     def arb(self):
-        return self.set[-1] if len(self.set) % 2 == 0 else self.set[0]
+        return self.list[-1] if len(self.list) % 2 == 0 else self.list[0]
 
+    """
+    Returns a random element from set.
+    """
     def rnd(self):
-        return self.set[random.randrange(0, len(self.set))]
+        return self.list[random.randrange(0, len(self.list))]
 
+    """
+    Adds an element to the current set.
+    """
     def put(self, other):
         self._put(other)
 
+    """
+    Internal _put method to keep track of the added element. To define if the current set contains sets.
+    """
     def _put(self, other):
         if self.has_key is False:
             self.has_key = True
             if isinstance(other, Set):
-                self.set._key = gen_set_key
-        if other not in self.set:
-            self.set.add(other)
+                self.list._key = gen_set_key
+        if other not in self.list:
+            self.list.add(other)
 
+    """
+    Returns the last element of the set.
+    """
     def peek(self):
-        return self.set[-1]
+        return self.list[-1]
 
+    """
+    Returns the last element of the set and removes it.
+    """
     def pop(self):
-        x = self.set.pop()
+        x = self.list.pop()
         return x
 
+    """
+    Returns the sum of all elements inside the sets. Using the + / += operators.
+    """
     def sum(self):
         import copy
         temp = None
-        for x in self.set:
+        for x in self.list:
             if temp is None:
                 temp = copy.deepcopy(x)
             else:
@@ -197,6 +289,9 @@ class Set():
         return temp
 
 
+"""
+Basic class testing methods.
+"""
 if __name__ == '__main__':
     dl = [[x, x ** 2] for x in range(1, 10)]
     dl.append([1, 2, 3, 4])

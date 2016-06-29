@@ -1,5 +1,8 @@
 from . import is_number
 
+"""
+Deprecated sorting alternative to key sorting.
+"""
 class Sorter():
 
 	def __init__(self, obj, *args):

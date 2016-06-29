@@ -32,7 +32,3 @@ def is_prime(n):
         j += 2
 
     return True
-
-# Simulates setlx' match behavior
-def match():
-	pass 

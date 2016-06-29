@@ -1,0 +1,1 @@
+The lecture folder is a python module containing a submodule util, that contains helper methods and classes.

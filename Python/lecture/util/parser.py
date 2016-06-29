@@ -5,9 +5,14 @@ else:
     from .scanner import Scanner, TokenType
     from .helper import is_number
 
-
+"""
+Class to parse terms and compare them to other terms.
+"""
 class MatchParser():
 
+    """
+    Constructor of the MatchParser. Defines operator-, bracket-, and function-strings.
+    """
     def __init__(self, test=False):
         self.test = test
         operator_list = ['+', '-', '*', '/', '%', '**', '&&', '||', '<', '<=', '=>', '<==>', '>', '>=', '==', '!=', '!']
@@ -20,6 +25,9 @@ class MatchParser():
         self.argument_stack = []
         self.operator_stack = []
 
+    """
+    Pops the next operator and concatinates the lhs and rhs strings.
+    """
     def pop_and_evaluate(self):
         (value, tokentype) = self.operator_stack.pop()
         result = ''
@@ -38,6 +46,9 @@ class MatchParser():
 
         self.argument_stack.append(result)
 
+    """
+    Indicates if the next operator already might be evaluated, based on the operator precedence.
+    """
     def eval_before(self, stack_operator, next_operator):
         (stack_value, stack_tokentype) = stack_operator
         (next_value, next_tokentype) = next_operator
@@ -56,6 +67,9 @@ class MatchParser():
             return True
         return False
 
+    """
+    Returns the precendence of the given operator.
+    """
     def precedence(self, token):
         (value, tokentype) = token
         if self.is_unary_operator(token):
@@ -75,6 +89,9 @@ class MatchParser():
                 return 0
         raise Exception('unknown operator at precedence %s' % value)
 
+    """
+    Indicates if the operator is left associative.
+    """
     def is_left_associative(self, token):
         (value, tokentype) = token
         if value in ['+', '-', '*', '/', '%', '||', '&&', '<=', '==', '<', '>', '>=', '=>', '<==>', '!=']:
@@ -85,6 +102,9 @@ class MatchParser():
             return False
         raise Exception('unknown operator at is left associative %s' % value)
 
+    """
+    Indicates if the operator is a unary operator.
+    """
     def is_unary_operator(self, token):
         (value, tokentype) = token
         if tokentype == TokenType.function \
@@ -92,6 +112,9 @@ class MatchParser():
             return True
         return False
 
+    """
+    Parses the input and returns the first operation that needs to be evaluated.
+    """
     def parse(self, input):
         self.token_stack = self.scanner.scan(input)
         self.token_stack = [x for x in self.token_stack if not x[1] == TokenType.whitespace]
@@ -133,6 +156,9 @@ class MatchParser():
         self.argument_stack = []
         return result
 
+    """
+    Parses two terms and checks if the same operation would be evaluated first in both terms.
+    """
     def match(self, scheme, value):
         try:
             result_scheme = self.parse(scheme)
@@ -163,9 +189,15 @@ class MatchParser():
         except:
             pass
 
+    """
+    Matches against a number.
+    """
     def is_number(self, value):
         return self.match('1', value)
 
+    """
+    Matches agains a variable.
+    """
     def is_variable(self, value):
         return self.match('a', value)
 
