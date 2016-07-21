@@ -35,7 +35,7 @@ def save_output(file_path, output):
     file_name = os.path.basename(file_path)[:-3]
     with open(os.path.join(output_path, 
         file_name + '.txt'), 'w') as output_file:
-        output_file.write(output)
+        output_file.write(str(output))
 
 
 def read_file(script_name):

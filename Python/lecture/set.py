@@ -23,7 +23,7 @@ class Set():
     Attention: If a set is passed, the reference to the internal member list.
     """
     def __init__(self, *args, list=None, keep_generators=False):
-        if set is not None:
+        if list is not None:
             assert isinstance(list, SortedListWithKey)
             self.list = list
             self.has_key = True
@@ -49,13 +49,13 @@ class Set():
         elif len(self.list) == 0:
             return copy.copy(other)
         else:
-            set = SortedListWithKey(key=self.list._key)
-            set.update(copy.deepcopy(self.list))
+            list = SortedListWithKey(key=self.list._key)
+            list.update(copy.deepcopy(self.list))
             other_list_copy = copy.deepcopy(other.list)
             for x in other_list_copy:
-                if x not in set:
-                    set.add(x)
-            return Set(set=set)
+                if x not in list:
+                    list.add(x)
+            return Set(list=list)
 
     """
     Overrides the += operator. Adds all elements of an other set to the current set.
@@ -73,11 +73,11 @@ class Set():
         assert isinstance(other, Set)
         if len(self.list) == 0:
             return Set()
-        set = SortedListWithKey(key=self.list._key)
+        list = SortedListWithKey(key=self.list._key)
         for x in self.list:
             if x not in other.list:
-                set.add(x)
-        s = Set(set=set)
+                list.add(x)
+        s = Set(list=list)
         return s
 
     """
@@ -87,11 +87,11 @@ class Set():
         assert isinstance(other, Set)
         if len(self.list) == 0:
             return Set()
-        set = SortedListWithKey(key=self.list._key)
+        list = SortedListWithKey(key=self.list._key)
         for x in self.list:
             if x in other.list:
-                set.add(x)
-        s = Set(set=set)
+                list.add(x)
+        s = Set(list=list)
         return s
 
     """
@@ -218,7 +218,7 @@ class Set():
         s = Set()
         for x in self.list:
             for y in other.list:
-                s.set.add((x, y))
+                s.list.add((x, y))
         return s
 
     """
