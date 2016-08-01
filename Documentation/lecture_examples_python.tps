@@ -11,13 +11,13 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=modul_lecture.tex
 
 [Frame0_View0,0]
-TopLine=0
+TopLine=160
 Cursor=70037
 
 [Frame1]
@@ -29,14 +29,14 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=lecture_examples_python.tex
 
 [Frame1_View0,0]
 TopLine=0
-Cursor=430
+Cursor=155
 
 [Frame2]
 Flags=0
@@ -47,8 +47,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=BibTeXView
 Document=literature.bib
 
@@ -65,8 +65,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=einleitung.tex
 
@@ -83,8 +83,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=warum_python.tex
 
@@ -101,13 +101,13 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=nur_python.tex
 
 [Frame5_View0,0]
-TopLine=4
+TopLine=0
 Cursor=208
 
 [Frame6]
@@ -119,13 +119,13 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=fazit.tex
 
 [Frame6_View0,0]
-TopLine=3
+TopLine=0
 Cursor=157
 
 [Frame7]
@@ -137,16 +137,16 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1120
-NormalPos.bottom=228
+NormalPos.right=1715
+NormalPos.bottom=539
 Class=LaTeXView
 Document=deckblatt.tex
 
 [Frame7_View0,0]
-TopLine=6
-Cursor=434
+TopLine=4
+Cursor=971
 
 [SessionInfo]
 FrameCount=8
-ActiveFrame=7
+ActiveFrame=1
 

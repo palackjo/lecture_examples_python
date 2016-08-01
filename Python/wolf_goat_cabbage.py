@@ -10,7 +10,7 @@ def find_path(x, y, r):
         old_p = p
         p     = p + path_product(p, r)
         found = Set(l for l in p if l[-1] == y)
-        if found:
+        if found not Set():
             return found.arb()
         if p == old_p:
             return

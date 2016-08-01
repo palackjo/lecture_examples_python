@@ -1,13 +1,21 @@
 \begin{thebibliography}{Guo14}
 
-\bibitem[Guo14]{Guo14}
+\bibitem[{cod}]{codeeval.}
+{code eval}.
+\newblock Most popular coding languages of 2016.
+\newblock
+  \url{http://blog.codeeval.com/codeevalblog/2016/2/2/most-popular-coding-languages-of-2016}.
+
+\bibitem[Guo14]{Guo.07.07.2014}
 Philip Guo.
 \newblock Python is now the most popular introductory teaching language at top
   u.s. universities, 07.07.2014.
+\newblock
+  \url{http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext}.
 
-\bibitem[SH15]{StroetmannHerrmann15}
+\bibitem[SH15]{Stroetmann.30.07.2015}
 Karl Stroetmann and Tom Herrmann.
 \newblock Setlx - a tutorial: Version 2.4.0.
-\newblock Tutorial for programming language, 30.07.2015.
+\newblock 30.07.2015.
 
 \end{thebibliography}
